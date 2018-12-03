@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CountPostIts
 {
-    class Test2
+    class seb
     {
     }
 }
