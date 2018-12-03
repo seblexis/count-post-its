@@ -1,2 +1,0 @@
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts.ConsoleUI\obj\Debug\CountPostIts.ConsoleUI.csprojAssemblyReference.cache
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts.ConsoleUI\obj\Debug\CountPostIts.ConsoleUI.csproj.CoreCompileInputs.cache

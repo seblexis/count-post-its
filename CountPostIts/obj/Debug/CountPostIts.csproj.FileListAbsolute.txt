@@ -1,7 +1,0 @@
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts\bin\Debug\CountPostIts.exe.config
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts\bin\Debug\CountPostIts.exe
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts\bin\Debug\CountPostIts.pdb
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts\obj\Debug\CountPostIts.csprojAssemblyReference.cache
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts\obj\Debug\CountPostIts.csproj.CoreCompileInputs.cache
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts\obj\Debug\CountPostIts.exe
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts\obj\Debug\CountPostIts.pdb

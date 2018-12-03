@@ -1,2 +1,0 @@
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts.ImageRecognition\obj\Debug\CountPostIts.ImageRecognition.csprojAssemblyReference.cache
-C:\Users\quayleng\source\repos\count-post-its\CountPostIts.ImageRecognition\obj\Debug\CountPostIts.ImageRecognition.csproj.CoreCompileInputs.cache
