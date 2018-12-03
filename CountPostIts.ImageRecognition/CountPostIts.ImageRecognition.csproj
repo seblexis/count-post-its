@@ -49,11 +49,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CountPostIts\CountPostIts.csproj">
-      <Project>{b2f7473f-2a72-4478-8c92-8dc97b84edca}</Project>
-      <Name>CountPostIts</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

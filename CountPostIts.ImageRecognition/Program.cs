@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CountPostIts
+namespace CountPostIts.ImageRecognition
 {
-    class Test
+    class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }
