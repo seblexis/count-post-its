@@ -10,7 +10,6 @@ namespace CountPostIts
     {
         static void Main(string[] args)
         {
-            //test
         }
     }
 }
