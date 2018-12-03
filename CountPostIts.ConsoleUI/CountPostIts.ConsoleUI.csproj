@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{98C9C4ED-775A-40A5-A461-FF91631A11D8}</ProjectGuid>
+    <ProjectGuid>{2D435773-5954-4186-846E-C1296D66CA2F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>CountPostIts.ConsoleUI</RootNamespace>
     <AssemblyName>CountPostIts.ConsoleUI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
