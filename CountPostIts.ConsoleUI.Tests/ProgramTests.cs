@@ -1,9 +1,8 @@
-using CountPostIts.ConsoleUI;
-using NUnit.Framework;
 using System;
 using System.IO;
+using NUnit.Framework;
 
-namespace Tests
+namespace CountPostIts.ConsoleUI.Tests
 {
     public class Tests
     {
@@ -21,10 +20,28 @@ namespace Tests
 
                 FileVerification.FileNamePrompt();
 
-                string expected = "Enter filename: ";
+                string expected = "Enter filename:\r\n";
 
                 Assert.AreEqual(expected, sw.ToString());
             }
+        }
+
+        [Test]
+        public void GetUserInput()
+        {
+           
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                FileVerification.GetUserInput("Postits.jpg");
+
+                string expected = "Processing file Postits.jpg\r\n";
+
+                Assert.AreEqual(expected, sw.ToString());
+
+            }
+
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CountPostIts.ConsoleUI
 {
@@ -10,7 +12,16 @@ namespace CountPostIts.ConsoleUI
     {
         public static void FileNamePrompt()
         {
-            Console.Write("Enter filename: ");
+            Console.WriteLine("Enter filename:");
+        }
+
+        public static void GetUserInput(string input = null)
+        {
+            input = input ?? Console.ReadLine();
+            Console.WriteLine($"Processing file {input}");
         }
     }
+
+
+    
 }
