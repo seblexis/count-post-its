@@ -15,15 +15,16 @@ namespace CountPostIts.ImageRecognition
 {
     public class PostItCounter
     {
-        public static int Count(string filename, Dictionary<string,int> RGB)
+        public static int Count(string filename, Dictionary<string,int> rgb)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
 
-            ColorFiltering colorFilter = new ColorFiltering();
 
             //keep colours in this range
-            
 
+            IColorFiltering colorFilteringWrapper = new ColorFilteringWrapper();
+            ImageColouring imageColouring = new ImageColouring();
+            imageColouring.setFilters(rgb, colorFilteringWrapper);
             BlobCounter blobCounter = new BlobCounter();
             blobCounter.FilterBlobs = true;
             blobCounter.MinHeight = 5;
@@ -32,15 +33,6 @@ namespace CountPostIts.ImageRecognition
             blobCounter.ProcessImage(image);
             Blob[] blobs = blobCounter.GetObjectsInformation();
             return 6;
-        }
-
-        public static int[] RGBRange(int rgb)
-        {
-            int[] range = new int[2];
-            // var result = x > y ? "x is greater than y" : "x is less than or eq
-            range[0] = rgb < 25 ? 0 : rgb - 25;
-            range[1] = rgb > 230 ? 255 : rgb + 25;
-            return range;
         }
     }
 }
