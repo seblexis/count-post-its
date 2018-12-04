@@ -12,4 +12,12 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestImages\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CountPostIts.ImageRecognition\CountPostIts.ImageRecognition.csproj" />
+  </ItemGroup>
+
 </Project>
