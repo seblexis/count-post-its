@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommandLine;
 
 namespace CountPostIts.ConsoleUI
 {
@@ -10,13 +11,9 @@ namespace CountPostIts.ConsoleUI
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            // little cheat
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            var result = Parser.Default.ParseArguments<Options>(args);
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            result.WithParsed<Options>(opts => );
         }
     }
 }
