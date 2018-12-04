@@ -18,10 +18,14 @@ namespace CountPostIts.ConsoleUI
         public static void GetUserInput(string input = null)
         {
             input = input ?? Console.ReadLine();
-            Console.WriteLine($"Processing file {input}");
+            if(input.Contains(".jpg") || input.Contains(".png"))
+            {
+                Console.WriteLine($"Processing file {input}");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect file type, please re-enter:");
+            }
         }
     }
-
-
-    
 }

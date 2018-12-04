@@ -27,9 +27,8 @@ namespace CountPostIts.ConsoleUI.Tests
         }
 
         [Test]
-        public void GetUserInput()
+        public void GetUserInputConfirmsOnCorrectInput()
         {
-           
             using (StringWriter sw = new StringWriter())
             {
                 Console.SetOut(sw);
@@ -39,9 +38,22 @@ namespace CountPostIts.ConsoleUI.Tests
                 string expected = "Processing file Postits.jpg\r\n";
 
                 Assert.AreEqual(expected, sw.ToString());
-
             }
+        }
 
+        [Test]
+        public void GetUserInputDisplaysErrorOnIncorrectInput()
+        {
+            using (StringWriter sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+
+                FileVerification.GetUserInput("Postits");
+
+                string expected = "Incorrect file type, please re-enter:\r\n";
+
+                Assert.AreEqual(expected, sw.ToString());
+            }
         }
     }
 }
