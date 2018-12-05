@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using NUnit.Framework;
+using Moq;
 
 namespace CountPostIts.ConsoleUI.Tests
 {
@@ -11,9 +12,10 @@ namespace CountPostIts.ConsoleUI.Tests
         {
         }
 
-        [Test]
-        public void test1()
+        [TestCase("")]
+        public void IsGetPostItCountCalledWhenMultipleIsTrue ()
         {
+
         }
     }
 }

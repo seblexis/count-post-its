@@ -24,6 +24,9 @@ namespace CountPostIts.ConsoleUI
         {
             if (File.Exists(options.FileName))
             {
+
+
+
                 if (options.IsMultiple)
                 {
                     PostItCount.GetPostitCount(options.FileName);
@@ -32,6 +35,8 @@ namespace CountPostIts.ConsoleUI
                 {
                     PostItCount.HasPostIt(options.FileName);
                 }
+
+                Console.WriteLine();
             }
         }
 
@@ -40,5 +45,3 @@ namespace CountPostIts.ConsoleUI
 }
 
 
-// after lunch move functions to different classes
-//mock tests for the above
