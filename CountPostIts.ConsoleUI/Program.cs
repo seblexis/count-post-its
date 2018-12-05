@@ -14,7 +14,7 @@ namespace CountPostIts.ConsoleUI
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
-                .WithParsed(options => ChecksFile(options))
+                .WithParsed(ChecksFile)
                 .WithNotParsed(options => Environment.Exit(-1));
 
             Console.ReadLine();
@@ -24,8 +24,21 @@ namespace CountPostIts.ConsoleUI
         {
             if (File.Exists(options.FileName))
             {
-                // library here
+                if (options.IsMultiple)
+                {
+                    PostItCount.GetPostitCount(options.FileName);
+                }
+                else
+                {
+                    PostItCount.HasPostIt(options.FileName);
+                }
             }
         }
+
+
     }
 }
+
+
+// after lunch move functions to different classes
+//mock tests for the above

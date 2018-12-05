@@ -11,5 +11,10 @@ namespace CountPostIts.ConsoleUI
     {
         [Value(0, Required = true, HelpText = "File must be saved in same directory as .exe")]
         public string FileName { get; set; }
+
+
+        [Option('m', "multiple")]
+        public bool IsMultiple { get; set; }
+
     }
 }
