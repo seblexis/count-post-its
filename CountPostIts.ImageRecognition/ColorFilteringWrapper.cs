@@ -31,10 +31,10 @@ namespace CountPostIts.ImageRecognition
             ColorFilter.Green = new IntRange(first, last);
         }
 
-        //public void ApplyToImage(BitmapData image)
-        //{
-        //    ColorFilter.ApplyInPlace(image);
-        //}
+        public void ApplyToImage(object image)
+        {
+            ColorFilter.ApplyInPlace((BitmapData)image);
+        }
 
     }
 }

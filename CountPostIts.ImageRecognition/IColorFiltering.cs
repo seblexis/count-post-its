@@ -1,4 +1,5 @@
 ﻿using Accord.Imaging.Filters;
+using System.Drawing;
 using System.Drawing.Imaging;
 
 namespace CountPostIts.ImageRecognition
@@ -9,6 +10,6 @@ namespace CountPostIts.ImageRecognition
         void AddRedValue(int first, int last);
         void AddBlueValue(int first, int last);
         void AddGreenValue(int first, int last);
-        //void ApplyToImage(BitmapData image);
+        void ApplyToImage(object image);
     }
 }
