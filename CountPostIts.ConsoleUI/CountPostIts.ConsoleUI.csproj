@@ -66,6 +66,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CountPostIts.ImageRecognition\CountPostIts.ImageRecognition.csproj">
+      <Project>{4a51ba28-a032-44f7-8fba-1066f45cb530}</Project>
+      <Name>CountPostIts.ImageRecognition</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

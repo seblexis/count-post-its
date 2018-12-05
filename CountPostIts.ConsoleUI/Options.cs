@@ -9,7 +9,7 @@ namespace CountPostIts.ConsoleUI
 {
     class Options
     {
-        [Value(0, Required = true)]
-        public string FilePath { get; set; }
+        [Value(0, Required = true, HelpText = "File must be saved in same directory as .exe")]
+        public string FileName { get; set; }
     }
 }
