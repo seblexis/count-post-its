@@ -13,34 +13,8 @@ namespace CountPostIts.ConsoleUI
     {
         static void Main(string[] args)
         {
-            Parser.Default.ParseArguments<Options>(args)
-                .WithParsed(ChecksFile)
-                .WithNotParsed(options => Environment.Exit(-1));
 
-            Console.ReadLine();
         }
-
-        static void ChecksFile(Options options)
-        {
-            if (File.Exists(options.FileName))
-            {
-
-
-
-                if (options.IsMultiple)
-                {
-                    PostItCount.GetPostitCount(options.FileName);
-                }
-                else
-                {
-                    PostItCount.HasPostIt(options.FileName);
-                }
-
-                Console.WriteLine();
-            }
-        }
-
-
     }
 }
 
