@@ -13,7 +13,9 @@ namespace CountPostIts.ConsoleUI
     {
         static void Main(string[] args)
         {
+            // add parsing library
             var config = new Config(new FileWrapper(), new InformationWrapper());
+            // add display results
         }
     }
 }

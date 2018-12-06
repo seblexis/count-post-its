@@ -8,7 +8,7 @@ namespace CountPostIts.ConsoleUI
 {
     class InformationWrapper : IInformationWrapper
     {
-        public int CountPostits(string filename)
+        public int CallCountPostits(string filename)
         {
             throw new NotImplementedException();
         }

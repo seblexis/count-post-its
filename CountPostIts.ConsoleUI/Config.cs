@@ -22,7 +22,7 @@ namespace CountPostIts.ConsoleUI
         {
             if (!_file.CallFileExists(filename)) throw new ArgumentException();
 
-            _information.CountPostits(filename);
+            _information.CallCountPostits(filename);
         }
     }
 }

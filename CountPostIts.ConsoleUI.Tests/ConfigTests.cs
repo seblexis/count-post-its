@@ -5,7 +5,7 @@ using Moq;
 
 namespace CountPostIts.ConsoleUI.Tests
 {
-    public class Tests
+    public class ConfigTests
     {
         private Config _config;
         private const string Filename = "postits.jpg";
@@ -25,7 +25,7 @@ namespace CountPostIts.ConsoleUI.Tests
                 .Returns(true);
 
             _mockInformation
-                .Setup(m => m.CountPostits(Filename))
+                .Setup(m => m.CallCountPostits(Filename))
                 .Returns(5);
 
             _mockInformation
@@ -52,9 +52,7 @@ namespace CountPostIts.ConsoleUI.Tests
         {
             _config.ChecksFile(Filename);
 
-            _mockInformation.Verify(m => m.CountPostits(Filename), Times.Once);
-
-            
+            _mockInformation.Verify(m => m.CallCountPostits(Filename), Times.Once);
         }
 
         [Test]

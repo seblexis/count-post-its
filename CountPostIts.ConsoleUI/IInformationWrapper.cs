@@ -8,7 +8,7 @@ namespace CountPostIts.ConsoleUI
 {
     public interface  IInformationWrapper
     {
-        int CountPostits(string filename);
+        int CallCountPostits(string filename);
 
         bool HasPostits(string filename);
     }
