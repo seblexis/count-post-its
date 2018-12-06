@@ -9,6 +9,7 @@ namespace CountPostIts.ConsoleUI.Tests
     {
         private Config _config;
         private const string Filename = "postits.jpg";
+        private const string IncorrectFilename = "Hello.ppt";
         private Mock<IFileWrapper> _mockFile;
 
         [SetUp]
@@ -32,9 +33,16 @@ namespace CountPostIts.ConsoleUI.Tests
         }
 
         [Test]
-        public void HasNotBeenParsed_Is_Called_When_Given_Incorrect_Input()
+        public void Calls_Library_When_Given_Correct_File()
         {
+            _config.ChecksFile(Filename);
+            
+        }
 
+        [Test]
+        public void Throws_Exception_When_Given_Incorrect_File()
+        { 
+            Assert.Throws<ArgumentNullException>(() => _config.ChecksFile(IncorrectFilename));
         }
     }
 }

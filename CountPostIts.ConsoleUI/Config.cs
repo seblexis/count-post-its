@@ -18,7 +18,7 @@ namespace CountPostIts.ConsoleUI
 
         public void ChecksFile(string filename)
         {
-            _file.FileExists(filename);
+            if (!_file.FileExists(filename)) throw new ArgumentNullException();
         }
     }
 }
