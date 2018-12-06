@@ -58,7 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileWrapper.cs" />
     <Compile Include="IFileWrapper.cs" />
+    <Compile Include="IInformationWrapper.cs" />
+    <Compile Include="InformationWrapper.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

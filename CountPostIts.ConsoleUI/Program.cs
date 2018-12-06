@@ -13,7 +13,7 @@ namespace CountPostIts.ConsoleUI
     {
         static void Main(string[] args)
         {
-
+            var config = new Config(new FileWrapper(), new InformationWrapper());
         }
     }
 }

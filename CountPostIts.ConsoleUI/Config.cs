@@ -10,15 +10,19 @@ namespace CountPostIts.ConsoleUI
     public class Config
     {
         private readonly IFileWrapper _file;
+        private readonly IInformationWrapper _information;
 
-        public Config(IFileWrapper file)
+        public Config(IFileWrapper file, IInformationWrapper information)
         {
             _file = file;
+            _information = information;
         }
 
         public void ChecksFile(string filename)
         {
-            if (!_file.FileExists(filename)) throw new ArgumentNullException();
+            if (!_file.CallFileExists(filename)) throw new ArgumentException();
+
+            _information.CountPostits(filename);
         }
     }
 }

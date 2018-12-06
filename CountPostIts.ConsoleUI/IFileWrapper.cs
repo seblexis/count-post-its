@@ -2,6 +2,6 @@
 {
     public interface IFileWrapper
     {
-        bool FileExists(string filePath);
+        bool CallFileExists(string filePath);
     }
 }
