@@ -1,4 +1,6 @@
-﻿using Accord.Imaging;
+﻿using Accord;
+using Accord.Imaging;
+using System.Collections.Generic;
 
 namespace CountPostIts.ImageRecognition
 {
@@ -12,13 +14,6 @@ namespace CountPostIts.ImageRecognition
         void OwnMinWidth(int width);
         Blob[] OwnGetObjectsInformation();
         void OwnProcessImage(object image);
-
-        //    BlobCounter blobCounter = new BlobCounter();
-
-        //    blobCounter.FilterBlobs = true;
-        //    blobCounter.MinHeight = 10;
-        //    blobCounter.MinWidth = 10;
-
-        //    blobCounter.ProcessImage(image);
+        List<IntPoint> OwnGetBlobsEdgePoints(Blob blob);
     }
 }

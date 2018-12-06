@@ -1,4 +1,5 @@
-﻿using Accord.Imaging;
+﻿using Accord;
+using Accord.Imaging;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -39,6 +40,11 @@ namespace CountPostIts.ImageRecognition
         public Blob[] OwnGetObjectsInformation()
         {
             return BlobCounter.GetObjectsInformation();
+        }
+
+        public List<IntPoint> OwnGetBlobsEdgePoints(Blob blob)
+        {
+            return BlobCounter.GetBlobsEdgePoints(blob);
         }
     }
 }

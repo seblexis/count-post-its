@@ -17,23 +17,75 @@ namespace CountPostIts.ImageRecognition
     public class Information
     {
         public IBlobCounterWrapper BlobCounterWrapper { get; set; }
-        public Information(IBlobCounterWrapper blobCounterWrapper)
+        public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
+        public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
+
+        public Information(IBlobCounterWrapper blobCounterWrapper, ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper, IColorFilteringWrapper colorFilteringWrapper)
         {
             this.BlobCounterWrapper = blobCounterWrapper;
+            this.SimpleShapeCheckerWrapper = simpleShapeCheckerWrapper;
+            this.ColorFilteringWrapper = colorFilteringWrapper;
         }
-        public bool HasQuadrilateral(string filename)
+
+        public void FilterImage(Bitmap image, Dictionary<string, int> rgb)
         {
-            return true;
+            setFilters(rgb);
+            ColorFilteringWrapper.OwnApplyInPlace(image);
         }
+
+        public int CountPostItNotes(string filename, Dictionary<string, int> rgb)
+        {
+            Bitmap image = (Bitmap)Bitmap.FromFile(filename);
+            FilterImage(image, rgb);
+            Blob[] blobs = BlobsInImage(image);
+            return CountQuadrilaterals(blobs);
+        }
+
+
         public Blob[] BlobsInImage(Bitmap image)
         {
             BlobCounterWrapper.OwnFilterBlobs(true);
-            BlobCounterWrapper.OwnMinHeight(10);
-            BlobCounterWrapper.OwnMinWidth(10);
+            BlobCounterWrapper.OwnMinHeight(5);
+            BlobCounterWrapper.OwnMinWidth(5);
             BlobCounterWrapper.OwnProcessImage(image);
             return BlobCounterWrapper.OwnGetObjectsInformation();
         }
 
+        public int CountQuadrilaterals(Blob[] blobs)
+        {
+            int counter = 0;
+            for (int i = 0; i < blobs.Length; i++)
+            {
+                List<IntPoint> edgePoints = BlobCounterWrapper.OwnGetBlobsEdgePoints(blobs[i]);
+                List<IntPoint> cornerPoints;
+                if (SimpleShapeCheckerWrapper.OwnIsQuadrilateral(edgePoints, out cornerPoints))
+                {
+                    counter++;
+                }
+            }
+            return counter;
+        }
+
+        public void setFilters(Dictionary<string, int> rgb)
+        {
+            int red = rgb["R"];
+            ColorFilteringWrapper.OwnRed(FindRGBInterval(red)[0], FindRGBInterval(red)[1]);
+
+            int green = rgb["G"];
+            ColorFilteringWrapper.OwnGreen(FindRGBInterval(green)[0], FindRGBInterval(green)[1]);
+
+            int blue = rgb["B"];
+            ColorFilteringWrapper.OwnBlue(FindRGBInterval(blue)[0], FindRGBInterval(blue)[1]);
+
+        }
+
+        public int[] FindRGBInterval(int number)
+        {
+            int[] interval = new int[2];
+            interval[0] = (number - 25 < 0) ? 0 : number - 25;
+            interval[1] = (number + 25 > 255) ? 255 : number + 25;
+            return interval;
+        }
 
         //public static void Count()
         //{
