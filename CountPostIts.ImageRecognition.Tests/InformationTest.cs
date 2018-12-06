@@ -33,24 +33,6 @@ namespace CountPostIts.ImageRecognition.Tests
 
 
         [TestMethod]
-        public void HasQuadrilateralReturnsTrueForTest1()
-        {
-            Dictionary<string, int> rgb_yellow_postit = new Dictionary<string, int>();
-            rgb_yellow_postit.Add("R", 217);
-            rgb_yellow_postit.Add("G", 245);
-            rgb_yellow_postit.Add("B", 143);
-            Assert.AreEqual(true, information.CountPostItNotes("../../TestImages/test1.jpg", rgb_yellow_postit));
-        }
-
-        [TestMethod]
-        public void HasQuadrilateralReturnsFalseForTest2()
-        {
-       
-
-            Assert.AreEqual(information.CountPostItNotes("../../TestImages/test2.jpg", rgb), false);
-        }
-
-        [TestMethod]
         public void BlobsInImageCallsGetObjectInformation()
         {
             Assert.AreEqual(information.BlobsInImage(test_image1).GetType(), typeof(Blob[]));

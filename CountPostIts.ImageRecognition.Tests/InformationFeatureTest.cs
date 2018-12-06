@@ -39,13 +39,13 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void SaveHighlightedPostItNotes()
         {
-            String path = "../../../CountPostItsImageRecognition/Results/result.png";
-            if (File.Exists(path))
+            string resultPath = "result.png";
+            if (File.Exists(resultPath))
             {
-                File.Delete(path);
+                File.Delete(resultPath);
             }
             information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgb_yellow_postit);
-            Assert.AreEqual(true, File.Exists(path));
+            Assert.AreEqual(true, File.Exists(resultPath));
         }
     }
 }

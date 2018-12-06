@@ -11,6 +11,7 @@ using Accord;
 using Accord.Imaging;
 using Accord.Imaging.Filters;
 using Accord.Math.Geometry;
+using System.IO;
 
 namespace CountPostIts.ImageRecognition
 {
@@ -41,13 +42,15 @@ namespace CountPostIts.ImageRecognition
             return CountQuadrilaterals(blobs);
         }
 
+        //TODO: Add proper resultPath
         public void SaveHighlightedPostItNotes(string filename, Dictionary<string, int> rgb)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             FilterImage(image, rgb);
             Blob[] blobs = BlobsInImage(image);
             Bitmap imageHighlighted = DrawQuadrilaterals(blobs, image);
-            imageHighlighted.Save("result.png");
+            string resultPath = "result.png";
+            imageHighlighted.Save(resultPath);
         }
 
 
@@ -55,8 +58,8 @@ namespace CountPostIts.ImageRecognition
         public Blob[] BlobsInImage(Bitmap image)
         {
             BlobCounterWrapper.OwnFilterBlobs(true);
-            BlobCounterWrapper.OwnMinHeight(5);
-            BlobCounterWrapper.OwnMinWidth(5);
+            BlobCounterWrapper.OwnMinHeight(10);
+            BlobCounterWrapper.OwnMinWidth(10);
             BlobCounterWrapper.OwnProcessImage(image);
             return BlobCounterWrapper.OwnGetObjectsInformation();
         }
