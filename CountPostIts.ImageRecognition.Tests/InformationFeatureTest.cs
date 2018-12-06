@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace CountPostIts.ImageRecognition.Tests
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper;
         IColorFilteringWrapper colorFilteringWrapper;
         Dictionary<string, int> rgb_yellow_postit = new Dictionary<string, int>();
+        Information information;
 
         [TestInitialize()]
         public void BeforeEachTest()
@@ -24,13 +26,26 @@ namespace CountPostIts.ImageRecognition.Tests
             rgb_yellow_postit.Add("R", 217);
             rgb_yellow_postit.Add("G", 245);
             rgb_yellow_postit.Add("B", 143);
+            information = new Information(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
         }
 
         [TestMethod]
         public void CountPostItNotesReturns6ForTestImage1AndYellow()
         {
-            Information information = new Information(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
+            
             Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgb_yellow_postit));
+        }
+
+        [TestMethod]
+        public void SaveHighlightedPostItNotes()
+        {
+            String path = "../../../CountPostItsImageRecognition/Results/result.png";
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgb_yellow_postit);
+            Assert.AreEqual(true, File.Exists(path));
         }
     }
 }

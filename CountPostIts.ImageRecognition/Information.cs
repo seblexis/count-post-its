@@ -41,6 +41,16 @@ namespace CountPostIts.ImageRecognition
             return CountQuadrilaterals(blobs);
         }
 
+        public void SaveHighlightedPostItNotes(string filename, Dictionary<string, int> rgb)
+        {
+            Bitmap image = (Bitmap)Bitmap.FromFile(filename);
+            FilterImage(image, rgb);
+            Blob[] blobs = BlobsInImage(image);
+            Bitmap imageHighlighted = DrawQuadrilaterals(blobs, image);
+            imageHighlighted.Save("result.png");
+        }
+
+
 
         public Blob[] BlobsInImage(Bitmap image)
         {
@@ -64,6 +74,27 @@ namespace CountPostIts.ImageRecognition
                 }
             }
             return counter;
+        }
+
+        public Bitmap DrawQuadrilaterals(Blob[] blobs, Bitmap image)
+        {
+            for (int i = 0; i < blobs.Length; i++)
+            {
+                List<IntPoint> edgePoints = BlobCounterWrapper.OwnGetBlobsEdgePoints(blobs[i]);
+                List<IntPoint> cornerPoints;
+                if (SimpleShapeCheckerWrapper.OwnIsQuadrilateral(edgePoints, out cornerPoints))
+                {
+                    List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
+                    foreach (var point in cornerPoints)
+                    {
+                        Points.Add(new System.Drawing.Point(point.X, point.Y));
+                    }
+
+                    Graphics g = Graphics.FromImage(image);
+                    g.DrawPolygon(new Pen(Color.Red, 5.0f), Points.ToArray());
+                }
+            }
+            return image;
         }
 
         public void setFilters(Dictionary<string, int> rgb)
