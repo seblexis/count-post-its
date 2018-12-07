@@ -30,8 +30,6 @@ namespace CountPostIts.ConsoleUI.Tests
             _handleData.PostitResults(Filename);
 
             _mockInformation.Verify(m => m.CallCountPostits(Filename), Times.Once);
-        }
-
-       
+        }  
     }
 }
