@@ -1,10 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using CommandLine;
 
 namespace CountPostIts.ConsoleUI
@@ -13,11 +7,18 @@ namespace CountPostIts.ConsoleUI
     {
         static void Main(string[] args)
         {
-            // add parsing library
+            Parser.Default.ParseArguments<Options>(args)
+                .WithParsed(Run)
+                .WithNotParsed(opt => Environment.Exit(1));
+        }
+
+        static void Run(Options opt)
+        {
             var config = new Config(
                 new FileWrapper(), new HandleData(new InformationWrapper())
-                );
-            // add display results
+            );
+
+            config.ChecksFile(opt.FileName);
         }
     }
 }

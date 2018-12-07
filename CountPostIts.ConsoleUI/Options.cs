@@ -9,12 +9,7 @@ namespace CountPostIts.ConsoleUI
 {
     public class Options
     {
-        //[Value(0, Required = true, HelpText = "The filename to analyse.")]
-        //public string FileName { get; set; }
-
-
-        [Option('m', "multiple")]
-        public bool IsMultiple { get; set; }
-
+        [Value(0, Required = true, HelpText = "The filename to analyse.")]
+        public string FileName { get; set; }
     }
 }
