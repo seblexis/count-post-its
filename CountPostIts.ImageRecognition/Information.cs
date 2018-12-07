@@ -120,57 +120,6 @@ namespace CountPostIts.ImageRecognition
             interval[0] = (number - _rgbRange < 0) ? 0 : number - _rgbRange;
             interval[1] = (number + _rgbRange > 255) ? 255 : number + _rgbRange;
             return interval;
-        }
-
-        //public static void Count()
-        //{
-        //    string fileName = "test1.jpg";
-        //    Bitmap image = (Bitmap)Bitmap.FromFile(fileName);
-
-
-        //    ColorFiltering colorFilter = new ColorFiltering();
-        //    //keep colours in this range
-        //    colorFilter.Red = new IntRange(195, 245);
-
-        //    colorFilter.Green = new IntRange(230, 255);
-
-        //    colorFilter.Blue = new IntRange(120, 170);
-
-
-        //    colorFilter.ApplyInPlace(image);
-
-        //    BlobCounter blobCounter = new BlobCounter();
-
-        //    blobCounter.FilterBlobs = true;
-        //    blobCounter.MinHeight = 10;
-        //    blobCounter.MinWidth = 10;
-
-        //    blobCounter.ProcessImage(image);
-        //    Blob[] blobs = blobCounter.GetObjectsInformation();
-
-        //    SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
-        //    image.Save("result.png");
-
-        //    int counter = 0;
-        //    for (int i = 0; i < blobs.Length; i++)
-        //    {
-        //        List<IntPoint> edgePoints = blobCounter.GetBlobsEdgePoints(blobs[i]);
-        //        List<IntPoint> cornerPoints;
-        //        if (shapeChecker.IsQuadrilateral(edgePoints, out cornerPoints))
-        //        {
-        //            List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
-        //            foreach (var point in cornerPoints)
-        //            {
-        //                Points.Add(new System.Drawing.Point(point.X, point.Y));
-        //            }
-
-        //            Graphics g = Graphics.FromImage(image);
-        //            g.DrawPolygon(new Pen(Color.Red, 5.0f), Points.ToArray());
-
-        //            image.Save("result.png");
-        //            counter++;
-        //        }
-        //    }
-        //}
+        }       
     }
 }
