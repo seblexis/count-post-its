@@ -17,7 +17,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class Information
     {
-        private int _rgbRange = 35;
+        private int _rgbRange = 45;
         public IBlobCounterWrapper BlobCounterWrapper { get; set; }
         public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
         public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
