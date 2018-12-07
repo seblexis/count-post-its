@@ -17,12 +17,11 @@ namespace CountPostIts.ImageRecognition.Tests
         Information information;
         Dictionary<string, int> rgb = new Dictionary<string, int>();
         Bitmap test_image1;
-        Blob[] test_blob;
 
         [TestInitialize()]
         public void BeforeEachTest()
         {
-            _rgbRange = 35;
+            _rgbRange = 45;
             blobCounterWrapperMock = Substitute.For<IBlobCounterWrapper>();
             simpleShapeCheckerWrapperMock = Substitute.For<ISimpleShapeCheckerWrapper>();
             colorFilteringWrapperMock = Substitute.For<IColorFilteringWrapper>();
