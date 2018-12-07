@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using CountPostIts.ImageRecognition;
 
 namespace CountPostIts.ConsoleUI
 {
@@ -6,7 +8,12 @@ namespace CountPostIts.ConsoleUI
     {
         public int CallCountPostits(string filename)
         {
-            throw new NotImplementedException();
+            Information information = new Information();
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add("R", 203);
+            dict.Add("G", 66);
+            dict.Add("B", 99);
+            return information.CountPostItNotes(filename, dict);
         }
     }
 }
