@@ -15,9 +15,15 @@ namespace CountPostIts.ConsoleUI
             _information = information;
         }
 
-        public int PostitResults(string filename)
+        public void PostitResults(string filename)
         {
-            return _information.CallCountPostits(filename);
+            int result = _information.CallCountPostits(filename);
+            DisplayResults(result);
+        }
+
+        private void DisplayResults(int result)
+        {
+            Console.WriteLine($"Post it count: {result}");
         }
     }
 }

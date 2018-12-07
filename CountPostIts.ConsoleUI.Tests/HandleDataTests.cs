@@ -31,5 +31,7 @@ namespace CountPostIts.ConsoleUI.Tests
 
             _mockInformation.Verify(m => m.CallCountPostits(Filename), Times.Once);
         }
+
+       
     }
 }

@@ -8,6 +8,6 @@ namespace CountPostIts.ConsoleUI
 {
     public interface IHandleData
     {
-        int PostitResults(string filename);
+        void PostitResults(string filename);
     }
 }
