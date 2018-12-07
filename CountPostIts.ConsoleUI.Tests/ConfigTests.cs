@@ -12,31 +12,19 @@ namespace CountPostIts.ConsoleUI.Tests
         private const string IncorrectFilename = "Hello.ppt";
         private const string FilenameNoPostits = "None.jpg";
         private Mock<IFileWrapper> _mockFile;
-        private Mock<IInformationWrapper> _mockInformation;
+        private Mock<IHandleData> _mockHandleData;
 
         [SetUp]
         public void Setup()
         {
             _mockFile = new Mock<IFileWrapper>();
-            _mockInformation = new Mock<IInformationWrapper>();
+            _mockHandleData = new Mock<IHandleData>();
 
             _mockFile
                 .Setup(m => m.CallFileExists(Filename))
                 .Returns(true);
 
-            _mockInformation
-                .Setup(m => m.CallCountPostits(Filename))
-                .Returns(5);
-
-            _mockInformation
-                .Setup(m => m.HasPostits(Filename))
-                .Returns(true);
-
-            _mockInformation
-                .Setup(m => m.HasPostits(FilenameNoPostits))
-                .Returns(false);
-
-            _config = new Config(_mockFile.Object, _mockInformation.Object);
+            _config = new Config(_mockFile.Object, _mockHandleData.Object);
         }
 
         [Test]
@@ -48,17 +36,17 @@ namespace CountPostIts.ConsoleUI.Tests
         }
 
         [Test]
-        public void Calls_Library_When_Given_Correct_File()
-        {
-            _config.ChecksFile(Filename);
-
-            _mockInformation.Verify(m => m.CallCountPostits(Filename), Times.Once);
-        }
-
-        [Test]
         public void Throws_Exception_When_Given_Incorrect_File()
         { 
             Assert.Throws<ArgumentException>(() => _config.ChecksFile(IncorrectFilename));
+        }
+
+        [Test]
+        public void Calls_PostitResults_When_Given_Correct_File()
+        {
+            _config.ChecksFile(Filename);
+
+            _mockHandleData.Verify(m => m.PostitResults(Filename), Times.Once);
         }
     }
 }

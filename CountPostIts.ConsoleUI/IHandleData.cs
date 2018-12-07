@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace CountPostIts.ConsoleUI
 {
-    public class ReturnResults : IReturnResults
-    { 
-
-        public int PostitResults(string filename)
-        {
-            
-        }
+    public interface IHandleData
+    {
+        int PostitResults(string filename);
     }
 }
