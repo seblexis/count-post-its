@@ -17,6 +17,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class Information
     {
+        private int _rgbRange = 35;
         public IBlobCounterWrapper BlobCounterWrapper { get; set; }
         public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
         public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
@@ -116,8 +117,8 @@ namespace CountPostIts.ImageRecognition
         public int[] FindRGBInterval(int number)
         {
             int[] interval = new int[2];
-            interval[0] = (number - 25 < 0) ? 0 : number - 25;
-            interval[1] = (number + 25 > 255) ? 255 : number + 25;
+            interval[0] = (number - _rgbRange < 0) ? 0 : number - _rgbRange;
+            interval[1] = (number + _rgbRange > 255) ? 255 : number + _rgbRange;
             return interval;
         }
 

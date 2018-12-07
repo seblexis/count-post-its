@@ -14,7 +14,8 @@ namespace CountPostIts.ImageRecognition.Tests
         IBlobCounterWrapper blobCounterWrapper;
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper;
         IColorFilteringWrapper colorFilteringWrapper;
-        Dictionary<string, int> rgb_yellow_postit = new Dictionary<string, int>();
+        Dictionary<string, int> rgbYellowPostit = new Dictionary<string, int>();
+        Dictionary<string, int> rgbPinkPostit = new Dictionary<string, int>();
         Information information;
 
         [TestInitialize()]
@@ -23,17 +24,26 @@ namespace CountPostIts.ImageRecognition.Tests
             blobCounterWrapper = new BlobCounterWrapper();
             simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
             colorFilteringWrapper = new ColorFilteringWrapper();
-            rgb_yellow_postit.Add("R", 217);
-            rgb_yellow_postit.Add("G", 245);
-            rgb_yellow_postit.Add("B", 143);
+            rgbYellowPostit.Add("R", 217);
+            rgbYellowPostit.Add("G", 245);
+            rgbYellowPostit.Add("B", 143);
+            rgbPinkPostit.Add("R", 250 );
+            rgbPinkPostit.Add("G", 98);
+            rgbPinkPostit.Add("B", 141);
             information = new Information(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
         }
 
         [TestMethod]
         public void CountPostItNotesReturns6ForTestImage1AndYellow()
         {
-            
-            Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgb_yellow_postit));
+            Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit));
+        }
+
+        [TestMethod]
+        public void CountPostItNotesReturns6ForTestImage1AndPink()
+        {
+            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgbPinkPostit);
+            Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgbPinkPostit));
         }
 
         [TestMethod]
@@ -44,7 +54,7 @@ namespace CountPostIts.ImageRecognition.Tests
             {
                 File.Delete(resultPath);
             }
-            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgb_yellow_postit);
+            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit);
             Assert.AreEqual(true, File.Exists(resultPath));
         }
     }

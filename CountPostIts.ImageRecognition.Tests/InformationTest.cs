@@ -10,6 +10,7 @@ namespace CountPostIts.ImageRecognition.Tests
     [TestClass]
     public class InformationTest
     {
+        int _rgbRange;
         IBlobCounterWrapper blobCounterWrapperMock;
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapperMock;
         IColorFilteringWrapper colorFilteringWrapperMock;
@@ -21,6 +22,7 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestInitialize()]
         public void BeforeEachTest()
         {
+            _rgbRange = 35;
             blobCounterWrapperMock = Substitute.For<IBlobCounterWrapper>();
             simpleShapeCheckerWrapperMock = Substitute.For<ISimpleShapeCheckerWrapper>();
             colorFilteringWrapperMock = Substitute.For<IColorFilteringWrapper>();
@@ -46,9 +48,9 @@ namespace CountPostIts.ImageRecognition.Tests
             rgbExtreme.Add("G", 150);
             rgbExtreme.Add("B", 250);
             information.setFilters(rgbExtreme);
-            colorFilteringWrapperMock.Received().OwnRed(0, 35);
-            colorFilteringWrapperMock.Received().OwnGreen(125, 175);
-            colorFilteringWrapperMock.Received().OwnBlue(225, 255);
+            colorFilteringWrapperMock.Received().OwnRed(0, 10 + _rgbRange);
+            colorFilteringWrapperMock.Received().OwnGreen(150 - _rgbRange, 150 + _rgbRange);
+            colorFilteringWrapperMock.Received().OwnBlue(250 - _rgbRange, 255);
         }
 
         [TestMethod]
