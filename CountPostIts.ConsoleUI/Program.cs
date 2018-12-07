@@ -9,7 +9,7 @@ namespace CountPostIts.ConsoleUI
         {
             Parser.Default.ParseArguments<Options>(args)
                 .WithParsed(Run)
-                .WithNotParsed(opt => Environment.Exit(1));
+                .WithNotParsed(opt => Environment.Exit(-1));
         }
 
         static void Run(Options opt)
