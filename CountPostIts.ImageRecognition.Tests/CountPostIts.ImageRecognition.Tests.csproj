@@ -76,7 +76,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InformationFactoryTests.cs" />
     <Compile Include="InformationFeatureTest.cs" />
     <Compile Include="InformationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
