@@ -10,7 +10,7 @@ namespace CountPostIts.ConsoleUI
         {
             Information information = new Information();
             Dictionary<string, int> dict = new Dictionary<string, int>();
-            dict.Add("R", 203);
+            dict.Add("R", 202);
             dict.Add("G", 66);
             dict.Add("B", 99);
             return information.CountPostItNotes(filename, dict);
