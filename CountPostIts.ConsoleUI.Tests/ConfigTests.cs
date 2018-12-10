@@ -12,7 +12,7 @@ namespace CountPostIts.ConsoleUI.Tests
         private const string Filename = "postits.jpg";
         private const string IncorrectFilename = "Hello.ppt";
         private const string FilenameNoPostits = "None.jpg";
-        private readonly Dictionary<string, int> ColourValues = new Dictionary<string, int>
+        private readonly Dictionary<string, int> _colourValues = new Dictionary<string, int>
         {
             {"R", 230 },
             {"B", 179 },
@@ -37,7 +37,7 @@ namespace CountPostIts.ConsoleUI.Tests
         [Test]
         public void ChecksFile_Is_Called_When_Given_Correct_Input()
         {
-            _config.ChecksFile(Filename, ColourValues);
+            _config.ChecksFile(Filename, _colourValues);
 
             _mockFile.Verify(m => m.CallFileExists(Filename), Times.Once);
         }
@@ -45,15 +45,15 @@ namespace CountPostIts.ConsoleUI.Tests
         [Test]
         public void Throws_Exception_When_Given_Incorrect_File()
         { 
-            Assert.Throws<ArgumentException>(() => _config.ChecksFile(IncorrectFilename, ColourValues));
+            Assert.Throws<ArgumentException>(() => _config.ChecksFile(IncorrectFilename, _colourValues));
         }
 
         [Test]
         public void Calls_PostitResults_When_Given_Correct_File()
         {
-            _config.ChecksFile(Filename, ColourValues);
+            _config.ChecksFile(Filename, _colourValues);
 
-            _mockHandleData.Verify(m => m.PostitResults(Filename, ColourValues), Times.Once);
+            _mockHandleData.Verify(m => m.PostitResults(Filename, _colourValues), Times.Once);
         }
     }
 }

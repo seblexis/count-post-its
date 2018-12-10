@@ -9,7 +9,7 @@ namespace CountPostIts.ConsoleUI.Tests
     public class HandleDataTests
     {
         private const string Filename = "postits.jpg";
-        private readonly Dictionary<string, int> ColourValues = new Dictionary<string, int>
+        private readonly Dictionary<string, int> _colourValues = new Dictionary<string, int>
         {
             {"R", 230 },
             {"B", 179 },
@@ -24,7 +24,7 @@ namespace CountPostIts.ConsoleUI.Tests
             _mockInformation = new Mock<IInformationWrapper>();
 
             _mockInformation
-                .Setup(m => m.CallCountPostits(Filename, ColourValues))
+                .Setup(m => m.CallCountPostits(Filename, _colourValues))
                 .Returns(5);
 
             _handleData = new HandleData(_mockInformation.Object);
@@ -33,9 +33,9 @@ namespace CountPostIts.ConsoleUI.Tests
         [Test]
         public void Calls_Library_When_Given_A_File()
         {
-            _handleData.PostitResults(Filename, ColourValues);
+            _handleData.PostitResults(Filename, _colourValues);
 
-            _mockInformation.Verify(m => m.CallCountPostits(Filename, ColourValues), Times.Once);
+            _mockInformation.Verify(m => m.CallCountPostits(Filename, _colourValues), Times.Once);
         }  
     }
 }
