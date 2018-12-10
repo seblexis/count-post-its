@@ -17,7 +17,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class Information
     {
-        private readonly int _rgbRange = 45;
+        private readonly int _rgbRange = 35;
         public IBlobCounterWrapper BlobCounterWrapper { get; set; }
         public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
         public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
@@ -66,8 +66,8 @@ namespace CountPostIts.ImageRecognition
         public Blob[] BlobsInImage(Bitmap image)
         {
             BlobCounterWrapper.OwnFilterBlobs(true);
-            BlobCounterWrapper.OwnMinHeight(10);
-            BlobCounterWrapper.OwnMinWidth(10);
+            BlobCounterWrapper.OwnMinHeight(30);
+            BlobCounterWrapper.OwnMinWidth(30);
             BlobCounterWrapper.OwnProcessImage(image);
             return BlobCounterWrapper.OwnGetObjectsInformation();
         }
