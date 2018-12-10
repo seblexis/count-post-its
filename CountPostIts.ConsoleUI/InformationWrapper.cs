@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using CountPostIts.ImageRecognition;
 
 namespace CountPostIts.ConsoleUI
 {
     class InformationWrapper : IInformationWrapper
     {
-        public int CallCountPostits(string filename)
+        public int CallCountPostits(string filename, Dictionary<string, int> colourValues)
         {
-            throw new NotImplementedException();
+            Information information = new Information();
+            return information.CountPostItNotes(filename, colourValues);
         }
     }
+
+   
 }

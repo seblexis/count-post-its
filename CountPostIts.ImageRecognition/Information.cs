@@ -17,7 +17,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class Information
     {
-        private int _rgbRange = 45;
+        private readonly int _rgbRange = 45;
         public IBlobCounterWrapper BlobCounterWrapper { get; set; }
         public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
         public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
@@ -27,6 +27,13 @@ namespace CountPostIts.ImageRecognition
             this.BlobCounterWrapper = blobCounterWrapper;
             this.SimpleShapeCheckerWrapper = simpleShapeCheckerWrapper;
             this.ColorFilteringWrapper = colorFilteringWrapper;
+        }
+
+        public Information()
+        {
+            this.BlobCounterWrapper = new BlobCounterWrapper();
+            this.SimpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
+            this.ColorFilteringWrapper = new ColorFilteringWrapper();
         }
 
         public void FilterImage(Bitmap image, Dictionary<string, int> rgb)
