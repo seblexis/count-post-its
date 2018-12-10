@@ -76,11 +76,23 @@ namespace CountPostIts.ImageRecognition.Tests
         {
             Dictionary<string, int> rgbMagentaPostit3 = new Dictionary<string, int>();
             rgbMagentaPostit3.Add("R", 255);
-            rgbMagentaPostit3.Add("G", 12);
+            rgbMagentaPostit3.Add("G", 35);
             rgbMagentaPostit3.Add("B", 115);
 
             information.SaveHighlightedPostItNotes("../../TestImages/test3.jpg", rgbMagentaPostit3);
             Assert.AreEqual(3, information.CountPostItNotes("../../TestImages/test3.jpg", rgbMagentaPostit3));
+        }
+
+        [TestMethod]
+        public void CountPostItNotesReturns7ForTestImage4AndYellow()
+        {
+            Dictionary<string, int> rgbYellowPostit4 = new Dictionary<string, int>();
+            rgbYellowPostit4.Add("R", 144);
+            rgbYellowPostit4.Add("G", 129);
+            rgbYellowPostit4.Add("B", 35);
+
+            information.SaveHighlightedPostItNotes("../../TestImages/test4.jpg", rgbYellowPostit4);
+            Assert.AreEqual(7, information.CountPostItNotes("../../TestImages/test4.jpg", rgbYellowPostit4));
         }
 
 

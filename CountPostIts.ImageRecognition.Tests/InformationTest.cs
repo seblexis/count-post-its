@@ -21,7 +21,7 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestInitialize()]
         public void BeforeEachTest()
         {
-            _rgbRange = 45;
+            _rgbRange = 35;
             blobCounterWrapperMock = Substitute.For<IBlobCounterWrapper>();
             simpleShapeCheckerWrapperMock = Substitute.For<ISimpleShapeCheckerWrapper>();
             colorFilteringWrapperMock = Substitute.For<IColorFilteringWrapper>();
