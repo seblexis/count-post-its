@@ -21,8 +21,8 @@ namespace CountPostIts.ConsoleUI
 
             Dictionary<string, int> colourValues = new Dictionary<string, int>();
             colourValues.Add("R", opt.rVal);
-            colourValues.Add("B", opt.bVal);
             colourValues.Add("G", opt.gVal);
+            colourValues.Add("B", opt.bVal);
 
             config.ChecksFile(opt.FileName, colourValues);
         }
