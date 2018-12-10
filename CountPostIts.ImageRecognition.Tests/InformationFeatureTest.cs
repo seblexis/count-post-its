@@ -36,7 +36,7 @@ namespace CountPostIts.ImageRecognition.Tests
             rgbYellowPostit1.Add("R", 217);
             rgbYellowPostit1.Add("G", 245);
             rgbYellowPostit1.Add("B", 143);
-            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgb_yellow_postit4);
+            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit1);
             Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit1));                    
         }
 
