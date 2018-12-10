@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CommandLine;
 
 namespace CountPostIts.ConsoleUI
@@ -18,7 +19,12 @@ namespace CountPostIts.ConsoleUI
                 new FileWrapper(), new HandleData(new InformationWrapper())
             );
 
-            config.ChecksFile(opt.FileName);
+            Dictionary<string, int> colourValues = new Dictionary<string, int>();
+            colourValues.Add("R", opt.rVal);
+            colourValues.Add("B", opt.bVal);
+            colourValues.Add("G", opt.gVal);
+
+            config.ChecksFile(opt.FileName, colourValues);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CountPostIts.ConsoleUI
 {
@@ -11,9 +12,9 @@ namespace CountPostIts.ConsoleUI
             _information = information;
         }
 
-        public void PostitResults(string filename)
+        public void PostitResults(string filename, Dictionary<string, int> colourValues)
         {
-            int result = _information.CallCountPostits(filename);
+            int result = _information.CallCountPostits(filename, colourValues);
             DisplayResults(result);
         }
 

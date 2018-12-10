@@ -1,7 +1,9 @@
-﻿namespace CountPostIts.ConsoleUI
+﻿using System.Collections.Generic;
+
+namespace CountPostIts.ConsoleUI
 {
     public interface IHandleData
     {
-        void PostitResults(string filename);
+        void PostitResults(string filename, Dictionary<string, int> colourValues);
     }
 }
