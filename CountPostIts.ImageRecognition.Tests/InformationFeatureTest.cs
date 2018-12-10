@@ -62,7 +62,6 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void CountPostItNotesReturnsSevenForTestImage4AndYellow()
         {
-            Dictionary<string, int> rgb_yellow_postit4 = new Dictionary<string, int>();
             information.SaveHighlightedPostItNotes("../../TestImages/test4.jpg", rgb_yellow_postit4);
             Assert.AreEqual(7, information.CountPostItNotes("../../TestImages/test4.jpg", rgb_yellow_postit4));
         }
