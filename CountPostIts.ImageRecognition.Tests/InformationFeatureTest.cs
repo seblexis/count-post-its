@@ -14,7 +14,14 @@ namespace CountPostIts.ImageRecognition.Tests
         IBlobCounterWrapper blobCounterWrapper;
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper;
         IColorFilteringWrapper colorFilteringWrapper;
-        Dictionary<string, int> rgb_yellow_postit4 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbYellowRange4 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbGreenRange4 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbNeonYellowRange1 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbPinkRange1 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbLightBlueRange3 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbBlueRange5 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbMagentaRange3 = new Dictionary<string, int>();
+        Dictionary<string, int> rgbLightGreenRange3 = new Dictionary<string, int>();
         Information information;
 
         [TestInitialize()]
@@ -23,80 +30,112 @@ namespace CountPostIts.ImageRecognition.Tests
             blobCounterWrapper = new BlobCounterWrapper();
             simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
             colorFilteringWrapper = new ColorFilteringWrapper();
-            rgb_yellow_postit4.Add("R", 144);
-            rgb_yellow_postit4.Add("G", 129);
-            rgb_yellow_postit4.Add("B", 35);
+
+            rgbYellowRange4.Add("RMin", 130);
+            rgbYellowRange4.Add("RMax", 160);
+            rgbYellowRange4.Add("GMin", 115);
+            rgbYellowRange4.Add("GMax", 145);
+            rgbYellowRange4.Add("BMin", 20);
+            rgbYellowRange4.Add("BMax", 50);
+
+            rgbLightGreenRange3.Add("RMin", 190);
+            rgbLightGreenRange3.Add("RMax", 220);
+            rgbLightGreenRange3.Add("GMin", 200);
+            rgbLightGreenRange3.Add("GMax", 230);
+            rgbLightGreenRange3.Add("BMin", 120);
+            rgbLightGreenRange3.Add("BMax", 155);
+
+            rgbGreenRange4.Add("RMin", 80);
+            rgbGreenRange4.Add("RMax", 110);
+            rgbGreenRange4.Add("GMin", 100);
+            rgbGreenRange4.Add("GMax", 130);
+            rgbGreenRange4.Add("BMin", 40);
+            rgbGreenRange4.Add("BMax", 70);
+
+            
+            rgbNeonYellowRange1.Add("RMin", 200);
+            rgbNeonYellowRange1.Add("RMax", 230);
+            rgbNeonYellowRange1.Add("GMin", 230);
+            rgbNeonYellowRange1.Add("GMax", 255);
+            rgbNeonYellowRange1.Add("BMin", 120);
+            rgbNeonYellowRange1.Add("BMax", 150);
+
+            rgbPinkRange1.Add("RMin", 225);
+            rgbPinkRange1.Add("RMax", 255);
+            rgbPinkRange1.Add("GMin", 65);
+            rgbPinkRange1.Add("GMax", 100);
+            rgbPinkRange1.Add("BMin", 110);
+            rgbPinkRange1.Add("BMax", 140);
+
+            rgbLightBlueRange3.Add("RMin", 75);
+            rgbLightBlueRange3.Add("RMax", 105);
+            rgbLightBlueRange3.Add("GMin", 150);
+            rgbLightBlueRange3.Add("GMax", 180);
+            rgbLightBlueRange3.Add("BMin", 150);
+            rgbLightBlueRange3.Add("BMax", 180);
+
+            rgbBlueRange5.Add("RMin", 10);
+            rgbBlueRange5.Add("RMax", 40);
+            rgbBlueRange5.Add("GMin", 100);
+            rgbBlueRange5.Add("GMax", 130);
+            rgbBlueRange5.Add("BMin", 120);
+            rgbBlueRange5.Add("BMax", 150);
+
+            rgbMagentaRange3.Add("RMin", 225);
+            rgbMagentaRange3.Add("RMax", 255);
+            rgbMagentaRange3.Add("GMin", 5);
+            rgbMagentaRange3.Add("GMax", 65);
+            rgbMagentaRange3.Add("BMin", 110);
+            rgbMagentaRange3.Add("BMax", 150);
+
             information = new Information(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
         }
 
         [TestMethod]
-        public void CountPostItNotesReturnsSixForTestImage1AndYellow()
+        public void CountPostItNotesWithRangeReturnsSixForTestImage1AndNeonYellow()
         {
-            Dictionary<string, int> rgbYellowPostit1 = new Dictionary<string, int>();
-            rgbYellowPostit1.Add("R", 217);
-            rgbYellowPostit1.Add("G", 245);
-            rgbYellowPostit1.Add("B", 143);
-            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit1);
-            Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit1));                    
-        }
-
-
-
-        [TestMethod]
-        public void CountPostItNotesReturns6ForTestImage1AndPink()
-        {
-            Dictionary<string, int> rgbPinkPostit1 = new Dictionary<string, int>();
-            rgbPinkPostit1.Add("R", 250);
-            rgbPinkPostit1.Add("G", 98);
-            rgbPinkPostit1.Add("B", 141);
-            Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgbPinkPostit1));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test1.jpg", rgbNeonYellowRange1);
+            Assert.AreEqual(6, information.CountPostItNotesWithRanges("../../TestImages/test1.jpg", rgbNeonYellowRange1));                    
         }
 
         [TestMethod]
-        public void CountPostItNotesReturns3ForTestImage3AndBlue()
+        public void CountPostItNotesWithRangeReturnsSixForTestImage1AndPink()
         {
-            Dictionary<string, int> rgbBluePostit3 = new Dictionary<string, int>();
-            rgbBluePostit3.Add("R", 90);
-            rgbBluePostit3.Add("G", 168);
-            rgbBluePostit3.Add("B", 168);
-            Assert.AreEqual(3, information.CountPostItNotes("../../TestImages/test3.jpg", rgbBluePostit3));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test1.jpg", rgbPinkRange1);
+            Assert.AreEqual(6, information.CountPostItNotesWithRanges("../../TestImages/test1.jpg", rgbPinkRange1));
+        }
+
+
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsThreeForTestImage3AndLightGreen()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test3.jpg", rgbLightGreenRange3);
+            Assert.AreEqual(3, information.CountPostItNotesWithRanges("../../TestImages/test3.jpg", rgbLightGreenRange3));
         }
 
         [TestMethod]
-        public void CountPostItNotesReturns3ForTestImage3AndLightGreen()
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage4and6and7AndLightGreen()
         {
-            Dictionary<string, int> rgbLightGreenPostit3 = new Dictionary<string, int>();
-            rgbLightGreenPostit3.Add("R", 203);
-            rgbLightGreenPostit3.Add("G", 212);
-            rgbLightGreenPostit3.Add("B", 129);
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbLightGreenRange3);
+            Assert.AreEqual(0, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbLightGreenRange3));
+            Assert.AreEqual(0, information.CountPostItNotesWithRanges("../../TestImages/test6.jpg", rgbLightGreenRange3));
+            Assert.AreEqual(0, information.CountPostItNotesWithRanges("../../TestImages/test7.jpg", rgbLightGreenRange3));
+        }
 
-            Assert.AreEqual(3, information.CountPostItNotes("../../TestImages/test3.jpg", rgbLightGreenPostit3));
+
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsThreeForTestImage3AndMagenta()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test3.jpg", rgbMagentaRange3);
+            Assert.AreEqual(3, information.CountPostItNotesWithRanges("../../TestImages/test3.jpg", rgbMagentaRange3));
         }
 
         [TestMethod]
-        public void CountPostItNotesReturns3ForTestImage3AndMagenta()
+        public void CountPostItNotesWithRangeReturnsOneForTestImage5AndBlue()
         {
-            Dictionary<string, int> rgbMagentaPostit3 = new Dictionary<string, int>();
-            rgbMagentaPostit3.Add("R", 255);
-            rgbMagentaPostit3.Add("G", 35);
-            rgbMagentaPostit3.Add("B", 115);
-
-            information.SaveHighlightedPostItNotes("../../TestImages/test3.jpg", rgbMagentaPostit3);
-            Assert.AreEqual(3, information.CountPostItNotes("../../TestImages/test3.jpg", rgbMagentaPostit3));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test5.jpg", rgbBlueRange5);
+            Assert.AreEqual(1, information.CountPostItNotesWithRanges("../../TestImages/test5.jpg", rgbBlueRange5));
         }
-
-        [TestMethod]
-        public void CountPostItNotesReturns7ForTestImage4AndYellow()
-        {
-            Dictionary<string, int> rgbYellowPostit4 = new Dictionary<string, int>();
-            rgbYellowPostit4.Add("R", 144);
-            rgbYellowPostit4.Add("G", 129);
-            rgbYellowPostit4.Add("B", 35);
-
-            information.SaveHighlightedPostItNotes("../../TestImages/test4.jpg", rgbYellowPostit4);
-            Assert.AreEqual(7, information.CountPostItNotes("../../TestImages/test4.jpg", rgbYellowPostit4));
-        }
-
 
         [TestMethod]
         public void SaveHighlightedPostItNotes()
@@ -114,49 +153,35 @@ namespace CountPostIts.ImageRecognition.Tests
             Assert.AreEqual(true, File.Exists(resultPath));
         }
 
+
         [TestMethod]
-        public void CountPostItNotesReturnsFiveForTestImage4AndGreen()
+        public void CountPostItNotesWithRangeReturnsFiveForTestImage4AndGreen()
         {
-            Dictionary<string, int> rgb_green_postit4 = new Dictionary<string, int>();
-            rgb_green_postit4.Add("R", 100);
-            rgb_green_postit4.Add("G", 120);
-            rgb_green_postit4.Add("B", 60);
-            information.SaveHighlightedPostItNotes("../../TestImages/test4.jpg", rgb_green_postit4);
-            Assert.AreEqual(5, information.CountPostItNotes("../../TestImages/test4.jpg", rgb_green_postit4));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbGreenRange4);
+            Assert.AreEqual(5, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbGreenRange4));
         }
 
         [TestMethod]
-        public void CountPostItNotesReturnsSevenForTestImage4AndYellow()
+        public void CountPostItNotesWithRangeReturnsOneForTestImage6AndGreen()
         {
-            information.SaveHighlightedPostItNotes("../../TestImages/test4.jpg", rgb_yellow_postit4);
-            Assert.AreEqual(7, information.CountPostItNotes("../../TestImages/test4.jpg", rgb_yellow_postit4));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test6.jpg", rgbGreenRange4);
+            Assert.AreEqual(1, information.CountPostItNotesWithRanges("../../TestImages/test6.jpg", rgbGreenRange4));
         }
 
         [TestMethod]
-        public void CountPostItNotesReturnsOneForTestImage5AndBlue()
+        public void CountPostItNotesWithRangeReturnsFourForTestImage7AndGreen()
         {
-            Dictionary<string, int> rgb_blue_postit5 = new Dictionary<string, int>();
-            rgb_blue_postit5.Add("R", 27);
-            rgb_blue_postit5.Add("G", 107);
-            rgb_blue_postit5.Add("B", 135);
-            information.SaveHighlightedPostItNotes("../../TestImages/test5.jpg", rgb_blue_postit5);
-            Assert.AreEqual(1, information.CountPostItNotes("../../TestImages/test5.jpg", rgb_blue_postit5));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test7.jpg", rgbGreenRange4);
+            Assert.AreEqual(4, information.CountPostItNotesWithRanges("../../TestImages/test7.jpg", rgbGreenRange4));
         }
 
         [TestMethod]
-        public void CountPostItNotesReturnsTwoForTestImage5AndYellow()
+        public void CountPostItNotesWithRangeReturnsSevenForTestImage4AndYellow()
         {
-            Dictionary<string, int> rgb_yellow_postit4 = new Dictionary<string, int>();
-            information.SaveHighlightedPostItNotes("../../TestImages/test5.jpg", rgb_yellow_postit4);
-            Assert.AreEqual(2, information.CountPostItNotes("../../TestImages/test5.jpg", rgb_yellow_postit4));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbYellowRange4);
+            Assert.AreEqual(7, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbYellowRange4));
         }
 
-        [TestMethod]
-        public void CountPostItNotesReturnsSixForTestImage6AndYellow()
-        {
-            Dictionary<string, int> rgb_yellow_postit4 = new Dictionary<string, int>();
-            information.SaveHighlightedPostItNotes("../../TestImages/test6.jpg", rgb_yellow_postit4);
-            Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test6.jpg", rgb_yellow_postit4));
-        }
+        
     }
 }
