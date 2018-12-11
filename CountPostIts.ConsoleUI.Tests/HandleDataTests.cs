@@ -9,6 +9,11 @@ namespace CountPostIts.ConsoleUI.Tests
     public class HandleDataTests
     {
         private const string Filename = "postits.jpg";
+        private readonly Dictionary<string, int> result = new Dictionary<string, int>
+        {
+            {"Purple", 4 }
+        };
+        
         private readonly Dictionary<string, int> _colourValues = new Dictionary<string, int>
         {
             {"R", 230 },
@@ -21,11 +26,12 @@ namespace CountPostIts.ConsoleUI.Tests
         [SetUp]
         public void Setup()
         {
+
             _mockInformation = new Mock<IInformationWrapper>();
 
             _mockInformation
                 .Setup(m => m.CallCountPostits(Filename, _colourValues))
-                .Returns(5);
+                .Returns(result);
 
             _handleData = new HandleData(_mockInformation.Object);
         }
