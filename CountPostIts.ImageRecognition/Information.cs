@@ -42,11 +42,11 @@ namespace CountPostIts.ImageRecognition
             ColorFilteringWrapper.OwnApplyInPlace(image);
         }
 
-        public void FilterImageWithRanges(Bitmap image, Dictionary<string, int> rgb)
+        public void FilterImageWithRanges(Bitmap image, int[] rgb)
         {
-            setFilterR(rgb["RMin"], rgb["RMax"]);
-            setFilterG(rgb["GMin"], rgb["GMax"]);
-            setFilterB(rgb["BMin"], rgb["BMax"]);
+            setFilterR(rgb[0], rgb[1]);
+            setFilterG(rgb[2], rgb[3]);
+            setFilterB(rgb[4], rgb[5]);
             ColorFilteringWrapper.OwnApplyInPlace(image);
         }
 
@@ -58,7 +58,7 @@ namespace CountPostIts.ImageRecognition
             return CountQuadrilaterals(blobs);
         }
 
-        public int CountPostItNotesWithRanges(string filename, Dictionary<string, int> rgb)
+        public int CountPostItNotesWithRanges(string filename, int[] rgb)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             FilterImageWithRanges(image, rgb);
@@ -78,7 +78,7 @@ namespace CountPostIts.ImageRecognition
         }
 
         //TODO: Add proper resultPath
-        public void SaveHighlightedPostItNotesWithRange(string filename, Dictionary<string, int> rgb)
+        public void SaveHighlightedPostItNotesWithRange(string filename, int[] rgb)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             FilterImageWithRanges(image, rgb);

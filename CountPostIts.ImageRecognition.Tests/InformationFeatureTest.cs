@@ -14,15 +14,23 @@ namespace CountPostIts.ImageRecognition.Tests
         IBlobCounterWrapper blobCounterWrapper;
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper;
         IColorFilteringWrapper colorFilteringWrapper;
-        Dictionary<string, int> rgbYellowRange4 = new Dictionary<string, int>();
-        Dictionary<string, int> rgbGreenRange4 = new Dictionary<string, int>();
-        Dictionary<string, int> rgbNeonYellowRange1 = new Dictionary<string, int>();
-        Dictionary<string, int> rgbPinkRange1 = new Dictionary<string, int>();
-        Dictionary<string, int> rgbLightBlueRange3 = new Dictionary<string, int>();
-        Dictionary<string, int> rgbBlueRange5 = new Dictionary<string, int>();
-        Dictionary<string, int> rgbMagentaRange3 = new Dictionary<string, int>();
-        Dictionary<string, int> rgbLightGreenRange3 = new Dictionary<string, int>();
+        int[] rgbYellowRange = {130,160,115,145,20,60};
+        int[] rgbGreenRange = { 80, 110, 100, 130, 40, 70 };
+        int[] rgbNeonYellowRange = { 200, 230, 230, 255, 120, 150 };
+        int[] rgbPinkRange = { 225, 255, 65, 100, 110, 140 };
+        int[] rgbLightBlueRange = { 75, 105, 150, 180, 150, 180 };
+        int[] rgbBlueRange = { 10, 40, 100, 130, 120, 150 };
+        int[] rgbMagentaRange = { 225, 255, 5, 65, 110, 150 };
+        int[] rgbLightGreenRange = { 190, 220, 200, 230, 120, 155 };
         Information information;
+
+        public void TestForZero(int[] rgbRange, string[] images)
+        {
+            for (int i=0; i < images.Length; i++)
+            {
+                Assert.AreEqual(0, information.CountPostItNotesWithRanges("../../TestImages/test" + images[i] +".jpg", rgbRange));
+            }
+        }
 
         [TestInitialize()]
         public void BeforeEachTest()
@@ -30,111 +38,166 @@ namespace CountPostIts.ImageRecognition.Tests
             blobCounterWrapper = new BlobCounterWrapper();
             simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
             colorFilteringWrapper = new ColorFilteringWrapper();
-
-            rgbYellowRange4.Add("RMin", 130);
-            rgbYellowRange4.Add("RMax", 160);
-            rgbYellowRange4.Add("GMin", 115);
-            rgbYellowRange4.Add("GMax", 145);
-            rgbYellowRange4.Add("BMin", 20);
-            rgbYellowRange4.Add("BMax", 50);
-
-            rgbLightGreenRange3.Add("RMin", 190);
-            rgbLightGreenRange3.Add("RMax", 220);
-            rgbLightGreenRange3.Add("GMin", 200);
-            rgbLightGreenRange3.Add("GMax", 230);
-            rgbLightGreenRange3.Add("BMin", 120);
-            rgbLightGreenRange3.Add("BMax", 155);
-
-            rgbGreenRange4.Add("RMin", 80);
-            rgbGreenRange4.Add("RMax", 110);
-            rgbGreenRange4.Add("GMin", 100);
-            rgbGreenRange4.Add("GMax", 130);
-            rgbGreenRange4.Add("BMin", 40);
-            rgbGreenRange4.Add("BMax", 70);
-
-            
-            rgbNeonYellowRange1.Add("RMin", 200);
-            rgbNeonYellowRange1.Add("RMax", 230);
-            rgbNeonYellowRange1.Add("GMin", 230);
-            rgbNeonYellowRange1.Add("GMax", 255);
-            rgbNeonYellowRange1.Add("BMin", 120);
-            rgbNeonYellowRange1.Add("BMax", 150);
-
-            rgbPinkRange1.Add("RMin", 225);
-            rgbPinkRange1.Add("RMax", 255);
-            rgbPinkRange1.Add("GMin", 65);
-            rgbPinkRange1.Add("GMax", 100);
-            rgbPinkRange1.Add("BMin", 110);
-            rgbPinkRange1.Add("BMax", 140);
-
-            rgbLightBlueRange3.Add("RMin", 75);
-            rgbLightBlueRange3.Add("RMax", 105);
-            rgbLightBlueRange3.Add("GMin", 150);
-            rgbLightBlueRange3.Add("GMax", 180);
-            rgbLightBlueRange3.Add("BMin", 150);
-            rgbLightBlueRange3.Add("BMax", 180);
-
-            rgbBlueRange5.Add("RMin", 10);
-            rgbBlueRange5.Add("RMax", 40);
-            rgbBlueRange5.Add("GMin", 100);
-            rgbBlueRange5.Add("GMax", 130);
-            rgbBlueRange5.Add("BMin", 120);
-            rgbBlueRange5.Add("BMax", 150);
-
-            rgbMagentaRange3.Add("RMin", 225);
-            rgbMagentaRange3.Add("RMax", 255);
-            rgbMagentaRange3.Add("GMin", 5);
-            rgbMagentaRange3.Add("GMax", 65);
-            rgbMagentaRange3.Add("BMin", 110);
-            rgbMagentaRange3.Add("BMax", 150);
-
             information = new Information(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
         }
 
+        [TestCategory("Green")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsFiveForTestImage4AndGreen()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbGreenRange);
+            Assert.AreEqual(5, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbGreenRange));
+        }
+
+        [TestCategory("Green")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsOneForTestImage6AndGreen()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test6.jpg", rgbGreenRange);
+            Assert.AreEqual(1, information.CountPostItNotesWithRanges("../../TestImages/test6.jpg", rgbGreenRange));
+        }
+
+        [TestCategory("Green")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsFourForTestImage7AndGreen()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test7.jpg", rgbGreenRange);
+            Assert.AreEqual(4, information.CountPostItNotesWithRanges("../../TestImages/test7.jpg", rgbGreenRange));
+        }
+
+        [TestCategory("Green")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage1and3and5AndGreen()
+        {
+            string[] imagesNoGreen = { "1", "3", "5"};
+            TestForZero(rgbGreenRange, imagesNoGreen);
+            
+        }
+
+        [TestCategory("Yellow")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsSevenForTestImage4AndYellow()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbYellowRange);
+            Assert.AreEqual(7, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbYellowRange));
+        }
+
+
+        [TestCategory("Yellow")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsTwoForTestImage5AndYellow()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test5.jpg", rgbYellowRange);
+            Assert.AreEqual(2, information.CountPostItNotesWithRanges("../../TestImages/test5.jpg", rgbYellowRange));
+        }
+
+        [TestCategory("Yellow")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsSixForTestImage6AndYellow()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test6.jpg", rgbYellowRange);
+            Assert.AreEqual(6, information.CountPostItNotesWithRanges("../../TestImages/test6.jpg", rgbYellowRange));
+        }
+
+        [TestCategory("Yellow")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsFourForTestImage7AndYellow()
+        {
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test7.jpg", rgbYellowRange);
+            Assert.AreEqual(4, information.CountPostItNotesWithRanges("../../TestImages/test7.jpg", rgbYellowRange));
+        }
+
+        [TestCategory("Yellow")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage1and3AndYellow()
+        {
+            string[] imagesNoYellow = { "1", "3" };
+            TestForZero(rgbYellowRange, imagesNoYellow);
+           
+        }
+
+
+        [TestCategory("NeonYellow")]
         [TestMethod]
         public void CountPostItNotesWithRangeReturnsSixForTestImage1AndNeonYellow()
         {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test1.jpg", rgbNeonYellowRange1);
-            Assert.AreEqual(6, information.CountPostItNotesWithRanges("../../TestImages/test1.jpg", rgbNeonYellowRange1));                    
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test1.jpg", rgbNeonYellowRange);
+            Assert.AreEqual(6, information.CountPostItNotesWithRanges("../../TestImages/test1.jpg", rgbNeonYellowRange));                    
         }
 
+        [TestCategory("NeonYellow")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage3and4and5and6and7AndNeonYellow()
+        {
+
+            string[] imagesNoNeonYellow = { "3", "4", "5", "6", "7" };
+            TestForZero(rgbNeonYellowRange, imagesNoNeonYellow);
+        }
+
+        [TestCategory("Pink")]
         [TestMethod]
         public void CountPostItNotesWithRangeReturnsSixForTestImage1AndPink()
         {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test1.jpg", rgbPinkRange1);
-            Assert.AreEqual(6, information.CountPostItNotesWithRanges("../../TestImages/test1.jpg", rgbPinkRange1));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test1.jpg", rgbPinkRange);
+            Assert.AreEqual(6, information.CountPostItNotesWithRanges("../../TestImages/test1.jpg", rgbPinkRange));
         }
 
+        [TestCategory("Pink")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage3and4and5and6and7AndPink()
+        {
+            string[] imagesNoPink = { "3", "4", "5", "6", "7" };
+            TestForZero(rgbPinkRange, imagesNoPink);
+        }
 
+        [TestCategory("LightGreen")]
         [TestMethod]
         public void CountPostItNotesWithRangeReturnsThreeForTestImage3AndLightGreen()
         {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test3.jpg", rgbLightGreenRange3);
-            Assert.AreEqual(3, information.CountPostItNotesWithRanges("../../TestImages/test3.jpg", rgbLightGreenRange3));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test3.jpg", rgbLightGreenRange);
+            Assert.AreEqual(3, information.CountPostItNotesWithRanges("../../TestImages/test3.jpg", rgbLightGreenRange));
         }
 
+        [TestCategory("LightGreen")]
         [TestMethod]
-        public void CountPostItNotesWithRangeReturnsZeroForTestImage4and6and7AndLightGreen()
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage1and4and5and6and7AndLightGreen()
         {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbLightGreenRange3);
-            Assert.AreEqual(0, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbLightGreenRange3));
-            Assert.AreEqual(0, information.CountPostItNotesWithRanges("../../TestImages/test6.jpg", rgbLightGreenRange3));
-            Assert.AreEqual(0, information.CountPostItNotesWithRanges("../../TestImages/test7.jpg", rgbLightGreenRange3));
+            string[] imagesNoLightGreen = { "1", "4", "5", "6", "7" };
+            TestForZero(rgbLightGreenRange, imagesNoLightGreen);
         }
 
-
+        [TestCategory("Magenta")]
         [TestMethod]
         public void CountPostItNotesWithRangeReturnsThreeForTestImage3AndMagenta()
         {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test3.jpg", rgbMagentaRange3);
-            Assert.AreEqual(3, information.CountPostItNotesWithRanges("../../TestImages/test3.jpg", rgbMagentaRange3));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test3.jpg", rgbMagentaRange);
+            Assert.AreEqual(3, information.CountPostItNotesWithRanges("../../TestImages/test3.jpg", rgbMagentaRange));
         }
 
+        [TestCategory("Magenta")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage1and4and5and6and7AndMagenta()
+        {
+            string[] imagesNoMagenta = { "1", "4", "5", "6", "7" };
+            TestForZero(rgbMagentaRange, imagesNoMagenta);
+         
+        }
+
+        [TestCategory("Blue")]
         [TestMethod]
         public void CountPostItNotesWithRangeReturnsOneForTestImage5AndBlue()
         {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test5.jpg", rgbBlueRange5);
-            Assert.AreEqual(1, information.CountPostItNotesWithRanges("../../TestImages/test5.jpg", rgbBlueRange5));
+            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test5.jpg", rgbBlueRange);
+            Assert.AreEqual(1, information.CountPostItNotesWithRanges("../../TestImages/test5.jpg", rgbBlueRange));
+        }
+
+        [TestCategory("Blue")]
+        [TestMethod]
+        public void CountPostItNotesWithRangeReturnsZeroForTestImage1and3and4and6and7AndBlue()
+        {
+            string[] imagesNoBlue = { "1", "3", "4", "6", "7" };
+            TestForZero(rgbBlueRange, imagesNoBlue);
+         
         }
 
         [TestMethod]
@@ -151,35 +214,6 @@ namespace CountPostIts.ImageRecognition.Tests
             }
             information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit1);
             Assert.AreEqual(true, File.Exists(resultPath));
-        }
-
-
-        [TestMethod]
-        public void CountPostItNotesWithRangeReturnsFiveForTestImage4AndGreen()
-        {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbGreenRange4);
-            Assert.AreEqual(5, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbGreenRange4));
-        }
-
-        [TestMethod]
-        public void CountPostItNotesWithRangeReturnsOneForTestImage6AndGreen()
-        {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test6.jpg", rgbGreenRange4);
-            Assert.AreEqual(1, information.CountPostItNotesWithRanges("../../TestImages/test6.jpg", rgbGreenRange4));
-        }
-
-        [TestMethod]
-        public void CountPostItNotesWithRangeReturnsFourForTestImage7AndGreen()
-        {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test7.jpg", rgbGreenRange4);
-            Assert.AreEqual(4, information.CountPostItNotesWithRanges("../../TestImages/test7.jpg", rgbGreenRange4));
-        }
-
-        [TestMethod]
-        public void CountPostItNotesWithRangeReturnsSevenForTestImage4AndYellow()
-        {
-            information.SaveHighlightedPostItNotesWithRange("../../TestImages/test4.jpg", rgbYellowRange4);
-            Assert.AreEqual(7, information.CountPostItNotesWithRanges("../../TestImages/test4.jpg", rgbYellowRange4));
         }
 
         
