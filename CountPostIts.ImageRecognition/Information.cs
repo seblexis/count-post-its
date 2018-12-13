@@ -36,13 +36,13 @@ namespace CountPostIts.ImageRecognition
             this.ColorFilteringWrapper = new ColorFilteringWrapper();
         }
 
-        public void FilterImage(Bitmap image, Dictionary<string, int> rgb)
+        public void FilterImage(Bitmap image, Dictionary<string, int[]> rgb)
         {
-            setFilters(rgb);
+            SetFilters(rgb);
             ColorFilteringWrapper.OwnApplyInPlace(image);
         }
 
-        public int CountPostItNotes(string filename, Dictionary<string, int> rgb)
+        public int CountPostItNotes(string filename, Dictionary<string, int[]> rgb)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             FilterImage(image, rgb);
@@ -50,8 +50,24 @@ namespace CountPostIts.ImageRecognition
             return CountQuadrilaterals(blobs);
         }
 
+        public Dictionary<string, int> CountAllColours(string filename)
+        {
+           
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            ColourRanges colourRanges = new ColourRanges();
+            foreach (KeyValuePair<Colours, Dictionary<string, int[]>> colourEntry in colourRanges.RGB)
+            {
+                int count = CountPostItNotes(filename, colourEntry.Value);
+                result.Add(Enum.GetName(typeof(Colours), colourEntry.Key), count);
+                Console.WriteLine(Enum.GetName(typeof(Colours), colourEntry.Key));
+            }
+
+            return result;
+
+        }
+
         //TODO: Add proper resultPath
-        public void SaveHighlightedPostItNotes(string filename, Dictionary<string, int> rgb)
+        public void SaveHighlightedPostItNotes(string filename, Dictionary<string, int[]> rgb)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             FilterImage(image, rgb);
@@ -108,25 +124,51 @@ namespace CountPostIts.ImageRecognition
             return image;
         }
 
-        public void setFilters(Dictionary<string, int> rgb)
+        public void SetFilters(Dictionary<string, int[]> rgb)
         {
-            int red = rgb["R"];
-            ColorFilteringWrapper.OwnRed(FindRGBInterval(red)[0], FindRGBInterval(red)[1]);
-
-            int green = rgb["G"];
-            ColorFilteringWrapper.OwnGreen(FindRGBInterval(green)[0], FindRGBInterval(green)[1]);
-
-            int blue = rgb["B"];
-            ColorFilteringWrapper.OwnBlue(FindRGBInterval(blue)[0], FindRGBInterval(blue)[1]);
-
+            try
+            {
+                SetFilterRed(rgb["R"][0], rgb["R"][1]);
+                SetFilterGreen(rgb["G"][0], rgb["G"][1]);
+                SetFilterBlue(rgb["B"][0], rgb["B"][1]);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
-        public int[] FindRGBInterval(int number)
+        private void SetFilterRed(int rmin, int rmax)
         {
-            int[] interval = new int[2];
-            interval[0] = (number - _rgbRange < 0) ? 0 : number - _rgbRange;
-            interval[1] = (number + _rgbRange > 255) ? 255 : number + _rgbRange;
-            return interval;
-        }       
+            CheckRanges(rmin, rmax);
+            ColorFilteringWrapper.OwnRed(rmin, rmax);
+        }
+
+        private void SetFilterGreen(int gmin, int gmax)
+        {
+            CheckRanges(gmin, gmax);
+            ColorFilteringWrapper.OwnGreen(gmin, gmax);
+        }
+        private void SetFilterBlue(int bmin, int bmax)
+        {
+            CheckRanges(bmin, bmax);
+            ColorFilteringWrapper.OwnBlue(bmin, bmax);
+        }
+
+        private void CheckRanges(int min, int max)
+        {
+            if (min < 0 || min > 255)
+            {
+                throw new ArgumentException("min needs to be between 0 and 255");
+            }
+            else if (max < 0 || max > 255)
+            {
+                throw new ArgumentException("max needs to be between 0 and 255");
+            }
+            else if (min > max)
+            {
+                throw new ArgumentException("min cannot be bigger than max");
+            }
+        } 
     }
 }
