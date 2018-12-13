@@ -68,6 +68,7 @@
     <Compile Include="Colours.cs" />
     <Compile Include="IBlobCounterWrapper.cs" />
     <Compile Include="IColorFilteringWrapper.cs" />
+    <Compile Include="ImageFilter.cs" />
     <Compile Include="Information.cs" />
     <Compile Include="ISimpleShapeCheckerWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,9 +14,9 @@ namespace CountPostIts.ConsoleUI
 
         public void PostitResults(string filename, Dictionary<string, int> colourValues)
         {
-            _information.SaveHighlightedPostItNotes(filename, colourValues);
-            int result = _information.CallCountPostits(filename, colourValues);
-            DisplayResults(result);
+            //_information.SaveHighlightedPostItNotes(filename, colourValues);
+            //int result = _information.CallCountPostits(filename, colourValues);
+            //DisplayResults(result);
         }
 
         private void DisplayResults(int result)

@@ -80,6 +80,7 @@
     <Compile Include="InformationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ColourRangesTest.cs" />
+    <Compile Include="ImageFilterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -39,25 +39,5 @@ namespace CountPostIts.ImageRecognition.Tests
             Assert.AreEqual(information.BlobsInImage(test_image1).GetType(), typeof(Blob[]));
         }
 
-        //[TestMethod]
-        //public void SetFiltersCallsOwnRGB()
-        //{
-        //    Dictionary<string, int> rgbExtreme = new Dictionary<string, int>();
-        //    rgbExtreme.Add("R", 10);
-        //    rgbExtreme.Add("G", 150);
-        //    rgbExtreme.Add("B", 250);
-        //    information.SetFilters(rgbExtreme);
-        //    colorFilteringWrapperMock.Received().OwnRed(0, 10 + _rgbRange);
-        //    colorFilteringWrapperMock.Received().OwnGreen(150 - _rgbRange, 150 + _rgbRange);
-        //    colorFilteringWrapperMock.Received().OwnBlue(250 - _rgbRange, 255);
-        //}
-
-        //[TestMethod]
-        //public void FilterImageCallsSetFiltersAndOwnApplyInPlace()
-        //{
-        //    information.FilterImage(test_image1, rgb);
-        //    colorFilteringWrapperMock.Received().OwnApplyInPlace(test_image1);
-        //}
-
     }
 }

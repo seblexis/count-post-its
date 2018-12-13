@@ -26,83 +26,33 @@ namespace CountPostIts.ImageRecognition.Tests
             information = new Information(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
         }
 
+        [TestCategory("Yellow")]
         [TestMethod]
-        public void CountAllColours()
+        public void Count7inImage4()
         {
-            Assert.AreEqual( 75, information.CountAllColours("../../TestImages/test4.jpg")["Yellow"]);
+            Assert.AreEqual(7, information.CountAllColours("../../TestImages/test4.jpg")["Yellow"]);
         }
 
+        [TestCategory("Green")]
+        [TestMethod]
+        public void Count5InImage4()
+        {
+            Assert.AreEqual(5, information.CountAllColours("../../TestImages/test4.jpg")["Green"]);
+        }
 
+        [TestCategory("Blue")]
+        [TestMethod]
+        public void Count1InImage5()
+        {
+            Assert.AreEqual(1, information.CountAllColours("../../TestImages/test5.jpg")["Blue"]);
+        }
 
-
-
-        //        //[TestMethod]
-        //        //public void CountPostItNotesReturns6ForTestImage1AndYellow()
-        //        //{
-        //        //    Dictionary<string, int> rgbYellowPostit1 = new Dictionary<string, int>();
-        //        //    rgbYellowPostit1.Add("R", 217);
-        //        //    rgbYellowPostit1.Add("G", 245);
-        //        //    rgbYellowPostit1.Add("B", 143);
-        //        //    Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit1));
-        //        //}
-
-        //        [TestMethod]
-        //        public void CountPostItNotesReturns6ForTestImage1AndPink()
-        //        {
-        //            Dictionary<string, int> rgbPinkPostit1 = new Dictionary<string, int>();
-        //            rgbPinkPostit1.Add("R", 250);
-        //            rgbPinkPostit1.Add("G", 98);
-        //            rgbPinkPostit1.Add("B", 141);
-
-
-        //            Assert.AreEqual(6, information.CountPostItNotes("../../TestImages/test1.jpg", rgbPinkPostit1));
-        //        }
-
-        //        [TestMethod]
-        //        public void CountPostItNotesReturns3ForTestImage3AndBlue()
-        //        {
-        //            Dictionary<string, int> rgbBluePostit3 = new Dictionary<string, int>();
-        //            rgbBluePostit3.Add("R", 90);
-        //            rgbBluePostit3.Add("G", 168);
-        //            rgbBluePostit3.Add("B", 168);
-
-        //            Assert.AreEqual(3, information.CountPostItNotes("../../TestImages/test3.jpg", rgbBluePostit3));
-        //        }
-
-        //        [TestMethod]
-        //        public void CountPostItNotesReturns3ForTestImage3AndLightGreen()
-        //        {
-        //            Dictionary<string, int> rgbLightGreenPostit3 = new Dictionary<string, int>();
-        //            rgbLightGreenPostit3.Add("R", 203);
-        //            rgbLightGreenPostit3.Add("G", 212);
-        //            rgbLightGreenPostit3.Add("B", 129);
-
-        //            Assert.AreEqual(3, information.CountPostItNotes("../../TestImages/test3.jpg", rgbLightGreenPostit3));
-        //        }
-
-        //        [TestMethod]
-        //        public void CountPostItNotesReturns3ForTestImage3AndMagenta()
-        //        {
-        //            Dictionary<string, int> rgbMagentaPostit3 = new Dictionary<string, int>();
-        //            rgbMagentaPostit3.Add("R", 255);
-        //            rgbMagentaPostit3.Add("G", 35);
-        //            rgbMagentaPostit3.Add("B", 115);
-
-        //            information.SaveHighlightedPostItNotes("../../TestImages/test3.jpg", rgbMagentaPostit3);
-        //            Assert.AreEqual(3, information.CountPostItNotes("../../TestImages/test3.jpg", rgbMagentaPostit3));
-        //        }
-
-        //        [TestMethod]
-        //        public void CountPostItNotesReturns7ForTestImage4AndYellow()
-        //        {
-        //            Dictionary<string, int> rgbYellowPostit4 = new Dictionary<string, int>();
-        //            rgbYellowPostit4.Add("R", 144);
-        //            rgbYellowPostit4.Add("G", 129);
-        //            rgbYellowPostit4.Add("B", 35);
-
-        //            information.SaveHighlightedPostItNotes("../../TestImages/test4.jpg", rgbYellowPostit4);
-        //            Assert.AreEqual(7, information.CountPostItNotes("../../TestImages/test4.jpg", rgbYellowPostit4));
-        //        }
+        [TestCategory("Blue")]
+        [TestMethod]
+        public void Count1InImage6()
+        {
+            Assert.AreEqual(1, information.CountAllColours("../../TestImages/test6.jpg")["Blue"]);
+        }
 
 
         //        [TestMethod]
