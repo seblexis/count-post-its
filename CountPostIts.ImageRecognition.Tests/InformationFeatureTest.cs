@@ -12,17 +12,11 @@ namespace CountPostIts.ImageRecognition.Tests
     public class InformationFeatureTest
     {
 
-        IBlobCounterWrapper blobCounterWrapper;
-        ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper;
-        IColorFilteringWrapper colorFilteringWrapper;
         Information information;
 
         [TestInitialize()]
         public void BeforeEachTest()
         {
-            blobCounterWrapper = new BlobCounterWrapper();
-            simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
-            colorFilteringWrapper = new ColorFilteringWrapper();
             information = new Information();
         }
 
@@ -56,20 +50,8 @@ namespace CountPostIts.ImageRecognition.Tests
         }
 
 
-        //        [TestMethod]
-        //        public void SaveHighlightedPostItNotes()
-        //        {
-        //            Dictionary<string, int> rgbYellowPostit1 = new Dictionary<string, int>();
-        //            rgbYellowPostit1.Add("R", 217);
-        //            rgbYellowPostit1.Add("G", 245);
-        //            rgbYellowPostit1.Add("B", 143);
-        //            string resultPath = "result.png";
-        //            if (File.Exists(resultPath))
-        //            {
-        //                File.Delete(resultPath);
-        //            }
-        //            information.SaveHighlightedPostItNotes("../../TestImages/test1.jpg", rgbYellowPostit1);
-        //            Assert.AreEqual(true, File.Exists(resultPath));
-        //        }
+
+
+  
     }
 }

@@ -26,6 +26,7 @@ namespace CountPostIts.ImageRecognition
             Blob[] blobs = BlobsInImage(filteredImage);
             return CountQuadrilaterals(blobs, filteredImage, colourName);
         }
+
         private Blob[] BlobsInImage(Bitmap image)
         {
             BlobCounterWrapper.OwnFilterBlobs(true);

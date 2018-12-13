@@ -32,7 +32,7 @@ namespace CountPostIts.ImageRecognition
         }
 
         private void SetFilters(Dictionary<string, int[]> rgb)
-        {      
+        {
                 SetFilterRed(rgb["R"][0], rgb["R"][1]);
                 SetFilterGreen(rgb["G"][0], rgb["G"][1]);
                 SetFilterBlue(rgb["B"][0], rgb["B"][1]);          

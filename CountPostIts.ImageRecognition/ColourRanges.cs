@@ -46,13 +46,9 @@ namespace CountPostIts.ImageRecognition
         {
             Dictionary<Colours, Dictionary<string, int[]>> RGB = new Dictionary<Colours, Dictionary<string, int[]>>();
             Dictionary<string, int[]> greenRGB = SetRanges(greenR, greenG, greenB);
-
             Dictionary<string, int[]> yellowRGB = SetRanges(yellowR, yellowG, yellowB);
-
             Dictionary<string, int[]> blueRGB = SetRanges(blueR, blueG, blueB);
             Dictionary<string, int[]> orangeRGB = SetRanges(orangeR, orangeG, orangeB);
-
-
 
             RGB.Add(Colours.Green, greenRGB);
             RGB.Add(Colours.Yellow, yellowRGB);
