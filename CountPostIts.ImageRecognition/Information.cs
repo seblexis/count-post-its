@@ -42,14 +42,6 @@ namespace CountPostIts.ImageRecognition
             ColorFilteringWrapper.OwnApplyInPlace(image);
         }
 
-        public void FilterImageWithRanges(Bitmap image, int[] rgb)
-        {
-            setFilterR(rgb[0], rgb[1]);
-            setFilterG(rgb[2], rgb[3]);
-            setFilterB(rgb[4], rgb[5]);
-            ColorFilteringWrapper.OwnApplyInPlace(image);
-        }
-
         public int CountPostItNotes(string filename, Dictionary<string, int> rgb)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
@@ -58,13 +50,7 @@ namespace CountPostIts.ImageRecognition
             return CountQuadrilaterals(blobs);
         }
 
-        public int CountPostItNotesWithRanges(string filename, int[] rgb)
-        {
-            Bitmap image = (Bitmap)Bitmap.FromFile(filename);
-            FilterImageWithRanges(image, rgb);
-            Blob[] blobs = BlobsInImage(image);
-            return CountQuadrilaterals(blobs);
-        }
+
 
         //TODO: Add proper resultPath
         public void SaveHighlightedPostItNotes(string filename, Dictionary<string, int> rgb)
@@ -77,16 +63,7 @@ namespace CountPostIts.ImageRecognition
             imageHighlighted.Save(resultPath);
         }
 
-        //TODO: Add proper resultPath
-        public void SaveHighlightedPostItNotesWithRange(string filename, int[] rgb)
-        {
-            Bitmap image = (Bitmap)Bitmap.FromFile(filename);
-            FilterImageWithRanges(image, rgb);
-            Blob[] blobs = BlobsInImage(image);
-            Bitmap imageHighlighted = DrawQuadrilaterals(blobs, image);
-            string resultPath = "result.png";
-            imageHighlighted.Save(resultPath);
-        }
+
 
 
 
@@ -146,21 +123,6 @@ namespace CountPostIts.ImageRecognition
             int blue = rgb["B"];
             ColorFilteringWrapper.OwnBlue(FindRGBInterval(blue)[0], FindRGBInterval(blue)[1]);
 
-        }
-
-        public void setFilterR(int min, int max)
-        {
-            ColorFilteringWrapper.OwnRed(min, max);
-        }
-
-        public void setFilterG(int min, int max)
-        {
-            ColorFilteringWrapper.OwnGreen(min, max);
-        }
-
-        public void setFilterB(int min, int max)
-        {
-            ColorFilteringWrapper.OwnBlue(min, max);
         }
 
         public int[] FindRGBInterval(int number)
