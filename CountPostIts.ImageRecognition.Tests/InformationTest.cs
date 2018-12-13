@@ -25,7 +25,7 @@ namespace CountPostIts.ImageRecognition.Tests
             blobCounterWrapperMock = Substitute.For<IBlobCounterWrapper>();
             simpleShapeCheckerWrapperMock = Substitute.For<ISimpleShapeCheckerWrapper>();
             colorFilteringWrapperMock = Substitute.For<IColorFilteringWrapper>();
-            information = new Information(blobCounterWrapperMock, simpleShapeCheckerWrapperMock, colorFilteringWrapperMock);
+            information = new Information();
             rgb.Add("R", 100);
             rgb.Add("G", 150);
             rgb.Add("B", 200);
@@ -33,11 +33,11 @@ namespace CountPostIts.ImageRecognition.Tests
         }
 
 
-        [TestMethod]
-        public void BlobsInImageCallsGetObjectInformation()
-        {
-            Assert.AreEqual(information.BlobsInImage(test_image1).GetType(), typeof(Blob[]));
-        }
+        //[TestMethod]
+        //public void BlobsInImageCallsGetObjectInformation()
+        //{
+        //    Assert.AreEqual(information.BlobsInImage(test_image1).GetType(), typeof(Blob[]));
+        //}
 
     }
 }

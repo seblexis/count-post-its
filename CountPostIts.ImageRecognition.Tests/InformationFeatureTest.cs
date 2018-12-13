@@ -23,7 +23,7 @@ namespace CountPostIts.ImageRecognition.Tests
             blobCounterWrapper = new BlobCounterWrapper();
             simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
             colorFilteringWrapper = new ColorFilteringWrapper();
-            information = new Information(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
+            information = new Information();
         }
 
         [TestCategory("Yellow")]
@@ -48,6 +48,7 @@ namespace CountPostIts.ImageRecognition.Tests
         }
 
         [TestCategory("Blue")]
+        [Ignore]
         [TestMethod]
         public void Count1InImage6()
         {

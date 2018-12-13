@@ -71,6 +71,7 @@
     <Compile Include="ImageFilter.cs" />
     <Compile Include="Information.cs" />
     <Compile Include="ISimpleShapeCheckerWrapper.cs" />
+    <Compile Include="PostItAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleShapeCheckerWrapper.cs" />
   </ItemGroup>
