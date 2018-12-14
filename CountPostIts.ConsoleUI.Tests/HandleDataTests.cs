@@ -14,12 +14,6 @@ namespace CountPostIts.ConsoleUI.Tests
             {"Purple", 4 }
         };
         
-        private readonly Dictionary<string, int> _colourValues = new Dictionary<string, int>
-        {
-            {"R", 230 },
-            {"B", 179 },
-            {"G", 199 }
-        };
         private HandleData _handleData;
         private Mock<IInformationWrapper> _mockInformation;
 
@@ -30,7 +24,7 @@ namespace CountPostIts.ConsoleUI.Tests
             _mockInformation = new Mock<IInformationWrapper>();
 
             _mockInformation
-                .Setup(m => m.CallCountPostits(Filename, _colourValues))
+                .Setup(m => m.CallCountAllColours(Filename))
                 .Returns(result);
 
 
@@ -40,9 +34,9 @@ namespace CountPostIts.ConsoleUI.Tests
         [Test]
         public void Calls_Library_When_Given_A_File()
         {
-            _handleData.PostitResults(Filename, _colourValues);
+            _handleData.PostitResults(Filename);
 
-            //_mockInformation.Verify(m => m.CallCountPostits(Filename, _colourValues), Times.Once);
+            _mockInformation.Verify(m => m.CallCountAllColours(Filename), Times.Once);
         }  
     }
 }
