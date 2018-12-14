@@ -30,8 +30,8 @@ namespace CountPostIts.ImageRecognition
         private Blob[] BlobsInImage(Bitmap image)
         {
             BlobCounterWrapper.OwnFilterBlobs(true);
-            BlobCounterWrapper.OwnMinHeight(30);
-            BlobCounterWrapper.OwnMinWidth(30);
+            BlobCounterWrapper.OwnMinHeight(35);
+            BlobCounterWrapper.OwnMinWidth(35);
             BlobCounterWrapper.OwnProcessImage(image);
             return BlobCounterWrapper.OwnGetObjectsInformation();
         }

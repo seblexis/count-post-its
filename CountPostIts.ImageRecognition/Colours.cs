@@ -8,9 +8,11 @@ namespace CountPostIts.ImageRecognition
 {
     public enum Colours
     {
-        Green,
-        Yellow,
         Blue,
-        Orange
+        Green,
+        Orange,
+        Pink,
+        Purple,
+        Yellow
     }
 }

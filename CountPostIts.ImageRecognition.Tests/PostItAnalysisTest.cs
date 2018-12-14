@@ -28,12 +28,6 @@ namespace CountPostIts.ImageRecognition.Tests
         }
 
         [TestMethod]
-        public void CountPostItNotesReturns7ForYellowInTest4()
-        {
-            Assert.AreEqual(7, postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", yellowRGBRanges, "Yellow"));
-        }
-
-        [TestMethod]
         public void CountPostItNotesSavesImage()
         {
             string resultPath = "result_Yellow.jpg";
