@@ -25,7 +25,7 @@ Run the executable with the name of the image-file you are testing against.
 $ CountPostIts.ConsoleUI.exe test4.jpg
 ```
 The result is displayed as shown:
-![CounterResults](./readme/counter_results.png)
+![CounterResults](./readme/counter_results1.png)
 
 Images are saved for each colour found, highlighting the Post it notes the app has identified within the debug directory.
 ![drawnResultsYellow](./readme/result_Yellow.jpg)
