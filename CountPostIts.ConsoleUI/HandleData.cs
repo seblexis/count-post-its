@@ -15,7 +15,6 @@ namespace CountPostIts.ConsoleUI
         public void PostitResults(string filename)
         {
             Dictionary<string, int> result = _information.CallCountAllColours(filename);
-
             DisplayResults(result);
         }
 
