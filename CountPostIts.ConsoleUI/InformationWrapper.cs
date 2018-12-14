@@ -14,11 +14,6 @@ namespace CountPostIts.ConsoleUI
             throw new NotImplementedException();
         }
 
-        public void SaveHighlightedPostItNotes(string filename, Dictionary<string, int> colourValues)
-        {
-            Information information = new Information();
-            information.SaveHighlightedPostItNotes(filename, colourValues);
-        }
     }
 
    
