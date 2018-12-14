@@ -14,11 +14,11 @@ namespace CountPostIts.ConsoleUI
             _handleData = handleData;
         }
 
-        public void ChecksFile(string filename, Dictionary<string, int> colourValues)
+        public void ChecksFile(string filename)
         {
             if (!_file.CallFileExists(filename)) throw new ArgumentException();
 
-            _handleData.PostitResults(filename, colourValues);
+            _handleData.PostitResults(filename);
         }
     }
 }

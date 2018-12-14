@@ -19,12 +19,7 @@ namespace CountPostIts.ConsoleUI
                 new FileWrapper(), new HandleData(new InformationWrapper())
             );
 
-            Dictionary<string, int> colourValues = new Dictionary<string, int>();
-            colourValues.Add("R", opt.rVal);
-            colourValues.Add("G", opt.gVal);
-            colourValues.Add("B", opt.bVal);
-
-            config.ChecksFile(opt.FileName, colourValues);
+            config.ChecksFile(opt.FileName);
         }
     }
 }
