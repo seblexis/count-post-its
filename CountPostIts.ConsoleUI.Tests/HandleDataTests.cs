@@ -9,10 +9,7 @@ namespace CountPostIts.ConsoleUI.Tests
     public class HandleDataTests
     {
         private const string Filename = "postits.jpg";
-        private readonly Dictionary<string, int> result = new Dictionary<string, int>
-        {
-            {"Purple", 4 }
-        };
+        private readonly int result = 4;
         
         private readonly Dictionary<string, int> _colourValues = new Dictionary<string, int>
         {

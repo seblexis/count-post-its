@@ -6,11 +6,11 @@ namespace CountPostIts.ConsoleUI
 {
     class InformationWrapper : IInformationWrapper
     {
-        //TODO: Reimplement the return command once CountPostItNotes is updated to return a dictionary
-        public Dictionary<string, int> CallCountPostits(string filename, Dictionary<string, int> colourValues)
+        
+        public int CallCountPostits(string filename, Dictionary<string, int> colourValues)
         {
             Information information = new Information();
-            // return information.CountPostItNotes(filename, colourValues);
+            return information.CountPostItNotes(filename, colourValues);
             throw new NotImplementedException();
         }
 

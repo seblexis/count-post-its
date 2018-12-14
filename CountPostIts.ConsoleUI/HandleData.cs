@@ -15,17 +15,14 @@ namespace CountPostIts.ConsoleUI
         public void PostitResults(string filename, Dictionary<string, int> colourValues)
         {
             _information.SaveHighlightedPostItNotes(filename, colourValues);
-            Dictionary<string, int> result = _information.CallCountPostits(filename, colourValues);
+            int result = _information.CallCountPostits(filename, colourValues);
             DisplayResults(result);
         }
 
-        private void DisplayResults(Dictionary<string, int> result)
+        private void DisplayResults(int result)
         {
-            Console.WriteLine("Result: ");
-            foreach (KeyValuePair<string, int> entry in result)
-            {
-                Console.WriteLine($"{entry.Key}: {entry.Value}");
-            }
+            Console.WriteLine($"Count: {result}");
+            
         }
     }
 }
