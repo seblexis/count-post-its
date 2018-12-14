@@ -28,11 +28,9 @@ The result is displayed as shown:
 ![CounterResults](./readme/counter_results.png)
 
 Images are saved for each colour found, highlighting the Post it notes the app has identified within the debug directory.
-![alt text][drawnResultsYellow]
-[drawnResultsYellow]: https://github.com/seblexis/count-post-its/readme/result_Yellow.jpg "Yellow post its found"
+![drawnResultsYellow](./readme/result_Yellow.jpg)
 
-![alt text][drawnResultsGreen]
-[drawnResultsGreen]: https://github.com/seblexis/count-post-its/readme/result_Green.jpg "Green post its found"
+![drawnResultsGreen]:(./readme/result_Green.jpg)
 ## Team Members
 * [Robbie](https://github.com/racldn)
 * [Seb](https://github.com/seblexis)
