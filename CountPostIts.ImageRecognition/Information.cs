@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Text;
-using System.Threading.Tasks;
-
 using Accord;
 using Accord.Imaging;
 using Accord.Imaging.Filters;
-using Accord.Math.Geometry;
-using System.IO;
 
 namespace CountPostIts.ImageRecognition
 {
@@ -21,7 +13,6 @@ namespace CountPostIts.ImageRecognition
         public IBlobCounterWrapper BlobCounterWrapper { get; set; }
         public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
         public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
-
         public Information(IBlobCounterWrapper blobCounterWrapper, ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper, IColorFilteringWrapper colorFilteringWrapper)
         {
             this.BlobCounterWrapper = blobCounterWrapper;
@@ -38,8 +29,13 @@ namespace CountPostIts.ImageRecognition
 
         public void FilterImage(Bitmap image, Dictionary<string, int> rgb)
         {
-            setFilters(rgb);
-            ColorFilteringWrapper.OwnApplyInPlace(image);
+            HSLFiltering hsl = new HSLFiltering();
+            hsl.Saturation = new Range(0.00f, 0.3f);
+            hsl.Luminance = new Range(0.30f, 1f);
+            hsl.FillOutsideRange = false;
+            hsl.ApplyInPlace(image);
+
+            image.Save("test-r.png");
         }
 
         public int CountPostItNotes(string filename, Dictionary<string, int> rgb)
@@ -75,15 +71,63 @@ namespace CountPostIts.ImageRecognition
         public int CountQuadrilaterals(Blob[] blobs)
         {
             int counter = 0;
-            for (int i = 0; i < blobs.Length; i++)
+            var _colorOfPosts = new Dictionary<string, int>
             {
-                List<IntPoint> edgePoints = BlobCounterWrapper.OwnGetBlobsEdgePoints(blobs[i]);
+                {"Red", 0},
+                {"Pink",0 },
+                {"Green", 0},
+                {"Blue", 0},
+                {"Light Blue", 0 },
+                {"Yellow", 0},
+                {"Orange", 0 },
+                {"Purple", 0 },
+                {"Unknown", 0 }
+            };
+            foreach (Blob blob in blobs)
+            {
+                List<IntPoint> edgePoints = BlobCounterWrapper.OwnGetBlobsEdgePoints(blob);
                 List<IntPoint> cornerPoints;
                 if (SimpleShapeCheckerWrapper.OwnIsQuadrilateral(edgePoints, out cornerPoints))
                 {
-                    counter++;
+                    Color blobColor = blob.ColorMean;
+
+                    if (blobColor.GetHue() >= 15 && blobColor.GetHue() < 45)
+                    {
+                        _colorOfPosts["Orange"]++;
+                    }
+                    else if (blobColor.GetHue() >= 45 && blobColor.GetHue() < 75)
+                    {
+                        _colorOfPosts["Yellow"]++;
+                    }
+                    else if (blobColor.GetHue() >= 75 && blobColor.GetHue() < 165)
+                    {
+                        _colorOfPosts["Green"]++;
+                    }
+                    else if (blobColor.GetHue() >= 165 && blobColor.GetHue() < 195)
+                    {
+                        _colorOfPosts["Light Blue"]++;
+                    }
+                    else if (blobColor.GetHue() >= 195 && blobColor.GetHue() < 250)
+                    {
+                        _colorOfPosts["Blue"]++;
+                    }
+                    else if (blobColor.GetHue() >= 250 && blobColor.GetHue() < 295)
+                    {
+                        _colorOfPosts["Purple"]++;
+                    }
+                    else if (blobColor.GetHue() >= 295 && blobColor.GetHue() < 340)
+                    {
+                        _colorOfPosts["Pink"]++;
+                    }
+                    else
+                    {
+                        _colorOfPosts["Red"]++;
+                    }
+                        counter++;
                 }
             }
+            Console.WriteLine($"Found Red: {_colorOfPosts["Red"]}, Pink: {_colorOfPosts["Pink"]}, Purple: {_colorOfPosts["Purple"]}, Green: {_colorOfPosts["Green"]}, Light Blue: {_colorOfPosts["Light Blue"]}, Blue: {_colorOfPosts["Blue"]}, Yellow: {_colorOfPosts["Yellow"]}, Orange: {_colorOfPosts["Orange"]}, Unknown: {_colorOfPosts["Unknown"]}");
+
             return counter;
         }
 
@@ -105,28 +149,8 @@ namespace CountPostIts.ImageRecognition
                     g.DrawPolygon(new Pen(Color.Red, 5.0f), Points.ToArray());
                 }
             }
+            
             return image;
-        }
-
-        public void setFilters(Dictionary<string, int> rgb)
-        {
-            int red = rgb["R"];
-            ColorFilteringWrapper.OwnRed(FindRGBInterval(red)[0], FindRGBInterval(red)[1]);
-
-            int green = rgb["G"];
-            ColorFilteringWrapper.OwnGreen(FindRGBInterval(green)[0], FindRGBInterval(green)[1]);
-
-            int blue = rgb["B"];
-            ColorFilteringWrapper.OwnBlue(FindRGBInterval(blue)[0], FindRGBInterval(blue)[1]);
-
-        }
-
-        public int[] FindRGBInterval(int number)
-        {
-            int[] interval = new int[2];
-            interval[0] = (number - _rgbRange < 0) ? 0 : number - _rgbRange;
-            interval[1] = (number + _rgbRange > 255) ? 255 : number + _rgbRange;
-            return interval;
-        }       
+        }     
     }
 }
