@@ -51,7 +51,7 @@ namespace CountPostIts.ImageRecognition
             return counter;
         }
 
-        private Bitmap DrawPostIt(Bitmap image, List<IntPoint> edgePoints, List<IntPoint> cornerPoints)
+        private void DrawPostIt(Bitmap image, List<IntPoint> edgePoints, List<IntPoint> cornerPoints)
         {
             List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
             foreach (var point in cornerPoints)
@@ -61,7 +61,6 @@ namespace CountPostIts.ImageRecognition
 
             Graphics g = Graphics.FromImage(image);
             g.DrawPolygon(new Pen(Color.Red, 5.0f), Points.ToArray());
-            return image;
         }
     }
 }
