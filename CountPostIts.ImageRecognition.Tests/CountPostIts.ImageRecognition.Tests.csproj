@@ -82,6 +82,7 @@
     <Compile Include="ImageFilterTest.cs" />
     <Compile Include="PostItAnalysisTest.cs" />
     <Compile Include="BlobCounterWrapperTest.cs" />
+    <Compile Include="BlobsDetectorTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

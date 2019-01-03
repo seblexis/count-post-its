@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlobCounterWrapper.cs" />
+    <Compile Include="BlobsDetector.cs" />
     <Compile Include="ColorFilteringWrapper.cs" />
     <Compile Include="ColourRanges.cs" />
     <Compile Include="Colours.cs" />
