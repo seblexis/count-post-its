@@ -46,5 +46,17 @@ namespace CountPostIts.ImageRecognition
         {
             return BlobCounter.GetBlobsEdgePoints(blob);
         }
+
+        public int CalculateMinDimension(Bitmap image)
+        {
+            if (image.Width > image.Height)
+            {
+                return image.Width / 50;
+            } else
+            {
+                return image.Height / 50;
+            }
+            
+        }
     }
 }

@@ -38,5 +38,6 @@ namespace CountPostIts.ImageRecognition.Tests
             postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", yellowRGBRanges, "Yellow");
             Assert.AreEqual(true, File.Exists(resultPath));
         }
+
     }
 }

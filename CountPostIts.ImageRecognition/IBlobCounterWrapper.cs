@@ -1,6 +1,7 @@
 ﻿using Accord;
 using Accord.Imaging;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace CountPostIts.ImageRecognition
 {
@@ -12,5 +13,6 @@ namespace CountPostIts.ImageRecognition
         Blob[] OwnGetObjectsInformation();
         void OwnProcessImage(object image);
         List<IntPoint> OwnGetBlobsEdgePoints(Blob blob);
+        int CalculateMinDimension(Bitmap image);
     }
 }
