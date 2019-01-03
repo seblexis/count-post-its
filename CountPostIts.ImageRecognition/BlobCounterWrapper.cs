@@ -51,10 +51,10 @@ namespace CountPostIts.ImageRecognition
         {
             if (image.Width > image.Height)
             {
-                return image.Width / 100;
+                return image.Width / 50;
             } else
             {
-                return image.Height / 100;
+                return image.Height / 50;
             }
             
         }

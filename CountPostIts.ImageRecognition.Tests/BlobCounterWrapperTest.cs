@@ -22,7 +22,7 @@ namespace CountPostIts.ImageRecognition.Tests
             
 
             int result = blobCounterWrapper.CalculateMinDimension(image);
-            Assert.AreEqual(36, result);
+            Assert.AreEqual(72, result);
         }
 
         [TestMethod]
@@ -32,7 +32,7 @@ namespace CountPostIts.ImageRecognition.Tests
             BlobCounterWrapper blobCounterWrapper = new BlobCounterWrapper();
 
             int result = blobCounterWrapper.CalculateMinDimension(image);
-            Assert.AreEqual(27, result);
+            Assert.AreEqual(54, result);
         }
     }
 }
