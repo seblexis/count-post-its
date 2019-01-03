@@ -5,9 +5,9 @@ namespace CountPostIts.ImageRecognition
 {
     public class Information
     {
-        public IBlobCounterWrapper BlobCounterWrapper { get; set; }
-        public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
-        public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
+        private IBlobCounterWrapper BlobCounterWrapper;
+        private ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper;
+        private IColorFilteringWrapper ColorFilteringWrapper;
 
 
         public Information()

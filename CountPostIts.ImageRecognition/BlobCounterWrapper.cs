@@ -11,7 +11,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class BlobCounterWrapper : IBlobCounterWrapper
     {
-        public BlobCounter BlobCounter { get; set; }
+        private BlobCounter BlobCounter;
         public BlobCounterWrapper()
         {
             this.BlobCounter = new BlobCounter();

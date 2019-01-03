@@ -9,7 +9,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class ImageFilter
     {
-        public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
+        private IColorFilteringWrapper ColorFilteringWrapper;
 
         public ImageFilter(IColorFilteringWrapper colorFilteringWrapper)
         {

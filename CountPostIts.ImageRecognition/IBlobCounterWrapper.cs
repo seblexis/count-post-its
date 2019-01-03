@@ -6,9 +6,6 @@ namespace CountPostIts.ImageRecognition
 {
     public interface IBlobCounterWrapper
     {
-
-        BlobCounter BlobCounter { get; set; }
-
         void OwnFilterBlobs (bool filterBool);
         void OwnMinHeight(int height);
         void OwnMinWidth(int width);

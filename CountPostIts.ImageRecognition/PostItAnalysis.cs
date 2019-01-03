@@ -7,9 +7,9 @@ namespace CountPostIts.ImageRecognition
 {
     public class PostItAnalysis
     {
-        public ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper { get; set; }
-        public IBlobCounterWrapper BlobCounterWrapper { get; set; }
-        public IColorFilteringWrapper ColorFilteringWrapper { get; set; }
+        private ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper;
+        private IBlobCounterWrapper BlobCounterWrapper;
+        private IColorFilteringWrapper ColorFilteringWrapper;
 
         public PostItAnalysis(IBlobCounterWrapper blobCounterWrapper, ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper, IColorFilteringWrapper colorFilteringWrapper)
         {

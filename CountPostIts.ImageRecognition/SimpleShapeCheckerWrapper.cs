@@ -10,7 +10,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class SimpleShapeCheckerWrapper : ISimpleShapeCheckerWrapper
     {
-        public SimpleShapeChecker OwnShapeChecker { get; set; }
+        private SimpleShapeChecker OwnShapeChecker;
 
         public SimpleShapeCheckerWrapper()
         {

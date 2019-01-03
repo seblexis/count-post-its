@@ -6,7 +6,6 @@ namespace CountPostIts.ImageRecognition
 {
     public interface ISimpleShapeCheckerWrapper
     {
-        SimpleShapeChecker OwnShapeChecker { get; set; }
         bool OwnIsQuadrilateral(List<IntPoint> edgePoints,  out List<IntPoint> cornerPoints);
     }
 }
