@@ -22,20 +22,12 @@ namespace CountPostIts.ImageRecognition
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             ImageFilter imageFilter = new ImageFilter(ColorFilteringWrapper);
+            BlobsDetector blobsDetector = new BlobsDetector(BlobCounterWrapper);
+
             Bitmap filteredImage = imageFilter.GetFilteredImage(image, rgbRange);
-            Blob[] blobs = BlobsInImage(filteredImage);
+            Blob[] blobs = blobsDetector.findBlobs(filteredImage);
+
             return CountQuadrilaterals(blobs, filteredImage, colourName);
-        }
-
-        private Blob[] BlobsInImage(Bitmap image)
-        {
-            int minDimension = BlobCounterWrapper.CalculateMinDimension(image);
-
-            BlobCounterWrapper.OwnFilterBlobs(true);
-            BlobCounterWrapper.OwnMinHeight(minDimension);
-            BlobCounterWrapper.OwnMinWidth(minDimension);
-            BlobCounterWrapper.OwnProcessImage(image);
-            return BlobCounterWrapper.OwnGetObjectsInformation();
         }
 
         private int CountQuadrilaterals(Blob[] blobs, Bitmap image, string colourName)
@@ -59,7 +51,7 @@ namespace CountPostIts.ImageRecognition
             return counter;
         }
 
-        private Bitmap DrawPostIt(Bitmap image, List<IntPoint> edgePoints, List<IntPoint> cornerPoints)
+        private void DrawPostIt(Bitmap image, List<IntPoint> edgePoints, List<IntPoint> cornerPoints)
         {
             List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
             foreach (var point in cornerPoints)
@@ -69,7 +61,6 @@ namespace CountPostIts.ImageRecognition
 
             Graphics g = Graphics.FromImage(image);
             g.DrawPolygon(new Pen(Color.Red, 5.0f), Points.ToArray());
-            return image;
         }
     }
 }
