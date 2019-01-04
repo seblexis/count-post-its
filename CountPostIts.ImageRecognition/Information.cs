@@ -5,23 +5,22 @@ namespace CountPostIts.ImageRecognition
 {
     public class Information
     {
-        private IBlobCounterWrapper BlobCounterWrapper;
-        private ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper;
-        private IColorFilteringWrapper ColorFilteringWrapper;
-
+        private IBlobCounterWrapper _blobCounterWrapper;
+        private ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapper;
+        private IColorFilteringWrapper _colorFilteringWrapper;
 
         public Information()
         {
-            this.BlobCounterWrapper = new BlobCounterWrapper();
-            this.SimpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
-            this.ColorFilteringWrapper = new ColorFilteringWrapper();
+            _blobCounterWrapper = new BlobCounterWrapper();
+            _simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
+            _colorFilteringWrapper = new ColorFilteringWrapper();
         }
 
         public Dictionary<string, int> CountAllColours(string filename)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
             ColourRanges colourRanges = new ColourRanges();
-            PostItAnalysis postItAnalysis = new PostItAnalysis(BlobCounterWrapper, SimpleShapeCheckerWrapper, ColorFilteringWrapper);
+            PostItAnalysis postItAnalysis = new PostItAnalysis(_blobCounterWrapper, _simpleShapeCheckerWrapper, _colorFilteringWrapper);
             foreach (KeyValuePair<Colours, Dictionary<string, int[]>> colourEntry in colourRanges.RGB)
             {
                 string colourName = Enum.GetName(typeof(Colours), colourEntry.Key);

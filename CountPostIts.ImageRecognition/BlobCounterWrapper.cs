@@ -1,50 +1,46 @@
 ﻿using Accord;
 using Accord.Imaging;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CountPostIts.ImageRecognition
 {
     public class BlobCounterWrapper : IBlobCounterWrapper
     {
-        private BlobCounter BlobCounter;
+        private BlobCounter _blobCounter;
         public BlobCounterWrapper()
         {
-            this.BlobCounter = new BlobCounter();
+            _blobCounter = new BlobCounter();
         }
 
         public void OwnFilterBlobs(bool filterBool)
         {
-            BlobCounter.FilterBlobs = filterBool;
+            _blobCounter.FilterBlobs = filterBool;
         }
 
         public void OwnMinHeight(int height)
         {
-            BlobCounter.MinHeight = height;
+            _blobCounter.MinHeight = height;
         }
 
         public void OwnMinWidth(int width)
         {
-            BlobCounter.MinWidth = width;
+            _blobCounter.MinWidth = width;
         }
 
         public void OwnProcessImage(object image)
         {
-            BlobCounter.ProcessImage((Bitmap)image);
+            _blobCounter.ProcessImage((Bitmap)image);
         }
 
         public Blob[] OwnGetObjectsInformation()
         {
-            return BlobCounter.GetObjectsInformation();
+            return _blobCounter.GetObjectsInformation();
         }
 
         public List<IntPoint> OwnGetBlobsEdgePoints(Blob blob)
         {
-            return BlobCounter.GetBlobsEdgePoints(blob);
+            return _blobCounter.GetBlobsEdgePoints(blob);
         }
 
         public int CalculateMinDimension(Bitmap image)
@@ -52,11 +48,8 @@ namespace CountPostIts.ImageRecognition
             if (image.Width > image.Height)
             {
                 return image.Width / 50;
-            } else
-            {
-                return image.Height / 50;
             }
-            
+            return image.Height / 50;
         }
     }
 }

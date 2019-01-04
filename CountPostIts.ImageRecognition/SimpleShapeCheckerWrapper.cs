@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Accord;
 using Accord.Math.Geometry;
 
@@ -10,15 +6,15 @@ namespace CountPostIts.ImageRecognition
 {
     public class SimpleShapeCheckerWrapper : ISimpleShapeCheckerWrapper
     {
-        private SimpleShapeChecker OwnShapeChecker;
+        private SimpleShapeChecker _ownShapeChecker;
 
         public SimpleShapeCheckerWrapper()
         {
-            this.OwnShapeChecker = new SimpleShapeChecker();
+            _ownShapeChecker = new SimpleShapeChecker();
         }
         public bool OwnIsQuadrilateral(List<IntPoint> edgePoints, out List<IntPoint> cornerPoints)
         {
-            return OwnShapeChecker.IsQuadrilateral(edgePoints, out cornerPoints);
+            return _ownShapeChecker.IsQuadrilateral(edgePoints, out cornerPoints);
         }
     }
 }

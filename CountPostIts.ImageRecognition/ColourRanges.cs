@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CountPostIts.ImageRecognition
 {
     public class ColourRanges
     {
         public Dictionary<Colours, Dictionary<string, int[]>> RGB { get; set; }
+
         private int[] greenR = { 80, 130 };
         private int[] greenG = { 100, 130 };
         private int[] greenB = { 40, 100 };
@@ -38,18 +35,6 @@ namespace CountPostIts.ImageRecognition
             this.RGB = CreateList();
         }
 
-        private Dictionary<string, int[]> SetRanges(int[] rRange, int[] gRange, int [] bRange)
-        {
-            Dictionary<string, int[]> rgbRanges = new Dictionary<string, int[]>
-            {
-                {"R", rRange },
-                {"G", gRange },
-                {"B" , bRange}
-            };
-
-            return rgbRanges;
-        }
-
         private Dictionary<Colours, Dictionary<string, int[]>> CreateList()
         {
             Dictionary<Colours, Dictionary<string, int[]>> RGB = new Dictionary<Colours, Dictionary<string, int[]>>();
@@ -60,7 +45,6 @@ namespace CountPostIts.ImageRecognition
             Dictionary<string, int[]> pinkRGB = SetRanges(pinkR, pinkG, pinkB);
             Dictionary<string, int[]> purpleRGB = SetRanges(purpleR, purpleG, purpleB);
 
-
             RGB.Add(Colours.Green, greenRGB);
             RGB.Add(Colours.Yellow, yellowRGB);
             RGB.Add(Colours.Blue, blueRGB);
@@ -69,6 +53,18 @@ namespace CountPostIts.ImageRecognition
             RGB.Add(Colours.Purple, purpleRGB);
 
             return RGB;
+        }
+
+        private Dictionary<string, int[]> SetRanges(int[] rRange, int[] gRange, int[] bRange)
+        {
+            Dictionary<string, int[]> rgbRanges = new Dictionary<string, int[]>
+            {
+                {"R", rRange },
+                {"G", gRange },
+                {"B" , bRange}
+            };
+
+            return rgbRanges;
         }
     }
 }

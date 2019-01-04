@@ -1,44 +1,38 @@
 ﻿using Accord;
 using Accord.Imaging.Filters;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CountPostIts.ImageRecognition
 {
     public class ColorFilteringWrapper : IColorFilteringWrapper
     {
-        private ColorFiltering ColorFilter;
+        private ColorFiltering _colorFilter;
 
         public ColorFilteringWrapper()
         {
-            this.ColorFilter = new ColorFiltering();
+            _colorFilter = new ColorFiltering();
         }
 
         public void OwnApplyInPlace(object image)
         {
-            ColorFilter.ApplyInPlace((Bitmap)image);
+            _colorFilter.ApplyInPlace((Bitmap)image);
         }
 
         public void OwnRed(int first, int last)
         {
-            ColorFilter.Red = new IntRange(first, last);
+            _colorFilter.Red = new IntRange(first, last);
 
         }
 
         public void OwnBlue(int first, int last)
         {
-            ColorFilter.Blue = new IntRange(first, last);
+            _colorFilter.Blue = new IntRange(first, last);
         }
 
 
         public void OwnGreen(int first, int last)
         {
-            ColorFilter.Green = new IntRange(first, last);
+            _colorFilter.Green = new IntRange(first, last);
         }
     }
 }
