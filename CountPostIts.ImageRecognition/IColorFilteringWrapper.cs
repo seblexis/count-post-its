@@ -1,6 +1,4 @@
-﻿using Accord.Imaging.Filters;
-
-namespace CountPostIts.ImageRecognition
+﻿namespace CountPostIts.ImageRecognition
 {
     public interface IColorFilteringWrapper
     {

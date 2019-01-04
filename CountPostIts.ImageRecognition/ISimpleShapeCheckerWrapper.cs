@@ -1,5 +1,4 @@
 ﻿using Accord;
-using Accord.Math.Geometry;
 using System.Collections.Generic;
 
 namespace CountPostIts.ImageRecognition

@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CountPostIts.ImageRecognition
 {
     public class ImageFilter
     {
-        private IColorFilteringWrapper ColorFilteringWrapper;
+        private IColorFilteringWrapper _colorFilteringWrapper;
 
         public ImageFilter(IColorFilteringWrapper colorFilteringWrapper)
         {
-            this.ColorFilteringWrapper = colorFilteringWrapper;
+            _colorFilteringWrapper = colorFilteringWrapper;
         }
 
         public Bitmap GetFilteredImage(Bitmap image, Dictionary<String, int[]> rgbRange)
@@ -27,7 +24,7 @@ namespace CountPostIts.ImageRecognition
                 Console.WriteLine(e);
                 throw;
             }
-            ColorFilteringWrapper.OwnApplyInPlace(image);
+            _colorFilteringWrapper.OwnApplyInPlace(image);
             return image;
         }
 
@@ -40,20 +37,20 @@ namespace CountPostIts.ImageRecognition
         private void SetFilterRed(int rmin, int rmax)
         {
             CheckRanges(rmin, rmax);
-            ColorFilteringWrapper.OwnRed(rmin, rmax);
+            _colorFilteringWrapper.OwnRed(rmin, rmax);
         }
 
         private void SetFilterGreen(int gmin, int gmax)
         {
             CheckRanges(gmin, gmax);
-            ColorFilteringWrapper.OwnGreen(gmin, gmax);
+            _colorFilteringWrapper.OwnGreen(gmin, gmax);
         }
         private void SetFilterBlue(int bmin, int bmax)
         {
             CheckRanges(bmin, bmax);
-            ColorFilteringWrapper.OwnBlue(bmin, bmax);
+            _colorFilteringWrapper.OwnBlue(bmin, bmax);
         }
-
+        
         private void CheckRanges(int min, int max)
         {
             if (min < 0 || min > 255)

@@ -7,25 +7,25 @@ namespace CountPostIts.ImageRecognition
 {
     public class PostItAnalysis
     {
-        private ISimpleShapeCheckerWrapper SimpleShapeCheckerWrapper;
-        private IBlobCounterWrapper BlobCounterWrapper;
-        private IColorFilteringWrapper ColorFilteringWrapper;
+        private ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapper;
+        private IBlobCounterWrapper _blobCounterWrapper;
+        private IColorFilteringWrapper _colorFilteringWrapper;
 
         public PostItAnalysis(IBlobCounterWrapper blobCounterWrapper, ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper, IColorFilteringWrapper colorFilteringWrapper)
         {
-            this.SimpleShapeCheckerWrapper = simpleShapeCheckerWrapper;
-            this.BlobCounterWrapper = blobCounterWrapper;
-            this.ColorFilteringWrapper = colorFilteringWrapper;
+            _simpleShapeCheckerWrapper = simpleShapeCheckerWrapper;
+            _blobCounterWrapper = blobCounterWrapper;
+            _colorFilteringWrapper = colorFilteringWrapper;
         }
 
         public int CountPostItNotes(string filename, Dictionary<string, int[]> rgbRange, string colourName)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
-            ImageFilter imageFilter = new ImageFilter(ColorFilteringWrapper);
-            BlobsDetector blobsDetector = new BlobsDetector(BlobCounterWrapper);
+            ImageFilter imageFilter = new ImageFilter(_colorFilteringWrapper);
+            BlobsDetector blobsDetector = new BlobsDetector(_blobCounterWrapper);
 
             Bitmap filteredImage = imageFilter.GetFilteredImage(image, rgbRange);
-            Blob[] blobs = blobsDetector.findBlobs(filteredImage);
+            Blob[] blobs = blobsDetector.FindBlobs(filteredImage);
 
             return CountQuadrilaterals(blobs, filteredImage, colourName);
         }
@@ -35,9 +35,9 @@ namespace CountPostIts.ImageRecognition
             int counter = 0;
             for (int i = 0; i < blobs.Length; i++)
             {
-                List<IntPoint> edgePoints = BlobCounterWrapper.OwnGetBlobsEdgePoints(blobs[i]);
+                List<IntPoint> edgePoints = _blobCounterWrapper.OwnGetBlobsEdgePoints(blobs[i]);
                 List<IntPoint> cornerPoints;
-                if (SimpleShapeCheckerWrapper.OwnIsQuadrilateral(edgePoints, out cornerPoints))
+                if (_simpleShapeCheckerWrapper.OwnIsQuadrilateral(edgePoints, out cornerPoints))
                 {
                     DrawPostIt(image, edgePoints, cornerPoints);
                     counter++;
@@ -53,14 +53,14 @@ namespace CountPostIts.ImageRecognition
 
         private void DrawPostIt(Bitmap image, List<IntPoint> edgePoints, List<IntPoint> cornerPoints)
         {
-            List<System.Drawing.Point> Points = new List<System.Drawing.Point>();
+            List<System.Drawing.Point> points = new List<System.Drawing.Point>();
             foreach (var point in cornerPoints)
             {
-                Points.Add(new System.Drawing.Point(point.X, point.Y));
+                points.Add(new System.Drawing.Point(point.X, point.Y));
             }
 
             Graphics g = Graphics.FromImage(image);
-            g.DrawPolygon(new Pen(Color.Red, 5.0f), Points.ToArray());
+            g.DrawPolygon(new Pen(Color.Red, 5.0f), points.ToArray());
         }
     }
 }

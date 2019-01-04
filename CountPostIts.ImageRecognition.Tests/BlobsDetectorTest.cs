@@ -24,7 +24,7 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void findBlobsCallsBlobCounterWrapperMethods()
         {
-            blobsDetector.findBlobs(image);
+            blobsDetector.FindBlobs(image);
 
             BlobCounterWrapperMock.Received().CalculateMinDimension(image);
             BlobCounterWrapperMock.Received().OwnFilterBlobs(true);
@@ -36,7 +36,7 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void findBlobsReturnsListOfBlobs()
         {
-            var result = blobsDetector.findBlobs(image);
+            var result = blobsDetector.FindBlobs(image);
 
             Assert.IsInstanceOfType(result, typeof(Blob[]));
         }
