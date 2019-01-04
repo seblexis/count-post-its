@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using Moq;
 
@@ -9,6 +7,7 @@ namespace CountPostIts.ConsoleUI.Tests
     public class HandleDataTests
     {
         private const string Filename = "postits.jpg";
+        private const string IncorrectFilename = "Hello.ppt";
         private readonly Dictionary<string, int> result = new Dictionary<string, int>
         {
             {"Purple", 4 }
@@ -24,9 +23,8 @@ namespace CountPostIts.ConsoleUI.Tests
             _mockInformation = new Mock<IInformationWrapper>();
 
             _mockInformation
-                .Setup(m => m.CallCountAllColours(Filename))
+                .Setup(m => m.OwnCountAllColours(Filename))
                 .Returns(result);
-
 
             _handleData = new HandleData(_mockInformation.Object);
         }
@@ -34,9 +32,9 @@ namespace CountPostIts.ConsoleUI.Tests
         [Test]
         public void Calls_Library_When_Given_A_File()
         {
-            _handleData.PostitResults(Filename);
+            _handleData.PostItResults(Filename);
 
-            _mockInformation.Verify(m => m.CallCountAllColours(Filename), Times.Once);
-        }  
+            _mockInformation.Verify(m => m.OwnCountAllColours(Filename), Times.Once);
+        }
     }
 }

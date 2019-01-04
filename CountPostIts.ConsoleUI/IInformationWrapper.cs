@@ -4,6 +4,6 @@ namespace CountPostIts.ConsoleUI
 {
     public interface  IInformationWrapper
     {
-        Dictionary<string, int> CallCountAllColours(string filename);
+        Dictionary<string, int> OwnCountAllColours(string filename);
     }
 }

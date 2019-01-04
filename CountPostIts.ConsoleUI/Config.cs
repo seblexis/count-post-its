@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CountPostIts.ConsoleUI
 {
@@ -18,7 +17,7 @@ namespace CountPostIts.ConsoleUI
         {
             if (!_file.CallFileExists(filename)) throw new ArgumentException();
 
-            _handleData.PostitResults(filename);
+            _handleData.PostItResults(filename);
         }
     }
 }

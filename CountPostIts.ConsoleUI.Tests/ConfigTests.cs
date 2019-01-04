@@ -48,7 +48,7 @@ namespace CountPostIts.ConsoleUI.Tests
         {
             _config.ChecksFile(Filename);
 
-            _mockHandleData.Verify(m => m.PostitResults(Filename), Times.Once);
+            _mockHandleData.Verify(m => m.PostItResults(Filename), Times.Once);
         }
     }
 }

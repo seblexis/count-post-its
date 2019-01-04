@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace CountPostIts.ConsoleUI
+﻿namespace CountPostIts.ConsoleUI
 {
     public interface IHandleData
     {
-        void PostitResults(string filename);
+        void PostItResults(string filename);
     }
 }

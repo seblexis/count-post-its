@@ -12,9 +12,10 @@ namespace CountPostIts.ConsoleUI
             _information = information;
         }
 
-        public void PostitResults(string filename)
+        public void PostItResults(string filename)
         {
-            Dictionary<string, int> result = _information.CallCountAllColours(filename);
+
+            Dictionary<string, int> result = _information.OwnCountAllColours(filename);
             DisplayResults(result);
         }
 
