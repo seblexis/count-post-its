@@ -13,7 +13,7 @@ namespace CountPostIts.ImageRecognition
             _colorFilteringWrapper = colorFilteringWrapper;
         }
 
-        public Bitmap GetFilteredImage(Bitmap image, IColourRange rgbRange)
+        public Bitmap GetFilteredImage(Bitmap image, IColorRange rgbRange)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace CountPostIts.ImageRecognition
             return image;
         }
 
-        private void SetFilters(IColourRange rgbRange)
+        private void SetFilters(IColorRange rgbRange)
         {
                 SetFilterRed(rgbRange.RangeRed[0], rgbRange.RangeRed[1]);
                 SetFilterGreen(rgbRange.RangeGreen[0], rgbRange.RangeGreen[1]);

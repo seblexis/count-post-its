@@ -1,6 +1,6 @@
 ﻿namespace CountPostIts.ImageRecognition
 {
-    public enum Colours
+    public enum Colors
     {
         Blue,
         Green,

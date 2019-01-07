@@ -2,58 +2,58 @@
 
 namespace CountPostIts.ImageRecognition
 {
-    public class ColourRanges
+    public class ColorRanges
     {
-        public Dictionary<Colours, IColourRange> RGB { get; set; }
+        public Dictionary<Colors, IColorRange> RGB { get; set; }
 
-        private IColourRangeFactory _colourRangeFactory;
+        private readonly IColorRangeFactory _colorRangeFactory;
 
-        public ColourRanges(IColourRangeFactory colourRangeFactory)
+        public ColorRanges(IColorRangeFactory colorRangeFactory)
         {
-            _colourRangeFactory = colourRangeFactory;
+            _colorRangeFactory = colorRangeFactory;
             this.RGB = CreateList();
         }
 
-        private Dictionary<Colours, IColourRange> CreateList()
+        private Dictionary<Colors, IColorRange> CreateList()
         {
-            IColourRange greenRanges = _colourRangeFactory.Create();
+            IColorRange greenRanges = _colorRangeFactory.Create();
             greenRanges.RangeRed = new int[] { 80, 130 };
             greenRanges.RangeGreen = new int[] { 100, 130 };
             greenRanges.RangeBlue = new int[] { 40, 100 };
 
-            IColourRange yellowRanges = _colourRangeFactory.Create();
+            IColorRange yellowRanges = _colorRangeFactory.Create();
             yellowRanges.RangeRed = new int[] { 130, 193 };
             yellowRanges.RangeGreen = new int[] { 115, 180 };
             yellowRanges.RangeBlue = new int[] { 20, 90 };
 
-            IColourRange blueRanges = _colourRangeFactory.Create();
+            IColorRange blueRanges = _colorRangeFactory.Create();
             blueRanges.RangeRed = new int[] { 10, 80 };
             blueRanges.RangeGreen = new int[] { 50, 130 };
             blueRanges.RangeBlue = new int[] { 60, 150 };
 
-            IColourRange orangeRanges = _colourRangeFactory.Create();
+            IColorRange orangeRanges = _colorRangeFactory.Create();
             orangeRanges.RangeRed = new int[] { 160, 210 };
             orangeRanges.RangeGreen = new int[] { 75, 125 };
             orangeRanges.RangeBlue = new int[] { 0, 40 };
 
-            IColourRange pinkRanges = _colourRangeFactory.Create();
+            IColorRange pinkRanges = _colorRangeFactory.Create();
             pinkRanges.RangeRed = new int[] { 160, 240 };
             pinkRanges.RangeGreen = new int[] { 35, 130 };
             pinkRanges.RangeBlue = new int[] { 40, 110 };
 
-            IColourRange purpleRanges = _colourRangeFactory.Create();
+            IColorRange purpleRanges = _colorRangeFactory.Create();
             purpleRanges.RangeRed = new int[] { 170, 230 };
             purpleRanges.RangeGreen = new int[] { 130, 180 };
             purpleRanges.RangeBlue = new int[] { 130, 170 };
 
-            Dictionary<Colours, IColourRange> RGB = new Dictionary<Colours, IColourRange>
+            var RGB = new Dictionary<Colors, IColorRange>
             {
-                { Colours.Green, greenRanges },
-                { Colours.Yellow, yellowRanges },
-                { Colours.Blue, blueRanges },
-                { Colours.Orange, orangeRanges },
-                { Colours.Pink, pinkRanges },
-                { Colours.Purple, purpleRanges }
+                { Colors.Green, greenRanges },
+                { Colors.Yellow, yellowRanges },
+                { Colors.Blue, blueRanges },
+                { Colors.Orange, orangeRanges },
+                { Colors.Pink, pinkRanges },
+                { Colors.Purple, purpleRanges }
             };
 
             return RGB;

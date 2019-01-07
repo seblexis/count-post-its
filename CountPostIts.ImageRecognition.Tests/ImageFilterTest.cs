@@ -10,7 +10,7 @@ namespace CountPostIts.ImageRecognition.Tests
     public class ImageFilterTest
     {
         IColorFilteringWrapper colorFilteringWrapperMock;
-        IColourRange rgbRangeMock;
+        IColorRange rgbRangeMock;
         Bitmap test_image1;
         ImageFilter imageFilter;
 
@@ -19,7 +19,7 @@ namespace CountPostIts.ImageRecognition.Tests
         {
             colorFilteringWrapperMock = Substitute.For<IColorFilteringWrapper>();
             int[] mockRange = { 1, 2 };
-            rgbRangeMock = Substitute.For<IColourRange>();
+            rgbRangeMock = Substitute.For<IColorRange>();
             rgbRangeMock.RangeRed.Returns(new int[] { 1, 2 });
             rgbRangeMock.RangeGreen.Returns(new int[] { 1, 2 });
             rgbRangeMock.RangeBlue.Returns(new int[] { 1, 2 });

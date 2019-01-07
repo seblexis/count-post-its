@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CountPostIts.ImageRecognition
 {
-    public class ColorRange : IColourRange
+    public class ColorRange : IColorRange
 
     {
         private int[] _rangeRed;

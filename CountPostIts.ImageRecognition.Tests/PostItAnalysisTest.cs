@@ -10,11 +10,11 @@ namespace CountPostIts.ImageRecognition.Tests
     public class PostItAnalysisTest
     {
         PostItAnalysis postItAnalysis;
-        IColourRange yellowRGBRanges = new ColorRange();
+        IColorRange yellowRGBRanges = new ColorRange();
         IBlobCounterWrapper blobCounterWrapperMock;
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapperMock;
         IColorFilteringWrapper colorFilteringWrapperMock;
-        IColourRangeFactory colourRangeFactoryMock;
+        IColorRangeFactory _colorRangeFactoryMock;
 
 
         [TestInitialize()]
@@ -23,10 +23,10 @@ namespace CountPostIts.ImageRecognition.Tests
             blobCounterWrapperMock = Substitute.For<BlobCounterWrapper>();
             simpleShapeCheckerWrapperMock = Substitute.For<SimpleShapeCheckerWrapper>();
             colorFilteringWrapperMock = Substitute.For<ColorFilteringWrapper>();
-            colourRangeFactoryMock = Substitute.For<IColourRangeFactory>();
+            _colorRangeFactoryMock = Substitute.For<IColorRangeFactory>();
             postItAnalysis = new PostItAnalysis(blobCounterWrapperMock, simpleShapeCheckerWrapperMock, colorFilteringWrapperMock);
-            ColourRanges colourRanges = new ColourRanges(colourRangeFactoryMock);
-            yellowRGBRanges = colourRanges.RGB[Colours.Yellow];
+            ColorRanges colorRanges = new ColorRanges(_colorRangeFactoryMock);
+            yellowRGBRanges = colorRanges.RGB[Colors.Yellow];
         }
 
         [TestMethod]

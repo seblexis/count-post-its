@@ -1,6 +1,6 @@
 ﻿namespace CountPostIts.ImageRecognition
 {
-    public interface IColourRange
+    public interface IColorRange
     {   
        int[] RangeRed { get; set; }
        int[] RangeGreen { get; set; }
