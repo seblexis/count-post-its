@@ -10,7 +10,7 @@ namespace CountPostIts.ImageRecognition.Tests
     public class PostItAnalysisTest
     {
         PostItAnalysis postItAnalysis;
-        IColourRange yellowRGBRanges = new ColourRange();
+        IColourRange yellowRGBRanges = new ColorRange();
         IBlobCounterWrapper blobCounterWrapperMock;
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapperMock;
         IColorFilteringWrapper colorFilteringWrapperMock;

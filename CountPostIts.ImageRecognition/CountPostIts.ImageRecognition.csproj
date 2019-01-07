@@ -65,7 +65,7 @@
     <Compile Include="BlobCounterWrapper.cs" />
     <Compile Include="BlobsDetector.cs" />
     <Compile Include="ColorFilteringWrapper.cs" />
-    <Compile Include="ColourRange.cs" />
+    <Compile Include="ColorRange.cs" />
     <Compile Include="ColourRangeFactory.cs" />
     <Compile Include="ColourRanges.cs" />
     <Compile Include="Colours.cs" />
