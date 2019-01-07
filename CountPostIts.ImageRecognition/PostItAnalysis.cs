@@ -18,7 +18,7 @@ namespace CountPostIts.ImageRecognition
             _colorFilteringWrapper = colorFilteringWrapper;
         }
 
-        public int CountPostItNotes(string filename, Dictionary<string, int[]> rgbRange, string colourName)
+        public int CountPostItNotes(string filename, IColourRange rgbRange, string colourName)
         {
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             ImageFilter imageFilter = new ImageFilter(_colorFilteringWrapper);

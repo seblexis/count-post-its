@@ -10,8 +10,9 @@ namespace CountPostIts.ImageRecognition
     
     {
 
-        public ColourRange()
+        public static ColourRange CreateColourRange()
         {
+            return new ColourRange();
         }
 
         public int[] RangeRed { get; set; }

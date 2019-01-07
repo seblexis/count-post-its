@@ -4,70 +4,60 @@ namespace CountPostIts.ImageRecognition
 {
     public class ColourRanges
     {
-        public Dictionary<Colours, Dictionary<string, int[]>> RGB { get; set; }
+        public Dictionary<Colours, IColourRange> RGB { get; set; }
 
-        private IColourRange _colourRange;
+        private IColourRangeFactory _colourRangeFactory;
 
-        private int[] greenR = { 80, 130 };
-        private int[] greenG = { 100, 130 };
-        private int[] greenB = { 40, 100 };
-    
-        private int[] yellowR = { 130, 195 };
-        private int[] yellowG = { 115, 180 };
-        private int[] yellowB = { 20, 90 };
-
-        private int[] blueR = { 10, 80 };
-        private int[] blueG = { 50, 130 };
-        private int[] blueB = { 60, 150 };
-
-        private int[] orangeR = { 160, 210 };
-        private int[] orangeG = { 75, 125 };
-        private int[] orangeB = { 0, 40 };
-
-        private int[] pinkR = { 160, 240 };
-        private int[] pinkG = { 35, 130 };
-        private int[] pinkB = { 40, 110 };
-
-        private int[] purpleR = { 170, 230 };
-        private int[] purpleG = { 130, 180 };
-        private int[] purpleB = { 130, 170 };
-
-        public ColourRanges(IColourRange colourRange)
+        public ColourRanges(IColourRangeFactory colourRangeFactory)
         {
-            _colourRange = colourRange;
+            _colourRangeFactory = colourRangeFactory;
             this.RGB = CreateList();
         }
 
-        private Dictionary<Colours, Dictionary<string, int[]>> CreateList()
+        private Dictionary<Colours, IColourRange> CreateList()
         {
-            Dictionary<Colours, Dictionary<string, int[]>> RGB = new Dictionary<Colours, Dictionary<string, int[]>>();
-            Dictionary<string, int[]> greenRGB = SetRanges(greenR, greenG, greenB);
-            Dictionary<string, int[]> yellowRGB = SetRanges(yellowR, yellowG, yellowB);
-            Dictionary<string, int[]> blueRGB = SetRanges(blueR, blueG, blueB);
-            Dictionary<string, int[]> orangeRGB = SetRanges(orangeR, orangeG, orangeB);
-            Dictionary<string, int[]> pinkRGB = SetRanges(pinkR, pinkG, pinkB);
-            Dictionary<string, int[]> purpleRGB = SetRanges(purpleR, purpleG, purpleB);
+            IColourRange greenRanges = _colourRangeFactory.Create();
+            greenRanges.RangeRed = new int[] { 80, 130 };
+            greenRanges.RangeGreen = new int[] { 100, 130 };
+            greenRanges.RangeBlue = new int[] { 40, 100 };
 
-            RGB.Add(Colours.Green, greenRGB);
-            RGB.Add(Colours.Yellow, yellowRGB);
-            RGB.Add(Colours.Blue, blueRGB);
-            RGB.Add(Colours.Orange, orangeRGB);
-            RGB.Add(Colours.Pink, pinkRGB);
-            RGB.Add(Colours.Purple, purpleRGB);
+            IColourRange yellowRanges = _colourRangeFactory.Create();
+            yellowRanges.RangeRed = new int[] { 130, 193 };
+            yellowRanges.RangeGreen = new int[] { 115, 180 };
+            yellowRanges.RangeBlue = new int[] { 20, 90 };
+
+            IColourRange blueRanges = _colourRangeFactory.Create();
+            blueRanges.RangeRed = new int[] { 10, 80 };
+            blueRanges.RangeGreen = new int[] { 50, 130 };
+            blueRanges.RangeBlue = new int[] { 60, 150 };
+
+            IColourRange orangeRanges = _colourRangeFactory.Create();
+            orangeRanges.RangeRed = new int[] { 160, 210 };
+            orangeRanges.RangeGreen = new int[] { 75, 125 };
+            orangeRanges.RangeBlue = new int[] { 0, 40 };
+
+            IColourRange pinkRanges = _colourRangeFactory.Create();
+            pinkRanges.RangeRed = new int[] { 160, 240 };
+            pinkRanges.RangeGreen = new int[] { 35, 130 };
+            pinkRanges.RangeBlue = new int[] { 40, 110 };
+
+            IColourRange purpleRanges = _colourRangeFactory.Create();
+            purpleRanges.RangeRed = new int[] { 170, 230 };
+            purpleRanges.RangeGreen = new int[] { 130, 180 };
+            purpleRanges.RangeBlue = new int[] { 130, 170 };
+
+            Dictionary<Colours, IColourRange> RGB = new Dictionary<Colours, IColourRange>
+            {
+                { Colours.Green, greenRanges },
+                { Colours.Yellow, yellowRanges },
+                { Colours.Blue, blueRanges },
+                { Colours.Orange, orangeRanges },
+                { Colours.Pink, pinkRanges },
+                { Colours.Purple, purpleRanges }
+            };
 
             return RGB;
         }
 
-        private Dictionary<string, int[]> SetRanges(int[] rRange, int[] gRange, int[] bRange)
-        {
-            Dictionary<string, int[]> rgbRanges = new Dictionary<string, int[]>
-            {
-                {"R", rRange },
-                {"G", gRange },
-                {"B" , bRange}
-            };
-
-            return rgbRanges;
-        }
     }
 }
