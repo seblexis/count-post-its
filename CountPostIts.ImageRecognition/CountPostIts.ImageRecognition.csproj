@@ -65,10 +65,12 @@
     <Compile Include="BlobCounterWrapper.cs" />
     <Compile Include="BlobsDetector.cs" />
     <Compile Include="ColorFilteringWrapper.cs" />
+    <Compile Include="ColourRange.cs" />
     <Compile Include="ColourRanges.cs" />
     <Compile Include="Colours.cs" />
     <Compile Include="IBlobCounterWrapper.cs" />
     <Compile Include="IColorFilteringWrapper.cs" />
+    <Compile Include="IColourRange.cs" />
     <Compile Include="ImageFilter.cs" />
     <Compile Include="Information.cs" />
     <Compile Include="ISimpleShapeCheckerWrapper.cs" />

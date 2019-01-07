@@ -6,6 +6,8 @@ namespace CountPostIts.ImageRecognition
     {
         public Dictionary<Colours, Dictionary<string, int[]>> RGB { get; set; }
 
+        private IColourRange _colourRange;
+
         private int[] greenR = { 80, 130 };
         private int[] greenG = { 100, 130 };
         private int[] greenB = { 40, 100 };
@@ -30,8 +32,9 @@ namespace CountPostIts.ImageRecognition
         private int[] purpleG = { 130, 180 };
         private int[] purpleB = { 130, 170 };
 
-        public ColourRanges()
+        public ColourRanges(IColourRange colourRange)
         {
+            _colourRange = colourRange;
             this.RGB = CreateList();
         }
 

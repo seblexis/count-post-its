@@ -19,7 +19,7 @@ namespace CountPostIts.ImageRecognition
         public Dictionary<string, int> CountAllColours(string filename)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
-            ColourRanges colourRanges = new ColourRanges();
+            ColourRanges colourRanges = new ColourRanges(new ColourRange());
             PostItAnalysis postItAnalysis = new PostItAnalysis(_blobCounterWrapper, _simpleShapeCheckerWrapper, _colorFilteringWrapper);
             foreach (KeyValuePair<Colours, Dictionary<string, int[]>> colourEntry in colourRanges.RGB)
             {

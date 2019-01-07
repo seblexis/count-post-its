@@ -14,6 +14,7 @@ namespace CountPostIts.ImageRecognition.Tests
         IBlobCounterWrapper blobCounterWrapperMock;
         ISimpleShapeCheckerWrapper simpleShapeCheckerWrapperMock;
         IColorFilteringWrapper colorFilteringWrapperMock;
+        IColourRange colourRangeMock;
 
 
         [TestInitialize()]
@@ -22,8 +23,9 @@ namespace CountPostIts.ImageRecognition.Tests
             blobCounterWrapperMock = Substitute.For<BlobCounterWrapper>();
             simpleShapeCheckerWrapperMock = Substitute.For<SimpleShapeCheckerWrapper>();
             colorFilteringWrapperMock = Substitute.For<ColorFilteringWrapper>();
+            colourRangeMock = Substitute.For<IColourRange>();
             postItAnalysis = new PostItAnalysis(blobCounterWrapperMock, simpleShapeCheckerWrapperMock, colorFilteringWrapperMock);
-            ColourRanges colourRanges = new ColourRanges();
+            ColourRanges colourRanges = new ColourRanges(colourRangeMock);
             yellowRGBRanges = colourRanges.RGB[Colours.Yellow];
         }
 
