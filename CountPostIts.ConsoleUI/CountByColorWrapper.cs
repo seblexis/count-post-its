@@ -3,15 +3,12 @@ using CountPostIts.ImageRecognition;
 
 namespace CountPostIts.ConsoleUI
 {
-    class InformationWrapper : IInformationWrapper
+    class CountByColorWrapper : ICountByColorWrapper
     {
         public Dictionary<string, int> OwnCountAllColours(string filename)
         {
-            Information information = new Information();
+            CountByColor information = new CountByColor();
             return information.CountAllColours(filename);
         }
-
     }
-
-   
 }

@@ -5,9 +5,9 @@ namespace CountPostIts.ConsoleUI
     public class Config
     {
         private readonly IFileWrapper _file;
-        private readonly IHandleData _handleData;
+        private readonly IPostItResults _handleData;
 
-        public Config(IFileWrapper file, IHandleData handleData)
+        public Config(IFileWrapper file, IPostItResults handleData)
         {
             _file = file;
             _handleData = handleData;
@@ -17,7 +17,7 @@ namespace CountPostIts.ConsoleUI
         {
             if (!_file.CallFileExists(filename)) throw new ArgumentException();
 
-            _handleData.PostItResults(filename);
+            _handleData.DisplayResults(filename);
         }
     }
 }

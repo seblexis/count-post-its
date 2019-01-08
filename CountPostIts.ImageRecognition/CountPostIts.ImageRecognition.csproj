@@ -74,7 +74,7 @@
     <Compile Include="IColorRange.cs" />
     <Compile Include="IColorRangeFactory.cs" />
     <Compile Include="ImageFilter.cs" />
-    <Compile Include="Information.cs" />
+    <Compile Include="CountByColor.cs" />
     <Compile Include="ISimpleShapeCheckerWrapper.cs" />
     <Compile Include="PostItAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

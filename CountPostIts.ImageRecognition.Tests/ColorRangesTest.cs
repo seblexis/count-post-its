@@ -15,9 +15,9 @@ namespace CountPostIts.ImageRecognition.Tests
         {
             _colorRangeFactoryMock = Substitute.For<IColorRangeFactory>();
             _colorRangeMock = Substitute.For<IColorRange>();
-            _colorRangeMock.RangeRed.Returns(new int[] { 1, 1 });
-            _colorRangeMock.RangeBlue.Returns(new int[] { 1, 1 });
-            _colorRangeMock.RangeGreen.Returns(new int[] { 1, 1 });
+            _colorRangeMock.RangeRed.Returns(new[] { 1, 1 });
+            _colorRangeMock.RangeBlue.Returns(new[] { 1, 1 });
+            _colorRangeMock.RangeGreen.Returns(new[] { 1, 1 });
             _colorRangeFactoryMock.Create().Returns(_colorRangeMock);
 
             _colorRanges = new ColorRanges(_colorRangeFactoryMock);
@@ -33,13 +33,13 @@ namespace CountPostIts.ImageRecognition.Tests
         public void ReturnsListWith6Colors()
         {
 
-            Assert.AreEqual(6, _colorRanges.RGB.Count);
+            Assert.AreEqual(6, _colorRanges.Rgb.Count);
         }
 
         [TestMethod]
         public void ReturnsListWithDictionariesWithColorRanges()
         {
-            var actual = _colorRanges.RGB[Colors.Green];
+            var actual = _colorRanges.Rgb[Colors.Green];
             Assert.IsNotNull(actual.RangeRed);
 
         }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
@@ -9,35 +7,35 @@ namespace CountPostIts.ImageRecognition.Tests
     [TestClass]
     public class PostItAnalysisTest
     {
-        PostItAnalysis postItAnalysis;
-        IColorRange yellowRGBRanges = new ColorRange();
-        IBlobCounterWrapper blobCounterWrapperMock;
-        ISimpleShapeCheckerWrapper simpleShapeCheckerWrapperMock;
-        IColorFilteringWrapper colorFilteringWrapperMock;
-        IColorRangeFactory _colorRangeFactoryMock;
+        private PostItAnalysis _postItAnalysis;
+        private IColorRange _yellowRgbRanges = new ColorRange();
+        private IBlobCounterWrapper _blobCounterWrapperMock;
+        private ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapperMock;
+        private IColorFilteringWrapper _colorFilteringWrapperMock;
+        private IColorRangeFactory _colorRangeFactoryMock;
 
 
-        [TestInitialize()]
+        [TestInitialize]
         public void BeforeEachTest()
         {
-            blobCounterWrapperMock = Substitute.For<BlobCounterWrapper>();
-            simpleShapeCheckerWrapperMock = Substitute.For<SimpleShapeCheckerWrapper>();
-            colorFilteringWrapperMock = Substitute.For<ColorFilteringWrapper>();
+            _blobCounterWrapperMock = Substitute.For<BlobCounterWrapper>();
+            _simpleShapeCheckerWrapperMock = Substitute.For<SimpleShapeCheckerWrapper>();
+            _colorFilteringWrapperMock = Substitute.For<ColorFilteringWrapper>();
             _colorRangeFactoryMock = Substitute.For<IColorRangeFactory>();
-            postItAnalysis = new PostItAnalysis(blobCounterWrapperMock, simpleShapeCheckerWrapperMock, colorFilteringWrapperMock);
+            _postItAnalysis = new PostItAnalysis(_blobCounterWrapperMock, _simpleShapeCheckerWrapperMock, _colorFilteringWrapperMock);
             ColorRanges colorRanges = new ColorRanges(_colorRangeFactoryMock);
-            yellowRGBRanges = colorRanges.RGB[Colors.Yellow];
+            _yellowRgbRanges = colorRanges.Rgb[Colors.Yellow];
         }
 
         [TestMethod]
         public void CountPostItNotesSavesImage()
         {
-            string resultPath = "result_Yellow.jpg";
+            const string resultPath = "result_Yellow.jpg";
             if (File.Exists(resultPath))
             {
                 File.Delete(resultPath);
             }
-            postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", yellowRGBRanges, "Yellow");
+            _postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", _yellowRgbRanges, "Yellow");
             Assert.AreEqual(true, File.Exists(resultPath));
         }
 

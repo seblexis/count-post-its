@@ -23,7 +23,6 @@ namespace CountPostIts.ImageRecognition
             Bitmap image = (Bitmap)Bitmap.FromFile(filename);
             ImageFilter imageFilter = new ImageFilter(_colorFilteringWrapper);
             BlobsDetector blobsDetector = new BlobsDetector(_blobCounterWrapper);
-
             Bitmap filteredImage = imageFilter.GetFilteredImage(image, rgbRange);
             Blob[] blobs = blobsDetector.FindBlobs(filteredImage);
 
@@ -58,7 +57,6 @@ namespace CountPostIts.ImageRecognition
             {
                 points.Add(new System.Drawing.Point(point.X, point.Y));
             }
-
             Graphics g = Graphics.FromImage(image);
             g.DrawPolygon(new Pen(Color.Red, 5.0f), points.ToArray());
         }

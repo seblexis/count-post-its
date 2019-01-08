@@ -6,7 +6,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class ColorFilteringWrapper : IColorFilteringWrapper
     {
-        private ColorFiltering _colorFilter;
+        private readonly ColorFiltering _colorFilter;
 
         public ColorFilteringWrapper()
         {
@@ -28,7 +28,6 @@ namespace CountPostIts.ImageRecognition
         {
             _colorFilter.Blue = new IntRange(first, last);
         }
-
 
         public void OwnGreen(int first, int last)
         {

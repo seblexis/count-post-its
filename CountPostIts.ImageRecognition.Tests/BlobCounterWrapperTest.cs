@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CountPostIts.ImageRecognition.Tests
@@ -7,28 +6,27 @@ namespace CountPostIts.ImageRecognition.Tests
     [TestClass]
     public class BlobCounterWrapperTest
     {
-        private BlobCounterWrapper blobCounterWrapper;
+        private BlobCounterWrapper _blobCounterWrapper;
 
         [TestInitialize]
         public void BeforeEachTest()
         {
-            blobCounterWrapper = new BlobCounterWrapper();
+            _blobCounterWrapper = new BlobCounterWrapper();
         }
 
         [TestMethod]
         public void CalculateMinDimensionReturns36ForImage1()
         {
-            Bitmap image = (Bitmap)Bitmap.FromFile("../../TestImages/test1.jpg");
-            
+            Bitmap image = (Bitmap)Image.FromFile("../../TestImages/test1.jpg");
 
-            int result = blobCounterWrapper.CalculateMinDimension(image);
+            int result = _blobCounterWrapper.CalculateMinDimension(image);
             Assert.AreEqual(72, result);
         }
 
         [TestMethod]
         public void CalculateMinDimensionReturns27ForImage6()
         {
-            Bitmap image = (Bitmap)Bitmap.FromFile("../../TestImages/test6.jpg");
+            Bitmap image = (Bitmap)Image.FromFile("../../TestImages/test6.jpg");
             BlobCounterWrapper blobCounterWrapper = new BlobCounterWrapper();
 
             int result = blobCounterWrapper.CalculateMinDimension(image);

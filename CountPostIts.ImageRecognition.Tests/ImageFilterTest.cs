@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
@@ -14,15 +12,14 @@ namespace CountPostIts.ImageRecognition.Tests
         Bitmap test_image1;
         ImageFilter imageFilter;
 
-        [TestInitialize()]
+        [TestInitialize]
         public void BeforeEachTest()
         {
             colorFilteringWrapperMock = Substitute.For<IColorFilteringWrapper>();
-            int[] mockRange = { 1, 2 };
             rgbRangeMock = Substitute.For<IColorRange>();
-            rgbRangeMock.RangeRed.Returns(new int[] { 1, 2 });
-            rgbRangeMock.RangeGreen.Returns(new int[] { 1, 2 });
-            rgbRangeMock.RangeBlue.Returns(new int[] { 1, 2 });
+            rgbRangeMock.RangeRed.Returns(new[] { 1, 2 });
+            rgbRangeMock.RangeGreen.Returns(new[] { 1, 2 });
+            rgbRangeMock.RangeBlue.Returns(new[] { 1, 2 });
             test_image1 = (Bitmap)Bitmap.FromFile("../../TestImages/test1.jpg");
             imageFilter = new ImageFilter(colorFilteringWrapperMock);
         }

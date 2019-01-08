@@ -15,7 +15,7 @@ namespace CountPostIts.ConsoleUI
         static void Run(Options opt)
         {
             var config = new Config(
-                new FileWrapper(), new HandleData(new InformationWrapper())
+                new FileWrapper(), new PostItResults(new CountByColorWrapper())
             );
 
             config.ChecksFile(opt.FileName);

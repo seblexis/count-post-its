@@ -5,7 +5,7 @@ namespace CountPostIts.ImageRecognition
 {
     public class BlobsDetector
     {
-        private IBlobCounterWrapper _blobCounterWrapper;
+        private readonly IBlobCounterWrapper _blobCounterWrapper;
 
         public BlobsDetector(IBlobCounterWrapper blobCounterWrapper)
         {
