@@ -19,11 +19,11 @@ namespace CountPostIts.ImageRecognition
         public Dictionary<string, int> CountAllColours(string filename)
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
-            ColourRanges colourRanges = new ColourRanges();
+            ColorRanges colorRanges = new ColorRanges(new ColorRangeFactory());
             PostItAnalysis postItAnalysis = new PostItAnalysis(_blobCounterWrapper, _simpleShapeCheckerWrapper, _colorFilteringWrapper);
-            foreach (KeyValuePair<Colours, Dictionary<string, int[]>> colourEntry in colourRanges.RGB)
+            foreach (KeyValuePair<Colors, IColorRange> colourEntry in colorRanges.RGB)
             {
-                string colourName = Enum.GetName(typeof(Colours), colourEntry.Key);
+                string colourName = Enum.GetName(typeof(Colors), colourEntry.Key);
                 int count = postItAnalysis.CountPostItNotes(filename, colourEntry.Value, colourName);
                 result.Add(colourName, count);
             }

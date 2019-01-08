@@ -10,7 +10,7 @@ namespace CountPostIts.ImageRecognition.Tests
     public class ImageFilterTest
     {
         IColorFilteringWrapper colorFilteringWrapperMock;
-        Dictionary<string, int[]> rgbRangeMock = new Dictionary<string, int[]>();
+        IColorRange rgbRangeMock;
         Bitmap test_image1;
         ImageFilter imageFilter;
 
@@ -19,9 +19,10 @@ namespace CountPostIts.ImageRecognition.Tests
         {
             colorFilteringWrapperMock = Substitute.For<IColorFilteringWrapper>();
             int[] mockRange = { 1, 2 };
-            rgbRangeMock.Add("R", mockRange);
-            rgbRangeMock.Add("G", mockRange);
-            rgbRangeMock.Add("B", mockRange);
+            rgbRangeMock = Substitute.For<IColorRange>();
+            rgbRangeMock.RangeRed.Returns(new int[] { 1, 2 });
+            rgbRangeMock.RangeGreen.Returns(new int[] { 1, 2 });
+            rgbRangeMock.RangeBlue.Returns(new int[] { 1, 2 });
             test_image1 = (Bitmap)Bitmap.FromFile("../../TestImages/test1.jpg");
             imageFilter = new ImageFilter(colorFilteringWrapperMock);
         }
@@ -43,15 +44,5 @@ namespace CountPostIts.ImageRecognition.Tests
             
         }
 
-        [TestMethod]
-        public void SetRangesWithinRGBRange()
-        {
-            Dictionary<string, int[]> rgbRangeOutOfBoundsMock = new Dictionary<string, int[]>();
-            int[] mockRangeOutOfBound = { -2, 10 };
-            rgbRangeOutOfBoundsMock.Add("R", mockRangeOutOfBound);
-            rgbRangeOutOfBoundsMock.Add("G", mockRangeOutOfBound);
-            rgbRangeOutOfBoundsMock.Add("B", mockRangeOutOfBound);
-            Assert.ThrowsException<ArgumentException>(() => imageFilter.GetFilteredImage(test_image1, rgbRangeOutOfBoundsMock));
-        }
     }
 }
