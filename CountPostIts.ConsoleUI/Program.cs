@@ -21,8 +21,11 @@ namespace CountPostIts.ConsoleUI
 
             if (config.ChecksFile(opt.FileName))
             {
-                var postItResults = new PostItResults();
-                postItResults.ShowResults(opt.FileName);
+                var resultsGetter = new ResultsGetter(new CountByColorWrapper());
+                var result = resultsGetter.Get(opt.FileName);
+
+                var resultsPrinter = new ResultsPrinter();
+                resultsPrinter.Print(result);
             };
         }
     }

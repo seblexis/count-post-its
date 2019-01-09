@@ -62,12 +62,10 @@
     <Compile Include="IFileWrapper.cs" />
     <Compile Include="ICountByColorWrapper.cs" />
     <Compile Include="CountByColorWrapper.cs" />
-    <Compile Include="IPostItResults.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="PostItResults.cs" />
     <Compile Include="ResultsGetter.cs" />
     <Compile Include="ResultsPrinter.cs" />
   </ItemGroup>
