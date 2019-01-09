@@ -22,7 +22,7 @@ namespace CountPostIts.ConsoleUI
             if (config.ChecksFile(opt.FileName))
             {
                 var postItResults = new PostItResults();
-                
+                postItResults.ShowResults(opt.FileName);
             };
         }
     }
