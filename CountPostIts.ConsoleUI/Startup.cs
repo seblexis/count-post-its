@@ -2,16 +2,16 @@
 
 namespace CountPostIts.ConsoleUI
 {
-    public class Config
+    public class Startup
     {
         private readonly IFileWrapper _file;
 
-        public Config(IFileWrapper file)
+        public Startup(IFileWrapper file)
         {
             _file = file;
         }
 
-        public Boolean ChecksFile(string filename)
+        public bool VerifyFile(string filename)
         {
             if (!_file.CallFileExists(filename)) throw new ArgumentException();
 

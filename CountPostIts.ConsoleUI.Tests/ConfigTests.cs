@@ -6,7 +6,7 @@ namespace CountPostIts.ConsoleUI.Tests
 {
     public class ConfigTests
     {
-        private Config _config;
+        private Startup _config;
         private const string Filename = "postits.jpg";
         private const string IncorrectFilename = "Hello.ppt";
 
@@ -21,13 +21,13 @@ namespace CountPostIts.ConsoleUI.Tests
                 .Setup(m => m.CallFileExists(Filename))
                 .Returns(true);
 
-            _config = new Config(_mockFile.Object);
+            _config = new Startup(_mockFile.Object);
         }
 
         [Test]
         public void ChecksFile_Is_Called_When_Given_Correct_Input()
         {
-            _config.ChecksFile(Filename);
+            _config.VerifyFile(Filename);
 
             _mockFile.Verify(m => m.CallFileExists(Filename), Times.Once);
         }
@@ -35,13 +35,13 @@ namespace CountPostIts.ConsoleUI.Tests
         [Test]
         public void Throws_Exception_When_Given_Incorrect_File()
         { 
-            Assert.Throws<ArgumentException>(() => _config.ChecksFile(IncorrectFilename));
+            Assert.Throws<ArgumentException>(() => _config.VerifyFile(IncorrectFilename));
         }
 
         [Test]
         public void Returns_True_When_Given_Correct_File()
         {
-            Assert.IsTrue(_config.ChecksFile(Filename));
+            Assert.IsTrue(_config.VerifyFile(Filename));
         }
 
     }

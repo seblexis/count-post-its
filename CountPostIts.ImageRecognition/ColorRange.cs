@@ -14,15 +14,8 @@ namespace CountPostIts.ImageRecognition
             get => _rangeRed;
             set
             {
-                try
-                {
-                    CheckRanges(value);
-                    _rangeRed = value;
-                }
-                catch (ArgumentOutOfRangeException outOfRange)
-                {
-                    Console.WriteLine(outOfRange.Message);
-                }
+                VerifyRanges(value);
+                _rangeRed = value;
             }
         }
 
@@ -31,15 +24,8 @@ namespace CountPostIts.ImageRecognition
             get => _rangeGreen;
             set
             {
-                try
-                {
-                    CheckRanges(value);
-                    _rangeGreen = value;
-                }
-                catch (ArgumentOutOfRangeException outOfRange)
-                {
-                    Console.WriteLine(outOfRange.Message);
-                }
+                VerifyRanges(value);
+                _rangeGreen = value;
             }
         }
 
@@ -48,20 +34,12 @@ namespace CountPostIts.ImageRecognition
             get => _rangeBlue;
             set
             {
-                try
-                {
-                    CheckRanges(value);
-                    _rangeBlue = value;
-                }
-                catch (ArgumentOutOfRangeException outOfRange)
-                {
-                    Console.WriteLine(outOfRange.Message);
-                    throw;
-                }
+                VerifyRanges(value);
+                _rangeBlue = value;
             }
         }
 
-        private void CheckRanges(int[] rgbRange)
+        private void VerifyRanges(int[] rgbRange)
         {
             if (rgbRange[0] > rgbRange[1])
             {

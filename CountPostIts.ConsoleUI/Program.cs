@@ -15,11 +15,11 @@ namespace CountPostIts.ConsoleUI
 
         static void Run(Options opt)
         {
-            var config = new Config(
+            var config = new Startup(
                 new FileWrapper()
             );
 
-            if (config.ChecksFile(opt.FileName))
+            if (config.VerifyFile(opt.FileName))
             {
                 var resultsGetter = new ResultsGetter(new CountByColorWrapper());
                 var result = resultsGetter.Get(opt.FileName);
