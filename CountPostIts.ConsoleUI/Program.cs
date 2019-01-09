@@ -5,6 +5,7 @@ namespace CountPostIts.ConsoleUI
 {
     class Program
     {
+
         static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
@@ -15,10 +16,17 @@ namespace CountPostIts.ConsoleUI
         static void Run(Options opt)
         {
             var config = new Config(
-                new FileWrapper(), new PostItResults(new CountByColorWrapper())
+                new FileWrapper()
             );
 
-            config.ChecksFile(opt.FileName);
+            if (config.ChecksFile(opt.FileName))
+            {
+                var resultsGetter = new ResultsGetter(new CountByColorWrapper());
+                var result = resultsGetter.Get(opt.FileName);
+
+                var resultsPrinter = new ResultsPrinter();
+                resultsPrinter.Print(result);
+            };
         }
     }
 }
