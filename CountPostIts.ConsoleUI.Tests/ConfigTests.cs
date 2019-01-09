@@ -11,19 +11,17 @@ namespace CountPostIts.ConsoleUI.Tests
         private const string IncorrectFilename = "Hello.ppt";
 
         private Mock<IFileWrapper> _mockFile;
-        private Mock<IPostItResults> _mockHandleData;
 
         [SetUp]
         public void Setup()
         {
             _mockFile = new Mock<IFileWrapper>();
-            _mockHandleData = new Mock<IPostItResults>();
 
             _mockFile
                 .Setup(m => m.CallFileExists(Filename))
                 .Returns(true);
 
-            _config = new Config(_mockFile.Object, _mockHandleData.Object);
+            _config = new Config(_mockFile.Object);
         }
 
         [Test]
@@ -41,11 +39,10 @@ namespace CountPostIts.ConsoleUI.Tests
         }
 
         [Test]
-        public void Calls_PostitResults_When_Given_Correct_File()
+        public void Returns_True_When_Given_Correct_File()
         {
-            _config.ChecksFile(Filename);
-
-            _mockHandleData.Verify(m => m.DisplayResults(Filename), Times.Once);
+            Assert.IsTrue(_config.ChecksFile(Filename));
         }
+
     }
 }

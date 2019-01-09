@@ -1,33 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Channels;
 
 namespace CountPostIts.ConsoleUI
 {
     public class PostItResults : IPostItResults
     {
-        private readonly ICountByColorWrapper _countByColor;
 
-        public PostItResults(ICountByColorWrapper countByColor)
+        public void ShowResults(String filename)
         {
-            _countByColor = countByColor;
-        }
+            var resultsGetter = new ResultsGetter(new CountByColorWrapper());
+            var result = resultsGetter.Get(filename);
 
-        public void DisplayResults(string filename)
-        {
-            Dictionary<string, int> result = RetrieveResults(filename);
-
-            Console.WriteLine("Result: ");
-
-            foreach (KeyValuePair<string, int> entry in result)
-            {
-                Console.WriteLine($"{entry.Key}: {entry.Value}");
-            }
-        }
-
-        private Dictionary<string, int> RetrieveResults(string filename)
-        {
-            Dictionary<string, int> result = _countByColor.OwnCountAllColours(filename);
-            return result;
+            var resultsPrinter = new ResultsPrinter();
+            resultsPrinter.Print(result);
         }
     }
 }

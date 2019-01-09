@@ -2,6 +2,6 @@
 {
     public interface IPostItResults
     {
-        void DisplayResults(string filename);
+        void ShowResults(string filename);
     }
 }
