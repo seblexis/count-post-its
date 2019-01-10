@@ -21,7 +21,6 @@ namespace CountPostIts.ConsoleUI
 
             var filePath = startup.GetPathInProject(opt.FileName);
 
-
             try
             {
                 if (startup.VerifyFile(filePath))
