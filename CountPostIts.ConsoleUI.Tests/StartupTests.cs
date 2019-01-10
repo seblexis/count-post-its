@@ -2,7 +2,7 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
-namespace CountPostIts.ConsoleUI.MSTests
+namespace CountPostIts.ConsoleUI.Tests
 {
     [TestClass]
     public class StartupTests
