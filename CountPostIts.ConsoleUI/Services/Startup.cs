@@ -14,7 +14,7 @@ namespace CountPostIts.ConsoleUI
 
         public bool VerifyFile(string filename)
         {
-            if (!_file.CallFileExists(filename)) throw new ArgumentException();
+            if (!_file.CallFileExists(filename)) throw new ArgumentException("File does not exist. Application is shutting down.");
 
             return true;
         }
