@@ -76,14 +76,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CountByColorFeatureTest.cs" />
+    <Compile Include="Services\CountByColorFeatureTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ColorRangesTest.cs" />
-    <Compile Include="ImageFilterTest.cs" />
-    <Compile Include="PostItAnalysisTest.cs" />
-    <Compile Include="BlobCounterWrapperTest.cs" />
-    <Compile Include="BlobsDetectorTest.cs" />
-    <Compile Include="ColorRangeTest.cs" />
+    <Compile Include="Entities\ColorRangesTest.cs" />
+    <Compile Include="Services\ImageFilterTest.cs" />
+    <Compile Include="Services\PostItAnalysisTest.cs" />
+    <Compile Include="Services\Impl\BlobCounterWrapperTest.cs" />
+    <Compile Include="Services\BlobsDetectorTest.cs" />
+    <Compile Include="Entities\Impl\ColorRangeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

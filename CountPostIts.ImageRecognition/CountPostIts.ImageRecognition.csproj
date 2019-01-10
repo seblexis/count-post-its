@@ -62,23 +62,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlobCounterWrapper.cs" />
-    <Compile Include="BlobsDetector.cs" />
-    <Compile Include="ColorFilteringWrapper.cs" />
-    <Compile Include="ColorRange.cs" />
-    <Compile Include="ColorRangeFactory.cs" />
-    <Compile Include="ColorRanges.cs" />
-    <Compile Include="Colors.cs" />
-    <Compile Include="IBlobCounterWrapper.cs" />
-    <Compile Include="IColorFilteringWrapper.cs" />
-    <Compile Include="IColorRange.cs" />
-    <Compile Include="IColorRangeFactory.cs" />
-    <Compile Include="ImageFilter.cs" />
-    <Compile Include="CountByColor.cs" />
-    <Compile Include="ISimpleShapeCheckerWrapper.cs" />
-    <Compile Include="PostItAnalysis.cs" />
+    <Compile Include="Services\Impl\BlobCounterWrapper.cs" />
+    <Compile Include="Services\BlobsDetector.cs" />
+    <Compile Include="Services\Impl\ColorFilteringWrapper.cs" />
+    <Compile Include="Entities\Impl\ColorRange.cs" />
+    <Compile Include="Services\Impl\ColorRangeFactory.cs" />
+    <Compile Include="Entities\ColorRanges.cs" />
+    <Compile Include="Entities\Colors.cs" />
+    <Compile Include="Services\IBlobCounterWrapper.cs" />
+    <Compile Include="Services\IColorFilteringWrapper.cs" />
+    <Compile Include="Entities\IColorRange.cs" />
+    <Compile Include="Services\IColorRangeFactory.cs" />
+    <Compile Include="Services\ImageFilter.cs" />
+    <Compile Include="Services\CountByColor.cs" />
+    <Compile Include="Services\ISimpleShapeCheckerWrapper.cs" />
+    <Compile Include="Services\PostItAnalysis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleShapeCheckerWrapper.cs" />
+    <Compile Include="Services\Impl\SimpleShapeCheckerWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
