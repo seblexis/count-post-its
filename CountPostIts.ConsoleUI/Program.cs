@@ -15,13 +15,13 @@ namespace CountPostIts.ConsoleUI
 
         static void Run(Options opt)
         {
-            var config = new Startup(
+            var setup = new Startup(
                 new FileWrapper()
             );
 
-            var filePath = config.GetPathInProject(opt.FileName);
+            var filePath = setup.GetPathInProject(opt.FileName);
             
-            if (config.VerifyFile(filePath))
+            if (setup.VerifyFile(filePath))
             {
                 var resultsGetter = new ResultsGetter(new CountByColorWrapper());
                 var result = resultsGetter.Get(filePath);
