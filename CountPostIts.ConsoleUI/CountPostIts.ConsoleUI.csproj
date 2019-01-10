@@ -58,16 +58,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileWrapper.cs" />
-    <Compile Include="IFileWrapper.cs" />
-    <Compile Include="ICountByColorWrapper.cs" />
-    <Compile Include="CountByColorWrapper.cs" />
-    <Compile Include="Options.cs" />
+    <Compile Include="Services\Impl\FileWrapper.cs" />
+    <Compile Include="Services\IFileWrapper.cs" />
+    <Compile Include="Services\ICountByColorWrapper.cs" />
+    <Compile Include="Services\Impl\CountByColorWrapper.cs" />
+    <Compile Include="Entities\Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
-    <Compile Include="ResultsGetter.cs" />
-    <Compile Include="ResultsPrinter.cs" />
+    <Compile Include="Services\Startup.cs" />
+    <Compile Include="Services\ResultsGetter.cs" />
+    <Compile Include="Services\ResultsPrinter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
