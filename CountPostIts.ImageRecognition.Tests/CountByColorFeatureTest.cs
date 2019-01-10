@@ -16,63 +16,128 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void Count7YellowInImage1()
         {
-            Assert.AreEqual(7, _information.CountAllColours("../../TestImages/test1.jpg")["Yellow"]);
+            // Arrange
+            int expected = 7;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test1.jpg")["Yellow"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [Ignore]
         [TestCategory("Yellow")]
         [TestMethod]
         //Test is only returning 3 because of overlap
-        public void Count3YellowInImage4()
+        public void Count5YellowInImage4()
         {
-            Assert.AreEqual(5, _information.CountAllColours("../../TestImages/test4.jpg")["Yellow"]);
+            // Arrange
+            int expected = 5;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test4.jpg")["Yellow"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Green")]
         [TestMethod]
         public void Count5GreenInImage1()
         {
-            Assert.AreEqual(5, _information.CountAllColours("../../TestImages/test1.jpg")["Green"]);
+            // Arrange
+            int expected = 5;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test1.jpg")["Green"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Green")]
         [TestMethod]
         public void Count4GreenInImage5()
         {
-            Assert.AreEqual(4, _information.CountAllColours("../../TestImages/test5.jpg")["Green"]);
+            // Arrange
+            int expected = 4;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test5.jpg")["Green"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Blue")]
         [TestMethod]
         public void Count1BlueInImage2()
         {
-            Assert.AreEqual(1, _information.CountAllColours("../../TestImages/test2.jpg")["Blue"]);
+            // Arrange
+            int expected = 1;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test2.jpg")["Blue"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Blue")]
         [TestMethod]
         public void Count1BlueInImage3()
         {
-            Assert.AreEqual(1, _information.CountAllColours("../../TestImages/test3.jpg")["Blue"]);
+            // Arrange
+            int expected = 1;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test3.jpg")["Blue"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Blue")]
         [TestMethod]
         public void Count1BlueInImage4()
         {
-            Assert.AreEqual(1, _information.CountAllColours("../../TestImages/test4.jpg")["Blue"]);
+            // Arrange
+            int expected = 1;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test4.jpg")["Blue"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
+
         [TestCategory("Blue")]
         [TestMethod]
         public void Count1BlueInImage5()
         {
-            Assert.AreEqual(1, _information.CountAllColours("../../TestImages/test5.jpg")["Blue"]);
+            // Arrange
+            int expected = 1;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test5.jpg")["Blue"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
+
         [TestCategory("Blue")]
         [TestMethod]
         public void Count3BlueInImage6()
         {
-            Assert.AreEqual(3, _information.CountAllColours("../../TestImages/test6.jpg")["Blue"]);
+            // Arrange
+            int expected = 3;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test6.jpg")["Blue"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [Ignore]
@@ -81,28 +146,56 @@ namespace CountPostIts.ImageRecognition.Tests
         //Test not passing (returning 1) because of writing in post it, not because of not match
         public void Count2OrangeInImage4()
         {
-            Assert.AreEqual(2, _information.CountAllColours("../../TestImages/test4.jpg")["Orange"]);
+            // Arrange
+            int expected = 2;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test4.jpg")["Orange"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Pink")]
         [TestMethod]
         public void Count2PinkInImage5()
         {
-            Assert.AreEqual(2, _information.CountAllColours("../../TestImages/test5.jpg")["Pink"]);
+            // Arrange
+            int expected = 2;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test5.jpg")["Pink"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Pink")]
         [TestMethod]
         public void Count1PinkInImage6()
         {
-            Assert.AreEqual(1, _information.CountAllColours("../../TestImages/test6.jpg")["Pink"]);
+            // Arrange
+            int expected = 1;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test6.jpg")["Pink"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCategory("Purple")]
         [TestMethod]
         public void Count3PurpleInImage6()
         {
-            Assert.AreEqual(3, _information.CountAllColours("../../TestImages/test6.jpg")["Purple"]);
+            // Arrange
+            int expected = 3;
+
+            // Act
+            int actual = _information.CountAllColours("../../TestImages/test6.jpg")["Purple"];
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
     }
 }

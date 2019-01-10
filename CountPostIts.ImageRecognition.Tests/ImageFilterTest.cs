@@ -27,16 +27,14 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void GetFilteretedImageSetsFilter()
         {
+            // Act
             _imageFilter.GetFilteredImage(_testImage1, _rgbRangeMock);
+
+            // Assert
             _colorFilteringWrapperMock.Received().OwnRed(1,2);
             _colorFilteringWrapperMock.Received().OwnGreen(1, 2);
             _colorFilteringWrapperMock.Received().OwnBlue(1, 2);
         }
 
-        [TestMethod]
-        public void GetFilteretedAppliesFiltersToImage()
-        {
-            _imageFilter.GetFilteredImage(_testImage1, _rgbRangeMock);  
-        }
     }
 }

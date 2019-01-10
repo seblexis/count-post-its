@@ -16,19 +16,19 @@ namespace CountPostIts.ConsoleUI.Tests
             _countByColorMock = new Mock<ICountByColorWrapper>();
             ResultsGetter resultsGetter = new ResultsGetter(_countByColorMock.Object);
             string filename = "filename.jpg";
-            var resultMock = new Dictionary<string, int>()
+            var expected = new Dictionary<string, int>()
             {
                 {"Blue", 1}
             };
             _countByColorMock
                 .Setup(m => m.OwnCountAllColours(filename))
-                .Returns(resultMock);
+                .Returns(expected);
 
             //Act
             var actual = resultsGetter.Get(filename);
 
             //Assert
-            Assert.AreEqual(resultMock,actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
