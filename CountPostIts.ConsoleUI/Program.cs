@@ -19,7 +19,7 @@ namespace CountPostIts.ConsoleUI
                 new FileWrapper()
             );
 
-            var filePath = config.GetFullPathOf(opt.FileName);
+            var filePath = config.GetPathInProject(opt.FileName);
             
             if (config.VerifyFile(filePath))
             {

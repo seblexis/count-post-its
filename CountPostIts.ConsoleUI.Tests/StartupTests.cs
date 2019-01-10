@@ -50,13 +50,13 @@ namespace CountPostIts.ConsoleUI.Tests
         }
 
         [TestMethod]
-        public void GetFullPathReturnsFullPath()
+        public void GetPathInProjectReturnsFullPath()
         {
             // Arrange
             string expected = "CountPostIts.ConsoleUI.Tests\\images\\" + Filename;
 
             // Act
-            string actual = _startup.GetFullPathOf(Filename);
+            string actual = _startup.GetPathInProject(Filename);
 
             // Assert
             StringAssert.EndsWith(actual,expected);
