@@ -1,7 +1,9 @@
-﻿using Accord;
+﻿using System;
+using Accord;
 using Accord.Imaging;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 
 namespace CountPostIts.ImageRecognition
 {
@@ -29,7 +31,7 @@ namespace CountPostIts.ImageRecognition
             return CountQuadrilaterals(blobs, filteredImage, colourName);
         }
 
-        private int CountQuadrilaterals(Blob[] blobs, Bitmap image, string colourName)
+        private int CountQuadrilaterals(Blob[] blobs, Bitmap image, string colorName)
         {
             int counter = 0;
             for (int i = 0; i < blobs.Length; i++)
@@ -42,10 +44,9 @@ namespace CountPostIts.ImageRecognition
                     counter++;
                 }
             }
-            string resultPath = $"result_{colourName}.jpg";
             if (counter > 0)
             {
-                image.Save(resultPath);
+                image.Save(GetPathToSaveTo(colorName));
             }
             return counter;
         }
@@ -59,6 +60,11 @@ namespace CountPostIts.ImageRecognition
             }
             Graphics g = Graphics.FromImage(image);
             g.DrawPolygon(new Pen(Color.Red, 5.0f), points.ToArray());
+        }
+
+        private string GetPathToSaveTo(string colorName)
+        {
+           return new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\results\\{colorName}.jpg";
         }
     }
 }
