@@ -30,7 +30,7 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestCategory("Yellow")]
         [TestMethod]
         //Test is only returning 3 because of overlap
-        public void Count3YellowInImage4()
+        public void Count5YellowInImage4()
         {
             // Arrange
             int expected = 5;
