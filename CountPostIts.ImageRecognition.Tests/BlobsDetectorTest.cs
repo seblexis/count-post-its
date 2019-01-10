@@ -44,6 +44,7 @@ namespace CountPostIts.ImageRecognition.Tests
             // Act
             var actual = _blobsDetector.FindBlobs(_image);
 
+            // Assert
             Assert.IsInstanceOfType(actual, expected);
         }
     }

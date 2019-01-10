@@ -38,6 +38,8 @@ namespace CountPostIts.ImageRecognition.Tests
 
             // Act
             int actual = blobCounterWrapper.CalculateMinDimension(image);
+
+            // Assert
             Assert.AreEqual(actual, expected);
         }
     }

@@ -44,8 +44,11 @@ namespace CountPostIts.ConsoleUI.Tests
         [Test]
         public void Returns_True_When_Given_Correct_File()
         {
-            // Act and Assert
-            Assert.IsTrue(_config.VerifyFile(Filename));
+            // Act 
+            bool actual = _config.VerifyFile(Filename);
+
+            // Assert
+            Assert.IsTrue(actual);
         }
 
     }
