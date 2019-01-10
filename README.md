@@ -30,7 +30,10 @@ The result is displayed as shown:
 Images are saved for each colour found, highlighting the Post it notes the app has identified within the debug directory.
 ![drawnResultsYellow](./readme/result_Yellow.jpg)
 
-![drawnResultsGreen](./readme/result_Green.jpg)
+![drawnResultsGreen](./readme/result_Green.jpg)  
+
+To analyse your own images, place them in ```CountPostIts.ConsoleUI\Images```  
+
 ## Team Members
 * [Robbie](https://github.com/racldn)
 * [Seb](https://github.com/seblexis)
