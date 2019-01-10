@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace CountPostIts.ConsoleUI
 {
@@ -16,6 +17,11 @@ namespace CountPostIts.ConsoleUI
             if (!_file.CallFileExists(filename)) throw new ArgumentException();
 
             return true;
+        }
+
+        public string GetPathInProject(string filename)
+        {
+            return new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName + "\\images\\" + filename;
         }
     }
 }

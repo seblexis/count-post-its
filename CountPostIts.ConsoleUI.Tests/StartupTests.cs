@@ -48,5 +48,18 @@ namespace CountPostIts.ConsoleUI.Tests
             // Assert
             Assert.IsTrue(actual);
         }
+
+        [TestMethod]
+        public void GetPathInProjectReturnsFullPath()
+        {
+            // Arrange
+            string expected = "CountPostIts.ConsoleUI.Tests\\images\\" + Filename;
+
+            // Act
+            string actual = _startup.GetPathInProject(Filename);
+
+            // Assert
+            StringAssert.EndsWith(actual,expected);
+        }
     }
 }
