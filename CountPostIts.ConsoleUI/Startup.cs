@@ -21,7 +21,6 @@ namespace CountPostIts.ConsoleUI
 
         public string GetFullPathOf(string filename)
         {
-
             return new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.FullName + "\\images\\" + filename;
         }
     }
