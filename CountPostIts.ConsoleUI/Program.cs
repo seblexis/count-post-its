@@ -19,10 +19,12 @@ namespace CountPostIts.ConsoleUI
                 new FileWrapper()
             );
 
-            if (config.VerifyFile(opt.FileName))
+            var filePath = config.GetFullPathOf(opt.FileName);
+            
+            if (config.VerifyFile(filePath))
             {
                 var resultsGetter = new ResultsGetter(new CountByColorWrapper());
-                var result = resultsGetter.Get(opt.FileName);
+                var result = resultsGetter.Get(filePath);
 
                 var resultsPrinter = new ResultsPrinter();
                 resultsPrinter.Print(result);
