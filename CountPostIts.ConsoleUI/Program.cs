@@ -20,15 +20,24 @@ namespace CountPostIts.ConsoleUI
             );
 
             var filePath = startup.GetPathInProject(opt.FileName);
-            
-            if (startup.VerifyFile(filePath))
-            {
-                var resultsGetter = new ResultsGetter(new CountByColorWrapper());
-                var result = resultsGetter.Get(filePath);
 
-                var resultsPrinter = new ResultsPrinter();
-                resultsPrinter.Print(result);
-            };
+
+            try
+            {
+                if (startup.VerifyFile(filePath))
+                {
+                    var resultsGetter = new ResultsGetter(new CountByColorWrapper());
+                    var result = resultsGetter.Get(filePath);
+
+                    var resultsPrinter = new ResultsPrinter();
+                    resultsPrinter.Print(result);
+                }
+            }
+            catch(ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
     }
 }
