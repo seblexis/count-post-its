@@ -15,22 +15,30 @@ namespace CountPostIts.ImageRecognition.Tests
         }
 
         [TestMethod]
-        public void CalculateMinDimensionReturns36ForImage1()
+        public void CalculateMinDimensionReturns72ForImage1()
         {
+            // Arrange
             Bitmap image = (Bitmap)Image.FromFile("../../TestImages/test1.jpg");
+            int expected = 72;
 
-            int result = _blobCounterWrapper.CalculateMinDimension(image);
-            Assert.AreEqual(72, result);
+            // Act
+            int actual = _blobCounterWrapper.CalculateMinDimension(image);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
-        public void CalculateMinDimensionReturns27ForImage6()
+        public void CalculateMinDimensionReturns54ForImage6()
         {
+            // Arrange
             Bitmap image = (Bitmap)Image.FromFile("../../TestImages/test6.jpg");
             BlobCounterWrapper blobCounterWrapper = new BlobCounterWrapper();
+            int expected = 54;
 
-            int result = blobCounterWrapper.CalculateMinDimension(image);
-            Assert.AreEqual(54, result);
+            // Act
+            int actual = blobCounterWrapper.CalculateMinDimension(image);
+            Assert.AreEqual(actual, expected);
         }
     }
 }

@@ -17,18 +17,22 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void SetsColorRange()
         {         
+            // Arrange
             int[] expected = { 100, 120 };
-
             _testColor.RangeBlue = new[] { 100, 120 };
 
-            Assert.AreEqual(expected[0], _testColor.RangeBlue[0]);
-            Assert.AreEqual(expected[1], _testColor.RangeBlue[1]);
+            // Act
+            int[] actual = _testColor.RangeBlue;
+
+            // Assert
+            CollectionAssert.AreEqual(expected, actual);            
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void DoesNotAcceptValuesBelow0()
         {
+            // Act
             _testColor.RangeBlue = new[] { -10, 100 };
         }
 
@@ -36,6 +40,7 @@ namespace CountPostIts.ImageRecognition.Tests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void DoesNotAcceptValuesAbove255()
         {
+            // Act
             _testColor.RangeBlue = new[] { 0, 300 };
         }
 
@@ -43,6 +48,7 @@ namespace CountPostIts.ImageRecognition.Tests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void DoesNotAcceptValuesInWrongOrder()
         {
+            // Act
             _testColor.RangeBlue = new[] { 200, 100 };
         }
 

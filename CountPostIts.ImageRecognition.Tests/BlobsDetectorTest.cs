@@ -24,8 +24,10 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void FindBlobsCallsBlobCounterWrapperMethods()
         {
+            // Act
             _blobsDetector.FindBlobs(_image);
 
+            // Assert    
             _blobCounterWrapperMock.Received().CalculateMinDimension(_image);
             _blobCounterWrapperMock.Received().OwnFilterBlobs(true);
             _blobCounterWrapperMock.ReceivedWithAnyArgs().OwnMinHeight(1);
@@ -36,9 +38,13 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void FindBlobsReturnsListOfBlobs()
         {
-            var result = _blobsDetector.FindBlobs(_image);
+            // Arrange
+            var expected = typeof(Blob[]);
 
-            Assert.IsInstanceOfType(result, typeof(Blob[]));
+            // Act
+            var actual = _blobsDetector.FindBlobs(_image);
+
+            Assert.IsInstanceOfType(actual, expected);
         }
     }
 }

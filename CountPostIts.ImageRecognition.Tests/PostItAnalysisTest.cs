@@ -30,13 +30,18 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void CountPostItNotesSavesImage()
         {
+            // Arrange
             const string resultPath = "result_Yellow.jpg";
             if (File.Exists(resultPath))
             {
                 File.Delete(resultPath);
             }
+
+            // Act
             _postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", _yellowRgbRanges, "Yellow");
-            Assert.AreEqual(true, File.Exists(resultPath));
+
+            // Assert
+            Assert.IsTrue(File.Exists(resultPath));
         }
 
     }

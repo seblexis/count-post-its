@@ -6,9 +6,9 @@ namespace CountPostIts.ImageRecognition.Tests
     [TestClass]
     public class ColorRangesTest
     {
-        IColorRangeFactory _colorRangeFactoryMock;
-        IColorRange _colorRangeMock;
-        ColorRanges _colorRanges;
+        private IColorRangeFactory _colorRangeFactoryMock;
+        private IColorRange _colorRangeMock;
+        private ColorRanges _colorRanges;
 
         [TestInitialize]
         public void BeforeEachTest()
@@ -26,20 +26,30 @@ namespace CountPostIts.ImageRecognition.Tests
         [TestMethod]
         public void CreatesColorObject()
         {
+            // Assert
             _colorRangeFactoryMock.Received().Create();
         }
 
         [TestMethod]
         public void ReturnsListWith6Colors()
         {
+            // Arrange
+            int expected = 6;
 
-            Assert.AreEqual(6, _colorRanges.Rgb.Count);
+            // Act
+            int actual = _colorRanges.Rgb.Count;
+
+            // Assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void ReturnsListWithDictionariesWithColorRanges()
         {
+            // Act
             var actual = _colorRanges.Rgb[Colors.Green];
+
+            // Assert
             Assert.IsNotNull(actual.RangeRed);
 
         }
