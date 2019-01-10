@@ -50,10 +50,10 @@ namespace CountPostIts.ConsoleUI.Tests
         }
 
         [TestMethod]
-        public void GetPathInProjectReturnsFullPath()
+        public void GetPathInProjectReturnsCorrectPath()
         {
             // Arrange
-            string expected = "CountPostIts.ConsoleUI.Tests\\images\\" + Filename;
+            string expected = "count-post-its\\images\\" + Filename;
 
             // Act
             string actual = _startup.GetPathInProject(Filename);

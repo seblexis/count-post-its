@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
@@ -31,17 +32,19 @@ namespace CountPostIts.ImageRecognition.Tests
         public void CountPostItNotesSavesImage()
         {
             // Arrange
-            const string resultPath = "result_Yellow.jpg";
-            if (File.Exists(resultPath))
+            string expectedPathToSaveTo = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\results\\Yellow.jpg";
+
+            Console.WriteLine(File.Exists(expectedPathToSaveTo));
+            if (File.Exists(expectedPathToSaveTo))
             {
-                File.Delete(resultPath);
+                File.Delete(expectedPathToSaveTo);
             }
 
             // Act
             _postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", _yellowRgbRanges, "Yellow");
 
             // Assert
-            Assert.IsTrue(File.Exists(resultPath));
+            Assert.IsTrue(File.Exists(expectedPathToSaveTo));
         }
 
     }
