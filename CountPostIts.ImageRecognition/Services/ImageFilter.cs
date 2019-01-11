@@ -5,7 +5,7 @@ namespace CountPostIts.ImageRecognition.Services
 {
     public class ImageFilter
     {
-        private IColorFilteringWrapper _colorFilteringWrapper;
+        private readonly IColorFilteringWrapper _colorFilteringWrapper;
 
         public ImageFilter(IColorFilteringWrapper colorFilteringWrapper)
         {

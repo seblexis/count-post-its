@@ -5,14 +5,15 @@ using System.IO;
 using Accord;
 using Accord.Imaging;
 using CountPostIts.ImageRecognition.Entities;
+using Image = System.Drawing.Image;
 
 namespace CountPostIts.ImageRecognition.Services
 {
     public class PostItAnalysis
     {
-        private ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapper;
-        private IBlobCounterWrapper _blobCounterWrapper;
-        private IColorFilteringWrapper _colorFilteringWrapper;
+        private readonly ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapper;
+        private readonly IBlobCounterWrapper _blobCounterWrapper;
+        private readonly IColorFilteringWrapper _colorFilteringWrapper;
 
         public PostItAnalysis(IBlobCounterWrapper blobCounterWrapper, ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper, IColorFilteringWrapper colorFilteringWrapper)
         {
@@ -23,7 +24,7 @@ namespace CountPostIts.ImageRecognition.Services
 
         public int CountPostItNotes(string filename, IColorRange rgbRange, string colourName)
         {
-            Bitmap image = (Bitmap)Bitmap.FromFile(filename);
+            Bitmap image = (Bitmap)Image.FromFile(filename);
             ImageFilter imageFilter = new ImageFilter(_colorFilteringWrapper);
             BlobsDetector blobsDetector = new BlobsDetector(_blobCounterWrapper);
             Bitmap filteredImage = imageFilter.GetFilteredImage(image, rgbRange);
@@ -38,8 +39,7 @@ namespace CountPostIts.ImageRecognition.Services
             for (int i = 0; i < blobs.Length; i++)
             {
                 List<IntPoint> edgePoints = _blobCounterWrapper.OwnGetBlobsEdgePoints(blobs[i]);
-                List<IntPoint> cornerPoints;
-                if (_simpleShapeCheckerWrapper.OwnIsQuadrilateral(edgePoints, out cornerPoints))
+                if (_simpleShapeCheckerWrapper.OwnIsQuadrilateral(edgePoints, out var cornerPoints))
                 {
                     DrawPostIt(image, edgePoints, cornerPoints);
                     counter++;
@@ -65,7 +65,7 @@ namespace CountPostIts.ImageRecognition.Services
 
         private string GetPathToSaveTo(string colorName)
         {
-           return new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\result_{colorName}.jpg";
+           return new DirectoryInfo(Environment.CurrentDirectory)?.Parent?.Parent?.Parent?.FullName + $"\\images\\result_{colorName}.jpg";
         }
     }
 }
