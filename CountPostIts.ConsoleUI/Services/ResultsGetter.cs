@@ -13,7 +13,7 @@ namespace CountPostIts.ConsoleUI.Services
 
         public Dictionary<string, int> Get(string filename)
         {
-            Dictionary<string, int> result = _countByColor.OwnCountAllColors(filename);
+            var result = _countByColor.OwnCountAllColors(filename);
             return result;
         }
     }

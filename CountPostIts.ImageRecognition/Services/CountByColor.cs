@@ -8,8 +8,8 @@ namespace CountPostIts.ImageRecognition.Services
     public class CountByColor
     {
         private readonly IBlobCounterWrapper _blobCounterWrapper;
-        private readonly ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapper;
         private readonly IColorFilteringWrapper _colorFilteringWrapper;
+        private readonly ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapper;
 
         public CountByColor()
         {
@@ -20,15 +20,17 @@ namespace CountPostIts.ImageRecognition.Services
 
         public Dictionary<string, int> CountAllColours(string filename)
         {
-            Dictionary<string, int> result = new Dictionary<string, int>();
-            ColorRanges colorRanges = new ColorRanges(new ColorRangeFactory());
-            PostItAnalysis postItAnalysis = new PostItAnalysis(_blobCounterWrapper, _simpleShapeCheckerWrapper, _colorFilteringWrapper);
-            foreach (KeyValuePair<Colors, IColorRange> colourEntry in colorRanges.Rgb)
+            var result = new Dictionary<string, int>();
+            var colorRanges = new ColorRanges(new ColorRangeFactory());
+            var postItAnalysis =
+                new PostItAnalysis(_blobCounterWrapper, _simpleShapeCheckerWrapper, _colorFilteringWrapper);
+            foreach (var colourEntry in colorRanges.Rgb)
             {
-                string colourName = Enum.GetName(typeof(Colors), colourEntry.Key);
-                int count = postItAnalysis.CountPostItNotes(filename, colourEntry.Value, colourName);
+                var colourName = Enum.GetName(typeof(Colors), colourEntry.Key);
+                var count = postItAnalysis.CountPostItNotes(filename, colourEntry.Value, colourName);
                 result.Add(colourName, count);
             }
+
             return result;
         }
     }

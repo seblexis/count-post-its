@@ -7,7 +7,8 @@ namespace CountPostIts.ImageRecognition.Services.Impl
 {
     public class BlobCounterWrapper : IBlobCounterWrapper
     {
-        private BlobCounter _blobCounter;
+        private readonly BlobCounter _blobCounter;
+
         public BlobCounterWrapper()
         {
             _blobCounter = new BlobCounter();
@@ -30,7 +31,7 @@ namespace CountPostIts.ImageRecognition.Services.Impl
 
         public void OwnProcessImage(object image)
         {
-            _blobCounter.ProcessImage((Bitmap)image);
+            _blobCounter.ProcessImage((Bitmap) image);
         }
 
         public Blob[] OwnGetObjectsInformation()
@@ -45,10 +46,7 @@ namespace CountPostIts.ImageRecognition.Services.Impl
 
         public int CalculateMinDimension(Bitmap image)
         {
-            if (image.Width > image.Height)
-            {
-                return image.Width / 50;
-            }
+            if (image.Width > image.Height) return image.Width / 50;
             return image.Height / 50;
         }
     }

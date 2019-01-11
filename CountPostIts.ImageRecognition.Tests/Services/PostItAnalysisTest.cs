@@ -12,12 +12,12 @@ namespace CountPostIts.ImageRecognition.Tests.Services
     [TestClass]
     public class PostItAnalysisTest
     {
-        private PostItAnalysis _postItAnalysis;
-        private IColorRange _yellowRgbRanges = new ColorRange();
         private IBlobCounterWrapper _blobCounterWrapperMock;
-        private ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapperMock;
         private IColorFilteringWrapper _colorFilteringWrapperMock;
         private IColorRangeFactory _colorRangeFactoryMock;
+        private PostItAnalysis _postItAnalysis;
+        private ISimpleShapeCheckerWrapper _simpleShapeCheckerWrapperMock;
+        private IColorRange _yellowRgbRanges = new ColorRange();
 
 
         [TestInitialize]
@@ -27,8 +27,9 @@ namespace CountPostIts.ImageRecognition.Tests.Services
             _simpleShapeCheckerWrapperMock = Substitute.For<SimpleShapeCheckerWrapper>();
             _colorFilteringWrapperMock = Substitute.For<ColorFilteringWrapper>();
             _colorRangeFactoryMock = Substitute.For<IColorRangeFactory>();
-            _postItAnalysis = new PostItAnalysis(_blobCounterWrapperMock, _simpleShapeCheckerWrapperMock, _colorFilteringWrapperMock);
-            ColorRanges colorRanges = new ColorRanges(_colorRangeFactoryMock);
+            _postItAnalysis = new PostItAnalysis(_blobCounterWrapperMock, _simpleShapeCheckerWrapperMock,
+                _colorFilteringWrapperMock);
+            var colorRanges = new ColorRanges(_colorRangeFactoryMock);
             _yellowRgbRanges = colorRanges.Rgb[Colors.Yellow];
         }
 
@@ -36,13 +37,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
         public void CountPostItNotesSavesImage()
         {
             // Arrange
-            string expectedPathToSaveTo = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\result_Yellow.jpg";
+            var expectedPathToSaveTo = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName +
+                                       $"\\images\\result_Yellow.jpg";
 
             Console.WriteLine(File.Exists(expectedPathToSaveTo));
-            if (File.Exists(expectedPathToSaveTo))
-            {
-                File.Delete(expectedPathToSaveTo);
-            }
+            if (File.Exists(expectedPathToSaveTo)) File.Delete(expectedPathToSaveTo);
 
             // Act
             _postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", _yellowRgbRanges, "Yellow");
@@ -50,6 +49,5 @@ namespace CountPostIts.ImageRecognition.Tests.Services
             // Assert
             Assert.IsTrue(File.Exists(expectedPathToSaveTo));
         }
-
     }
 }

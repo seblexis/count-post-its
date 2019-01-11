@@ -9,10 +9,7 @@ namespace CountPostIts.ConsoleUI.Services
         {
             Console.WriteLine("Result: ");
 
-            foreach (KeyValuePair<string, int> entry in result)
-            {
-                Console.WriteLine($"{entry.Key}: {entry.Value}");
-            }
+            foreach (var entry in result) Console.WriteLine($"{entry.Key}: {entry.Value}");
         }
     }
 }
