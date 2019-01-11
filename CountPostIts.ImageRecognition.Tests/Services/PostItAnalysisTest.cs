@@ -32,7 +32,7 @@ namespace CountPostIts.ImageRecognition.Tests
         public void CountPostItNotesSavesImage()
         {
             // Arrange
-            string expectedPathToSaveTo = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\results\\Yellow.jpg";
+            string expectedPathToSaveTo = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\Yellow.jpg";
 
             Console.WriteLine(File.Exists(expectedPathToSaveTo));
             if (File.Exists(expectedPathToSaveTo))

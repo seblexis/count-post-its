@@ -64,7 +64,7 @@ namespace CountPostIts.ImageRecognition
 
         private string GetPathToSaveTo(string colorName)
         {
-           return new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\results\\{colorName}.jpg";
+           return new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + $"\\images\\{colorName}.jpg";
         }
     }
 }
