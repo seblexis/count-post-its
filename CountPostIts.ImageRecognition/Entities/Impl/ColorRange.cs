@@ -42,10 +42,14 @@ namespace CountPostIts.ImageRecognition.Entities.Impl
         private void VerifyRanges(int[] rgbRange)
         {
             if (rgbRange[0] > rgbRange[1])
+            {
                 throw new ArgumentOutOfRangeException(nameof(rgbRange), "First value needs to be lower than second");
-
+            }
+            
             if (rgbRange[0] < 0 || rgbRange[0] > 255 || rgbRange[1] < 0 || rgbRange[1] > 255)
+            {
                 throw new ArgumentOutOfRangeException(nameof(rgbRange), "Values need to be below 0 and 255");
+            }
         }
     }
 }
