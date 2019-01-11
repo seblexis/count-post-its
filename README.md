@@ -18,11 +18,9 @@ $ git clone https://github.com/seblexis/count-post-its.git
 $ cd count-post-its/CountPostIts.ConsoleUi/bin/Debug
 ```
 
-**Note**: *Currently, the app assumes the image tested to be located within this Debug folder. See 'Todo' for more details.*
-
 Run the executable with the name of the image-file you are testing against.
 ```
-$ CountPostIts.ConsoleUI.exe test4.jpg
+$ CountPostIts.ConsoleUI.exe test3.jpg
 ```
 The result is displayed as shown:
 ![CounterResults](./readme/counter_results.png)
