@@ -338,4 +338,4 @@ ASALocalRun/
 .localhistory/
 
 # Test Results folder 
-**/images/results/
+images/results
