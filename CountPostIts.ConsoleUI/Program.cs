@@ -36,9 +36,6 @@ namespace CountPostIts.ConsoleUI
             {
                 Console.WriteLine(e.Message);
             }
-            
         }
     }
 }
-
-
