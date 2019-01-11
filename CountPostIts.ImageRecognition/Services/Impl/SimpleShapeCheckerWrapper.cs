@@ -2,7 +2,7 @@
 using Accord;
 using Accord.Math.Geometry;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services.Impl
 {
     public class SimpleShapeCheckerWrapper : ISimpleShapeCheckerWrapper
     {

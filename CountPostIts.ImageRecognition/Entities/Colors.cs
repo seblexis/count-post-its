@@ -1,4 +1,4 @@
-﻿namespace CountPostIts.ImageRecognition
+﻿namespace CountPostIts.ImageRecognition.Entities
 {
     public enum Colors
     {

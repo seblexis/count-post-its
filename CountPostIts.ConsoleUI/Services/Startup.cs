@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace CountPostIts.ConsoleUI
+namespace CountPostIts.ConsoleUI.Services
 {
     public class Startup
     {

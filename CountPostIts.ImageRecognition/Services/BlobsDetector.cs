@@ -1,7 +1,7 @@
-﻿using Accord.Imaging;
-using System.Drawing;
+﻿using System.Drawing;
+using Accord.Imaging;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services
 {
     public class BlobsDetector
     {

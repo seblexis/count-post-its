@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace CountPostIts.ConsoleUI
+namespace CountPostIts.ConsoleUI.Services.Impl
 {
     class FileWrapper : IFileWrapper
     {

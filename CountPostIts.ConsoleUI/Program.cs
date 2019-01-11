@@ -1,5 +1,8 @@
 using System;
 using CommandLine;
+using CountPostIts.ConsoleUI.Entities;
+using CountPostIts.ConsoleUI.Services;
+using CountPostIts.ConsoleUI.Services.Impl;
 
 namespace CountPostIts.ConsoleUI
 {

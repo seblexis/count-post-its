@@ -1,7 +1,7 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
+using CountPostIts.ImageRecognition.Entities;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services
 {
     public class ImageFilter
     {

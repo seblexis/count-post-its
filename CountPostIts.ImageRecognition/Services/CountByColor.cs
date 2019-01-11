@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using CountPostIts.ImageRecognition.Entities;
+using CountPostIts.ImageRecognition.Services.Impl;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services
 {
     public class CountByColor
     {

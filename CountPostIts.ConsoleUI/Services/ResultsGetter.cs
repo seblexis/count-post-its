@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-namespace CountPostIts.ConsoleUI
+﻿using System.Collections.Generic;
+
+namespace CountPostIts.ConsoleUI.Services
 {
     public class ResultsGetter
     {
@@ -13,7 +13,7 @@ namespace CountPostIts.ConsoleUI
 
         public Dictionary<string, int> Get(string filename)
         {
-            Dictionary<string, int> result = _countByColor.OwnCountAllColours(filename);
+            Dictionary<string, int> result = _countByColor.OwnCountAllColors(filename);
             return result;
         }
     }

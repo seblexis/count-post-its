@@ -1,7 +1,8 @@
 ﻿using System;
+using CountPostIts.ImageRecognition.Entities.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CountPostIts.ImageRecognition.Tests
+namespace CountPostIts.ImageRecognition.Tests.Entities.Impl
 {
     [TestClass]
     public class ColorRangeTest
