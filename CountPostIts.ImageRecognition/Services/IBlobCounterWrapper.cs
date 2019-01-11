@@ -1,9 +1,9 @@
-﻿using Accord;
-using Accord.Imaging;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
+using Accord;
+using Accord.Imaging;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services
 {
     public interface IBlobCounterWrapper
     {

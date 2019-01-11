@@ -1,10 +1,11 @@
 ﻿using System.Drawing;
 using Accord.Imaging;
+using CountPostIts.ImageRecognition.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using Image = System.Drawing.Image;
 
-namespace CountPostIts.ImageRecognition.Tests
+namespace CountPostIts.ImageRecognition.Tests.Services
 {
     [TestClass]
     public class BlobsDetectorTest

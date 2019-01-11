@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
+using CountPostIts.ImageRecognition.Services.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CountPostIts.ImageRecognition.Tests
+namespace CountPostIts.ImageRecognition.Tests.Services.Impl
 {
     [TestClass]
     public class BlobCounterWrapperTest

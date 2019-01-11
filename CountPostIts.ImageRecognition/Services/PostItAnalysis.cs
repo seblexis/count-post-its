@@ -1,11 +1,12 @@
 ﻿using System;
-using Accord;
-using Accord.Imaging;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using Accord;
+using Accord.Imaging;
+using CountPostIts.ImageRecognition.Entities;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services
 {
     public class PostItAnalysis
     {

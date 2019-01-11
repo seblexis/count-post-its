@@ -1,8 +1,8 @@
-﻿using Accord;
+﻿using System.Drawing;
+using Accord;
 using Accord.Imaging.Filters;
-using System.Drawing;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services.Impl
 {
     public class ColorFilteringWrapper : IColorFilteringWrapper
     {
