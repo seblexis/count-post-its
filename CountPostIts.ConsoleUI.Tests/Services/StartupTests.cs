@@ -8,10 +8,10 @@ namespace CountPostIts.ConsoleUI.Tests.Services
     [TestClass]
     public class StartupTests
     {
-        private Startup _startup;
         private const string Filename = "postits.jpg";
         private const string IncorrectFilename = "Hello.ppt";
         private IFileWrapper _mockFileWrapper;
+        private Startup _startup;
 
         [TestInitialize]
         public void BeforeEachTest()
@@ -19,7 +19,7 @@ namespace CountPostIts.ConsoleUI.Tests.Services
             _mockFileWrapper = Substitute.For<IFileWrapper>();
             _mockFileWrapper.CallFileExists(Filename).Returns(true);
 
-           _startup = new Startup(_mockFileWrapper);
+            _startup = new Startup(_mockFileWrapper);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace CountPostIts.ConsoleUI.Tests.Services
         public void ReturnsTrueWhenGivenCorrectFile()
         {
             // Act 
-            bool actual = _startup.VerifyFile(Filename);
+            var actual = _startup.VerifyFile(Filename);
 
             // Assert
             Assert.IsTrue(actual);
@@ -54,13 +54,13 @@ namespace CountPostIts.ConsoleUI.Tests.Services
         public void GetPathInProjectReturnsCorrectPath()
         {
             // Arrange
-            string expected = "count-post-its\\images\\" + Filename;
+            var expected = "count-post-its\\images\\" + Filename;
 
             // Act
-            string actual = _startup.GetPathInProject(Filename);
+            var actual = _startup.GetPathInProject(Filename);
 
             // Assert
-            StringAssert.EndsWith(actual,expected);
+            StringAssert.EndsWith(actual, expected);
         }
     }
 }

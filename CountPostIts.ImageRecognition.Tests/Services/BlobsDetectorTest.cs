@@ -10,8 +10,8 @@ namespace CountPostIts.ImageRecognition.Tests.Services
     [TestClass]
     public class BlobsDetectorTest
     {
-        private BlobsDetector _blobsDetector;
         private IBlobCounterWrapper _blobCounterWrapperMock;
+        private BlobsDetector _blobsDetector;
         private Bitmap _image;
 
         [TestInitialize]
@@ -19,7 +19,7 @@ namespace CountPostIts.ImageRecognition.Tests.Services
         {
             _blobCounterWrapperMock = Substitute.For<IBlobCounterWrapper>();
             _blobsDetector = new BlobsDetector(_blobCounterWrapperMock);
-            _image = (Bitmap)Image.FromFile("../../TestImages/test1.jpg");
+            _image = (Bitmap) Image.FromFile("../../TestImages/test1.jpg");
         }
 
         [TestMethod]

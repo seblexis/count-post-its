@@ -14,7 +14,7 @@ namespace CountPostIts.ImageRecognition.Services
 
         public Blob[] FindBlobs(Bitmap image)
         {
-            int minDimension = _blobCounterWrapper.CalculateMinDimension(image);
+            var minDimension = _blobCounterWrapper.CalculateMinDimension(image);
             _blobCounterWrapper.OwnFilterBlobs(true);
             _blobCounterWrapper.OwnMinHeight(minDimension);
             _blobCounterWrapper.OwnMinWidth(minDimension);

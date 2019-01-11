@@ -15,13 +15,12 @@ namespace CountPostIts.ImageRecognition.Services.Impl
 
         public void OwnApplyInPlace(object image)
         {
-            _colorFilter.ApplyInPlace((Bitmap)image);
+            _colorFilter.ApplyInPlace((Bitmap) image);
         }
 
         public void OwnRed(int first, int last)
         {
             _colorFilter.Red = new IntRange(first, last);
-
         }
 
         public void OwnBlue(int first, int last)

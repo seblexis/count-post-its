@@ -15,8 +15,8 @@ namespace CountPostIts.ConsoleUI.Tests.Services
         {
             //Arrange
             _mockCoutByColorWrapper = Substitute.For<ICountByColorWrapper>();
-            ResultsGetter resultsGetter = new ResultsGetter(_mockCoutByColorWrapper);
-            string filename = "filename.jpg";
+            var resultsGetter = new ResultsGetter(_mockCoutByColorWrapper);
+            var filename = "filename.jpg";
             var expected = new Dictionary<string, int>();
             _mockCoutByColorWrapper.OwnCountAllColors(filename).Returns(expected);
 

@@ -7,8 +7,8 @@ namespace CountPostIts.ImageRecognition.Tests.Services
     [TestClass]
     public class CountByColorFeatureTest
     {
-        private CountByColor _information;
         private const string FilePath = "../../TestImages/";
+        private CountByColor _information;
 
         [TestInitialize]
         public void BeforeEachTest()

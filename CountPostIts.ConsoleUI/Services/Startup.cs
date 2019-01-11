@@ -14,14 +14,17 @@ namespace CountPostIts.ConsoleUI.Services
 
         public bool VerifyFile(string filename)
         {
-            if (!_file.CallFileExists(filename)) throw new ArgumentException("File does not exist. Application is shutting down.");
-
+            if (!_file.CallFileExists(filename))
+            {
+                throw new ArgumentException("File does not exist. Application is shutting down.");
+            }
             return true;
         }
 
         public string GetPathInProject(string filename)
         {
-            return new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent.Parent.FullName + "\\images\\" + filename;
+            return new DirectoryInfo(Environment.CurrentDirectory).Parent?.Parent?.Parent?.FullName + "\\images\\" +
+                   filename;
         }
     }
 }

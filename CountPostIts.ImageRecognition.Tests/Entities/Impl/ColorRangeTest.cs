@@ -17,16 +17,16 @@ namespace CountPostIts.ImageRecognition.Tests.Entities.Impl
 
         [TestMethod]
         public void SetsColorRange()
-        {         
+        {
             // Arrange
-            int[] expected = { 100, 120 };
-            _testColor.RangeBlue = new[] { 100, 120 };
+            int[] expected = {100, 120};
+            _testColor.RangeBlue = new[] {100, 120};
 
             // Act
-            int[] actual = _testColor.RangeBlue;
+            var actual = _testColor.RangeBlue;
 
             // Assert
-            CollectionAssert.AreEqual(expected, actual);            
+            CollectionAssert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace CountPostIts.ImageRecognition.Tests.Entities.Impl
         public void DoesNotAcceptValuesBelow0()
         {
             // Act
-            _testColor.RangeBlue = new[] { -10, 100 };
+            _testColor.RangeBlue = new[] {-10, 100};
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace CountPostIts.ImageRecognition.Tests.Entities.Impl
         public void DoesNotAcceptValuesAbove255()
         {
             // Act
-            _testColor.RangeBlue = new[] { 0, 300 };
+            _testColor.RangeBlue = new[] {0, 300};
         }
 
         [TestMethod]
@@ -50,8 +50,7 @@ namespace CountPostIts.ImageRecognition.Tests.Entities.Impl
         public void DoesNotAcceptValuesInWrongOrder()
         {
             // Act
-            _testColor.RangeBlue = new[] { 200, 100 };
+            _testColor.RangeBlue = new[] {200, 100};
         }
-
     }
 }

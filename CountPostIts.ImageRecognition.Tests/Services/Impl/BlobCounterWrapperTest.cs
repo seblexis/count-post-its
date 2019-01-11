@@ -19,11 +19,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services.Impl
         public void CalculateMinDimensionReturns72ForImage1()
         {
             // Arrange
-            Bitmap image = (Bitmap)Image.FromFile("../../TestImages/test1.jpg");
-            int expected = 72;
+            var image = (Bitmap) Image.FromFile("../../TestImages/test1.jpg");
+            var expected = 72;
 
             // Act
-            int actual = _blobCounterWrapper.CalculateMinDimension(image);
+            var actual = _blobCounterWrapper.CalculateMinDimension(image);
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -33,12 +33,12 @@ namespace CountPostIts.ImageRecognition.Tests.Services.Impl
         public void CalculateMinDimensionReturns54ForImage6()
         {
             // Arrange
-            Bitmap image = (Bitmap)Image.FromFile("../../TestImages/test6.jpg");
-            BlobCounterWrapper blobCounterWrapper = new BlobCounterWrapper();
-            int expected = 54;
+            var image = (Bitmap) Image.FromFile("../../TestImages/test6.jpg");
+            var blobCounterWrapper = new BlobCounterWrapper();
+            var expected = 54;
 
             // Act
-            int actual = blobCounterWrapper.CalculateMinDimension(image);
+            var actual = blobCounterWrapper.CalculateMinDimension(image);
 
             // Assert
             Assert.AreEqual(actual, expected);
