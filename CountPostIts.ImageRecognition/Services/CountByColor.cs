@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CountPostIts.ImageRecognition.Entities;
 using CountPostIts.ImageRecognition.Services.Impl;
 
@@ -26,7 +25,7 @@ namespace CountPostIts.ImageRecognition.Services
                 new PostItAnalysis(_blobCounterWrapper, _simpleShapeCheckerWrapper, _colorFilteringWrapper);
             foreach (var colourEntry in colorRanges.Rgb)
             {
-                var colourName = Enum.GetName(typeof(Colors), colourEntry.Key);
+                var colourName = colourEntry.Key.ToString();
                 var count = postItAnalysis.CountPostItNotes(filename, colourEntry.Value, colourName);
                 result.Add(colourName, count);
             }
