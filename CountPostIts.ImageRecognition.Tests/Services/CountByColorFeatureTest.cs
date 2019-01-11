@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CountPostIts.ImageRecognition.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,27 +15,107 @@ namespace CountPostIts.ImageRecognition.Tests.Services
         {
             _information = new CountByColor();
         }
-
-        [DataTestMethod]
-        [DataRow("test1.jpg", "Yellow", 7)]
-        [DataRow("test1.jpg", "Green", 5)]
-        [DataRow("test5.jpg", "Green", 4)]
-        [DataRow("test2.jpg", "Blue", 1)]
-        [DataRow("test3.jpg", "Blue", 1)]
-        [DataRow("test4.jpg", "Blue", 1)]
-        [DataRow("test4.jpg", "Orange", 2)]
-        [DataRow("test5.jpg", "Blue", 1)]
-        [DataRow("test6.jpg", "Blue", 3)]
-        [DataRow("test5.jpg", "Pink", 2)]
-        [DataRow("test6.jpg", "Pink", 1)]
-        [DataRow("test6.jpg", "Purple", 3)]
-        public void CountPostItsInGivenImage(string filename, string colour, int expected)
+        
+        [TestMethod]
+        public void Test1ReturnsCorrectResults()
         {
-            // Act
-            var actual = _information.CountAllColours($"{FilePath}{filename}")[colour];
+            var expected = new Dictionary<string, int>
+            {
+                {"Yellow", 7},
+                {"Green", 5}
+            };
 
-            // Assert
-            Assert.AreEqual(expected, actual);
+            var actual = _information.CountAllColours($"{FilePath}test1.jpg");
+
+            foreach (var colour in expected)
+            {
+                Assert.AreEqual(colour.Value, actual[colour.Key]);
+            }
+        }
+
+        [TestMethod]
+        public void Test2ReturnsCorrectResults()
+        {
+            var expected = new Dictionary<string, int>
+            {
+                {"Blue", 1}
+            };
+            
+            var actual = _information.CountAllColours($"{FilePath}test2.jpg");
+
+            foreach (var colour in expected)
+            {
+                Assert.AreEqual(colour.Value, actual[colour.Key]);
+            }
+        }
+
+        [TestMethod]
+        public void Test3ReturnsCorrectResults()
+        {
+            var expected = new Dictionary<string, int>
+            {
+                {"Blue", 1}
+            };
+
+            var actual = _information.CountAllColours($"{FilePath}test3.jpg");
+
+            foreach (var colour in expected)
+            {
+                Assert.AreEqual(colour.Value, actual[colour.Key]);
+            }
+        }
+
+        [TestMethod]
+        public void Test4ReturnsCorrectResults()
+        {
+            var expected = new Dictionary<string, int>
+            {
+                {"Blue", 1},
+                {"Orange", 2}
+            };
+
+            var actual = _information.CountAllColours($"{FilePath}test4.jpg");
+
+            foreach (var colour in expected)
+            {
+                Assert.AreEqual(colour.Value, actual[colour.Key]);
+            }
+        }
+
+        [TestMethod]
+        public void Test5ReturnsCorrectResults()
+        {
+            var expected = new Dictionary<string, int>
+            {
+                {"Blue", 1},
+                {"Green", 4},
+                {"Pink", 2}
+            };
+            
+            var actual = _information.CountAllColours($"{FilePath}test5.jpg");
+
+            foreach (var colour in expected)
+            {
+                Assert.AreEqual(colour.Value, actual[colour.Key]);
+            }
+        }
+
+        [TestMethod]
+        public void Test6ReturnsCorrectResults()
+        {
+            var expected = new Dictionary<string, int>
+            {
+                {"Blue", 3},
+                {"Pink", 1},
+                {"Purple", 3}
+            };
+
+            var actual = _information.CountAllColours($"{FilePath}test6.jpg");
+
+            foreach (var colour in expected)
+            {
+                Assert.AreEqual(colour.Value, actual[colour.Key]);
+            }
         }
     }
 }
