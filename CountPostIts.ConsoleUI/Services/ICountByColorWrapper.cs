@@ -2,7 +2,7 @@
 
 namespace CountPostIts.ConsoleUI.Services
 {
-    public interface  ICountByColorWrapper
+    public interface ICountByColorWrapper
     {
         Dictionary<string, int> OwnCountAllColors(string filename);
     }

@@ -2,7 +2,7 @@
 
 namespace CountPostIts.ConsoleUI.Services.Impl
 {
-    class FileWrapper : IFileWrapper
+    internal class FileWrapper : IFileWrapper
     {
         public bool CallFileExists(string filename)
         {

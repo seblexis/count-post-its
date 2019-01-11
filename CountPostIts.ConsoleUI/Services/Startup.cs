@@ -18,13 +18,13 @@ namespace CountPostIts.ConsoleUI.Services
             {
                 throw new ArgumentException("File does not exist. Application is shutting down.");
             }
-
             return true;
         }
 
         public string GetPathInProject(string filename)
         {
-            return new DirectoryInfo(Environment.CurrentDirectory)?.Parent?.Parent?.Parent?.FullName + "\\images\\" + filename;
+            return new DirectoryInfo(Environment.CurrentDirectory).Parent?.Parent?.Parent?.FullName + "\\images\\" +
+                   filename;
         }
     }
 }

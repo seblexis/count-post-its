@@ -17,9 +17,9 @@ namespace CountPostIts.ImageRecognition.Tests.Entities
         {
             _colorRangeFactoryMock = Substitute.For<IColorRangeFactory>();
             _colorRangeMock = Substitute.For<IColorRange>();
-            _colorRangeMock.RangeRed.Returns(new[] { 1, 1 });
-            _colorRangeMock.RangeBlue.Returns(new[] { 1, 1 });
-            _colorRangeMock.RangeGreen.Returns(new[] { 1, 1 });
+            _colorRangeMock.RangeRed.Returns(new[] {1, 1});
+            _colorRangeMock.RangeBlue.Returns(new[] {1, 1});
+            _colorRangeMock.RangeGreen.Returns(new[] {1, 1});
             _colorRangeFactoryMock.Create().Returns(_colorRangeMock);
 
             _colorRanges = new ColorRanges(_colorRangeFactoryMock);
@@ -36,10 +36,10 @@ namespace CountPostIts.ImageRecognition.Tests.Entities
         public void ReturnsListWith6Colors()
         {
             // Arrange
-            int expected = 6;
+            var expected = 6;
 
             // Act
-            int actual = _colorRanges.Rgb.Count;
+            var actual = _colorRanges.Rgb.Count;
 
             // Assert
             Assert.AreEqual(expected, actual);
@@ -53,9 +53,6 @@ namespace CountPostIts.ImageRecognition.Tests.Entities
 
             // Assert
             Assert.IsNotNull(actual.RangeRed);
-
         }
-
     }
-
 }

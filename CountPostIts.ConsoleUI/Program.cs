@@ -8,15 +8,14 @@ namespace CountPostIts.ConsoleUI
 {
     internal class Program
     {
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Parser.Default.ParseArguments<Options>(args)
                 .WithParsed(Run)
                 .WithNotParsed(opt => Environment.Exit(-1));
         }
 
-        static void Run(Options opt)
+        private static void Run(Options opt)
         {
             var startup = new Startup(
                 new FileWrapper()
@@ -35,7 +34,7 @@ namespace CountPostIts.ConsoleUI
                     resultsPrinter.Print(result);
                 }
             }
-            catch(ArgumentException e)
+            catch (ArgumentException e)
             {
                 Console.WriteLine(e.Message);
             }

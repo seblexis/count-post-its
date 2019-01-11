@@ -6,8 +6,8 @@ namespace CountPostIts.ImageRecognition.Tests.Services
     [TestClass]
     public class CountByColorFeatureTest
     {
-        private CountByColor _information;
         private const string FilePath = "../../TestImages/";
+        private CountByColor _information;
 
         [TestInitialize]
         public void BeforeEachTest()
@@ -31,7 +31,7 @@ namespace CountPostIts.ImageRecognition.Tests.Services
         public void CountPostItsInGivenImage(string filename, string colour, int expected)
         {
             // Act
-            int actual = _information.CountAllColours($"{FilePath}{filename}")[colour];
+            var actual = _information.CountAllColours($"{FilePath}{filename}")[colour];
 
             // Assert
             Assert.AreEqual(expected, actual);
