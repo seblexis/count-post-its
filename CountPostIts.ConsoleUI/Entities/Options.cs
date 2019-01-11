@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace CountPostIts.ConsoleUI
+namespace CountPostIts.ConsoleUI.Entities
 {
     public class Options
     {

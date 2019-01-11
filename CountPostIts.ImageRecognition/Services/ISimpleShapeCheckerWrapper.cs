@@ -1,7 +1,7 @@
-﻿using Accord;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Accord;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Services
 {
     public interface ISimpleShapeCheckerWrapper
     {

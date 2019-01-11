@@ -1,8 +1,10 @@
 ﻿using System.Drawing;
+using CountPostIts.ImageRecognition.Entities;
+using CountPostIts.ImageRecognition.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
-namespace CountPostIts.ImageRecognition.Tests
+namespace CountPostIts.ImageRecognition.Tests.Services
 {
     [TestClass]
     public class ImageFilterTest

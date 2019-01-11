@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using CountPostIts.ImageRecognition.Services;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Entities
 {
     public class ColorRanges
     {

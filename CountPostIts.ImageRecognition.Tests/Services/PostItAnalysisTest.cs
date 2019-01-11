@@ -1,9 +1,13 @@
 ﻿using System;
 using System.IO;
+using CountPostIts.ImageRecognition.Entities;
+using CountPostIts.ImageRecognition.Entities.Impl;
+using CountPostIts.ImageRecognition.Services;
+using CountPostIts.ImageRecognition.Services.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
-namespace CountPostIts.ImageRecognition.Tests
+namespace CountPostIts.ImageRecognition.Tests.Services
 {
     [TestClass]
     public class PostItAnalysisTest

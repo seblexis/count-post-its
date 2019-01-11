@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace CountPostIts.ConsoleUI
+namespace CountPostIts.ConsoleUI.Services
 {
     public interface  ICountByColorWrapper
     {
-        Dictionary<string, int> OwnCountAllColours(string filename);
+        Dictionary<string, int> OwnCountAllColors(string filename);
     }
 }

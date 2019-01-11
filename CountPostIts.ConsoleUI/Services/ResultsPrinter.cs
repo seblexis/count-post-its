@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CountPostIts.ConsoleUI
+namespace CountPostIts.ConsoleUI.Services
 {
     public class ResultsPrinter
     {

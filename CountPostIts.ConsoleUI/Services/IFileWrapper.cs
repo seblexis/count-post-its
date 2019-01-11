@@ -1,4 +1,4 @@
-﻿namespace CountPostIts.ConsoleUI
+﻿namespace CountPostIts.ConsoleUI.Services
 {
     public interface IFileWrapper
     {

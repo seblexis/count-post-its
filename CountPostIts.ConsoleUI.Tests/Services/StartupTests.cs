@@ -1,8 +1,9 @@
 using System;
+using CountPostIts.ConsoleUI.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 
-namespace CountPostIts.ConsoleUI.Tests
+namespace CountPostIts.ConsoleUI.Tests.Services
 {
     [TestClass]
     public class StartupTests

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CountPostIts.ImageRecognition
+namespace CountPostIts.ImageRecognition.Entities.Impl
 {
     public class ColorRange : IColorRange
 
