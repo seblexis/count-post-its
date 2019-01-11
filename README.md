@@ -1,5 +1,5 @@
 # count-post-its 
-
+change
 This app attempts to process an image of a post-it covered wall, outputting the number of post-its grouped by colour. 
 It does so using the following techniques:
 * Filters the image to exclude that which does not satisfy a predefined RGB constraint (though this may change to an hsl constraint, see 'Todo').
