@@ -6,7 +6,7 @@ using CountPostIts.ConsoleUI.Services.Impl;
 
 namespace CountPostIts.ConsoleUI
 {
-    class Program
+    internal class Program
     {
 
         static void Main(string[] args)
