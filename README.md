@@ -25,7 +25,7 @@ $ CountPostIts.ConsoleUI.exe test3.jpg
 The result is displayed as shown:
 ![CounterResults](./readme/counter_results.png)
 
-Images are saved for each colour found, highlighting the Post it notes the app has identified, within the ```\images\results``` folder.
+Images are saved for each colour found, highlighting the Post it notes the app has identified, within the ```\images``` folder.
 ![drawnResultsYellow](./readme/result_Yellow.jpg)
 
 ![drawnResultsGreen](./readme/result_Green.jpg)  
