@@ -1,3 +1,4 @@
+using CountPostIts.ImageRecognition.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CountPostIts.ImageRecognition.Tests.Services
