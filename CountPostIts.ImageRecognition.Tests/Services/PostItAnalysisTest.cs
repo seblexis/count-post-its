@@ -41,7 +41,10 @@ namespace CountPostIts.ImageRecognition.Tests.Services
                                        $"\\images\\result_Yellow.jpg";
 
             Console.WriteLine(File.Exists(expectedPathToSaveTo));
-            if (File.Exists(expectedPathToSaveTo)) File.Delete(expectedPathToSaveTo);
+            if (File.Exists(expectedPathToSaveTo)) 
+            {
+                File.Delete(expectedPathToSaveTo);
+            }
 
             // Act
             _postItAnalysis.CountPostItNotes("../../TestImages/test4.jpg", _yellowRgbRanges, "Yellow");
