@@ -18,6 +18,7 @@ namespace CountPostIts.ImageRecognition.Services
         public Dictionary<string, int> CountAllColors(string filename)
         {
             var result = new Dictionary<string, int>();
+
             foreach (var colorEntry in _colorRanges.Rgb)
             {
                 var colorName = colorEntry.Key.ToString();

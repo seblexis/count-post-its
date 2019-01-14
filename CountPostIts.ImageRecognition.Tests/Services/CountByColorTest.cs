@@ -25,7 +25,7 @@ namespace CountPostIts.ImageRecognition.Tests.Services
             const string filenameMock = "filenameMock";
             const string colornameMock = "Blue";
             const int countMock = 1;
-            Dictionary<Colors,IColorRange> colorEntryMock = new Dictionary<Colors, IColorRange>
+            var colorEntryMock = new Dictionary<Colors, IColorRange>
             {
                 {Colors.Blue, _colorRangeMock}
             };
