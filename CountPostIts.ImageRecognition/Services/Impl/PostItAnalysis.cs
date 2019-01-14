@@ -8,7 +8,7 @@ using CountPostIts.ImageRecognition.Entities;
 using Image = System.Drawing.Image;
 using Point = System.Drawing.Point;
 
-namespace CountPostIts.ImageRecognition.Services
+namespace CountPostIts.ImageRecognition.Services.Impl
 {
     public class PostItAnalysis : IPostItAnalysis
     {

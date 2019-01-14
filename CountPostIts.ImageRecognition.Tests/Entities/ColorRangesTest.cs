@@ -1,4 +1,5 @@
 ﻿using CountPostIts.ImageRecognition.Entities;
+using CountPostIts.ImageRecognition.Entities.Impl;
 using CountPostIts.ImageRecognition.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
