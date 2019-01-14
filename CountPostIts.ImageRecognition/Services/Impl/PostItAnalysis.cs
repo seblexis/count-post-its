@@ -10,7 +10,7 @@ using Point = System.Drawing.Point;
 
 namespace CountPostIts.ImageRecognition.Services
 {
-    public class PostItAnalysis
+    public class PostItAnalysis : IPostItAnalysis
     {
         private readonly IBlobCounterWrapper _blobCounterWrapper;
         private readonly IColorFilteringWrapper _colorFilteringWrapper;
@@ -24,7 +24,7 @@ namespace CountPostIts.ImageRecognition.Services
             _colorFilteringWrapper = colorFilteringWrapper;
         }
 
-        public int CountPostItNotes(string filename, IColorRange rgbRange, string colourName)
+        public int CountPostItNotes(string filename, IColorRange rgbRange, string colorName)
         {
             var image = (Bitmap) Image.FromFile(filename);
             var imageFilter = new ImageFilter(_colorFilteringWrapper);
@@ -32,7 +32,7 @@ namespace CountPostIts.ImageRecognition.Services
             var filteredImage = imageFilter.GetFilteredImage(image, rgbRange);
             var blobs = blobsDetector.FindBlobs(filteredImage);
 
-            return CountQuadrilaterals(blobs, filteredImage, colourName);
+            return CountQuadrilaterals(blobs, filteredImage, colorName);
         }
 
         private int CountQuadrilaterals(Blob[] blobs, Bitmap image, string colorName)

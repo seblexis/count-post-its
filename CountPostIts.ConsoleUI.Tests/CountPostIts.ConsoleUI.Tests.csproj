@@ -83,6 +83,10 @@
       <Project>{2d435773-5954-4186-846e-c1296d66ca2f}</Project>
       <Name>CountPostIts.ConsoleUI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CountPostIts.ImageRecognition\CountPostIts.ImageRecognition.csproj">
+      <Project>{0569810E-00BD-41C6-82FF-82C4195C764F}</Project>
+      <Name>CountPostIts.ImageRecognition</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
