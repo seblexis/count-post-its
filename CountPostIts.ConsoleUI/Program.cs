@@ -3,6 +3,8 @@ using CommandLine;
 using CountPostIts.ConsoleUI.Entities;
 using CountPostIts.ConsoleUI.Services;
 using CountPostIts.ConsoleUI.Services.Impl;
+using CountPostIts.ImageRecognition.Entities;
+using CountPostIts.ImageRecognition.Entities.Impl;
 using CountPostIts.ImageRecognition.Services;
 using CountPostIts.ImageRecognition.Services.Impl;
 
@@ -28,8 +30,13 @@ namespace CountPostIts.ConsoleUI
             IBlobCounterWrapper blobCounterWrapper = new BlobCounterWrapper();
             ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
             IColorFilteringWrapper colorFilteringWrapper = new ColorFilteringWrapper();
+
             IPostItAnalysis postItAnalysis = new PostItAnalysis(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
-            ICountByColor countByColor = new CountByColor(postItAnalysis);
+
+            IColorRangeFactory colorRangeFactory = new ColorRangeFactory();
+            IColorRanges colorRanges = new ColorRanges(colorRangeFactory);
+
+            ICountByColor countByColor = new CountByColor(postItAnalysis, colorRanges);
 
             try
             {

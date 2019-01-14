@@ -3,7 +3,7 @@ using CountPostIts.ImageRecognition.Services;
 
 namespace CountPostIts.ImageRecognition.Entities
 {
-    public class ColorRanges
+    public class ColorRanges : IColorRanges
     {
         private readonly IColorRangeFactory _colorRangeFactory;
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CountPostIts.ImageRecognition.Entities;
 using CountPostIts.ImageRecognition.Services;
 using CountPostIts.ImageRecognition.Services.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,7 +19,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
             ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
             IColorFilteringWrapper colorFilteringWrapper = new ColorFilteringWrapper();
             IPostItAnalysis postItAnalysis = new PostItAnalysis(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
-            _countByColor = new CountByColor(postItAnalysis);
+
+            IColorRangeFactory colorRangeFactory = new ColorRangeFactory();
+            IColorRanges colorRanges = new ColorRanges(colorRangeFactory);
+
+            _countByColor = new CountByColor(postItAnalysis, colorRanges);
         }
         
         [TestMethod]

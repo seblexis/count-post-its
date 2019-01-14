@@ -62,13 +62,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\IColorRanges.cs" />
     <Compile Include="Services\ICountByColor.cs" />
     <Compile Include="Services\Impl\BlobCounterWrapper.cs" />
     <Compile Include="Services\BlobsDetector.cs" />
     <Compile Include="Services\Impl\ColorFilteringWrapper.cs" />
     <Compile Include="Entities\Impl\ColorRange.cs" />
     <Compile Include="Services\Impl\ColorRangeFactory.cs" />
-    <Compile Include="Entities\ColorRanges.cs" />
+    <Compile Include="Entities\Impl\ColorRanges.cs" />
     <Compile Include="Entities\Colors.cs" />
     <Compile Include="Services\IBlobCounterWrapper.cs" />
     <Compile Include="Services\IColorFilteringWrapper.cs" />
