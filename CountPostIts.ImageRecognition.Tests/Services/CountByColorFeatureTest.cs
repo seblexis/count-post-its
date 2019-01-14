@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using CountPostIts.ImageRecognition.Services;
+using CountPostIts.ImageRecognition.Services.Impl;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CountPostIts.ImageRecognition.Tests.Services
@@ -8,12 +9,16 @@ namespace CountPostIts.ImageRecognition.Tests.Services
     public class CountByColorFeatureTest
     {
         private const string FilePath = "../../TestImages/";
-        private CountByColor _information;
+        private CountByColor _countByColor;
 
         [TestInitialize]
         public void BeforeEachTest()
         {
-            _information = new CountByColor();
+            IBlobCounterWrapper blobCounterWrapper = new BlobCounterWrapper();
+            ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
+            IColorFilteringWrapper colorFilteringWrapper = new ColorFilteringWrapper();
+            IPostItAnalysis postItAnalysis = new PostItAnalysis(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
+            _countByColor = new CountByColor(postItAnalysis);
         }
         
         [TestMethod]
@@ -25,11 +30,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
                 {"Green", 5}
             };
 
-            var actual = _information.CountAllColours($"{FilePath}test1.jpg");
+            var actual = _countByColor.CountAllColors($"{FilePath}test1.jpg");
 
-            foreach (var colour in expected)
+            foreach (var color in expected)
             {
-                Assert.AreEqual(colour.Value, actual[colour.Key]);
+                Assert.AreEqual(color.Value, actual[color.Key]);
             }
         }
 
@@ -41,11 +46,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
                 {"Blue", 1}
             };
             
-            var actual = _information.CountAllColours($"{FilePath}test2.jpg");
+            var actual = _countByColor.CountAllColors($"{FilePath}test2.jpg");
 
-            foreach (var colour in expected)
+            foreach (var color in expected)
             {
-                Assert.AreEqual(colour.Value, actual[colour.Key]);
+                Assert.AreEqual(color.Value, actual[color.Key]);
             }
         }
 
@@ -57,11 +62,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
                 {"Blue", 1}
             };
 
-            var actual = _information.CountAllColours($"{FilePath}test3.jpg");
+            var actual = _countByColor.CountAllColors($"{FilePath}test3.jpg");
 
-            foreach (var colour in expected)
+            foreach (var color in expected)
             {
-                Assert.AreEqual(colour.Value, actual[colour.Key]);
+                Assert.AreEqual(color.Value, actual[color.Key]);
             }
         }
 
@@ -74,11 +79,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
                 {"Orange", 2}
             };
 
-            var actual = _information.CountAllColours($"{FilePath}test4.jpg");
+            var actual = _countByColor.CountAllColors($"{FilePath}test4.jpg");
 
-            foreach (var colour in expected)
+            foreach (var color in expected)
             {
-                Assert.AreEqual(colour.Value, actual[colour.Key]);
+                Assert.AreEqual(color.Value, actual[color.Key]);
             }
         }
 
@@ -92,11 +97,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
                 {"Pink", 2}
             };
             
-            var actual = _information.CountAllColours($"{FilePath}test5.jpg");
+            var actual = _countByColor.CountAllColors($"{FilePath}test5.jpg");
 
-            foreach (var colour in expected)
+            foreach (var color in expected)
             {
-                Assert.AreEqual(colour.Value, actual[colour.Key]);
+                Assert.AreEqual(color.Value, actual[color.Key]);
             }
         }
 
@@ -110,11 +115,11 @@ namespace CountPostIts.ImageRecognition.Tests.Services
                 {"Purple", 3}
             };
 
-            var actual = _information.CountAllColours($"{FilePath}test6.jpg");
+            var actual = _countByColor.CountAllColors($"{FilePath}test6.jpg");
 
-            foreach (var colour in expected)
+            foreach (var color in expected)
             {
-                Assert.AreEqual(colour.Value, actual[colour.Key]);
+                Assert.AreEqual(color.Value, actual[color.Key]);
             }
         }
     }

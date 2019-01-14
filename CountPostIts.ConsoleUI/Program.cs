@@ -3,6 +3,8 @@ using CommandLine;
 using CountPostIts.ConsoleUI.Entities;
 using CountPostIts.ConsoleUI.Services;
 using CountPostIts.ConsoleUI.Services.Impl;
+using CountPostIts.ImageRecognition.Services;
+using CountPostIts.ImageRecognition.Services.Impl;
 
 namespace CountPostIts.ConsoleUI
 {
@@ -23,11 +25,17 @@ namespace CountPostIts.ConsoleUI
 
             var filePath = startup.GetPathInProject(opt.FileName);
 
+            IBlobCounterWrapper blobCounterWrapper = new BlobCounterWrapper();
+            ISimpleShapeCheckerWrapper simpleShapeCheckerWrapper = new SimpleShapeCheckerWrapper();
+            IColorFilteringWrapper colorFilteringWrapper = new ColorFilteringWrapper();
+            IPostItAnalysis postItAnalysis = new PostItAnalysis(blobCounterWrapper, simpleShapeCheckerWrapper, colorFilteringWrapper);
+            ICountByColor countByColor = new CountByColor(postItAnalysis);
+
             try
             {
                 if (startup.VerifyFile(filePath))
                 {
-                    var resultsGetter = new ResultsGetter(new CountByColorWrapper());
+                    var resultsGetter = new ResultsGetter(countByColor);
                     var result = resultsGetter.Get(filePath);
 
                     var resultsPrinter = new ResultsPrinter();
